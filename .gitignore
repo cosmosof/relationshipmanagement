@@ -51,3 +51,12 @@ buck-out/
 */fastlane/report.xml
 */fastlane/Preview.html
 */fastlane/screenshots
+
+*.json
+*.gitignore
+*.firebaserc
+*.editorconfig
+*.babelrc
+*.buckconfig
+*.flowconfig
+*.lock
