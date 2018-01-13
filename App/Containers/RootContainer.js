@@ -4,11 +4,13 @@ import Navigation from '../Navigation/AppNavigation'
 import { connect } from 'react-redux'
 import StartupActions from '../Redux/StartupRedux'
 import ReduxPersist from '../Config/ReduxPersist'
-
+import firebase from 'firebase'
 // Styles
 import styles from './Styles/RootContainerStyles'
+console.ignoredYellowBox = ['Remote debugger'];
 
 class RootContainer extends Component {
+ 
   componentDidMount () {
     // if redux persist is not active fire startup action
     if (!ReduxPersist.active) {

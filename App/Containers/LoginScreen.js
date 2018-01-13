@@ -1,4 +1,5 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
 import {
   View,
   ScrollView,
@@ -28,10 +29,11 @@ class LoginScreen extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      username: 'reactnative@infinite.red',
-      password: 'password',
+      email: 'kahramanmm@gmail.com',
+      password: '123456',
       visibleHeight: Metrics.screenHeight,
-      topLogo: { width: Metrics.screenWidth }
+      topLogo: { width: Metrics.screenWidth },
+      error: ''
     }
     this.isAttempting = false
   }
@@ -76,14 +78,15 @@ class LoginScreen extends React.Component {
   }
 
   handlePressLogin = () => {
-    const { username, password } = this.state
+    const { email, password } = this.state
     this.isAttempting = true
-    // attempt a login - a saga is listening to pick it up from here.
-    this.props.attemptLogin(username, password)
+
+    this.props.attemptLogin(email, password)
+    
   }
 
-  handleChangeUsername = (text) => {
-    this.setState({ username: text })
+  handleChangeemail = (text) => {
+    this.setState({ email: text })
   }
 
   handleChangePassword = (text) => {
@@ -91,29 +94,37 @@ class LoginScreen extends React.Component {
   }
 
   render () {
-    const { username, password } = this.state
+    const { email, password } = this.state
     const { fetching } = this.props
+    const { error } = this.props
     const editable = !fetching
     const textInputStyle = editable ? styles.textInput : styles.textInputReadonly
     return (
       <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
         <Image source={Images.logo} style={[styles.topLogo, this.state.topLogo]} />
         <View style={styles.form}>
+          <View style={styles.titleRow}>
+            <View style={styles.formLine}>
+              <Text style={styles.formTitle}>
+                Sign In
+              </Text>
+            </View> 
+          </View>
           <View style={styles.row}>
-            <Text style={styles.rowLabel}>Username</Text>
+            <Text style={styles.rowLabel}>email</Text>
             <TextInput
-              ref='username'
+              ref='email'
               style={textInputStyle}
-              value={username}
+              value={email}
               editable={editable}
               keyboardType='default'
               returnKeyType='next'
               autoCapitalize='none'
               autoCorrect={false}
-              onChangeText={this.handleChangeUsername}
+              onChangeText={this.handleChangeemail}
               underlineColorAndroid='transparent'
               onSubmitEditing={() => this.refs.password.focus()}
-              placeholder='Username' />
+              placeholder='email' />
           </View>
 
           <View style={styles.row}>
@@ -133,16 +144,18 @@ class LoginScreen extends React.Component {
               onSubmitEditing={this.handlePressLogin}
               placeholder='Password' />
           </View>
-
+          <View style={[styles.warningRow]}>
+            <Text style={styles.warningTex}>{this.props.error}</Text>
+          </View>
           <View style={[styles.loginRow]}>
             <TouchableOpacity style={styles.loginButtonWrapper} onPress={this.handlePressLogin}>
               <View style={styles.loginButton}>
                 <Text style={styles.loginText}>Sign In</Text>
               </View>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.loginButtonWrapper} onPress={() => this.props.navigation.goBack()}>
+            <TouchableOpacity style={styles.loginButtonWrapper} onPress={() => this.props.navigation.navigate("SignupScreen")}>
               <View style={styles.loginButton}>
-                <Text style={styles.loginText}>Cancel</Text>
+                <Text style={styles.loginText}>Signup</Text>                  
               </View>
             </TouchableOpacity>
           </View>
@@ -155,13 +168,14 @@ class LoginScreen extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    fetching: state.login.fetching
+    fetching: state.login.fetching,
+    error: state.login.error
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    attemptLogin: (username, password) => dispatch(LoginActions.loginRequest(username, password))
+    attemptLogin: (email, password) => dispatch(LoginActions.loginRequest(email, password))
   }
 }
 

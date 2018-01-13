@@ -7,6 +7,7 @@ import LoggedInActions, { isLoggedIn } from '../Redux/LoginRedux'
 // exported to make available for tests
 export const selectAvatar = (state) => state.github.avatar
 export const selectLoggedInStatus = (state) => isLoggedIn(state.login)
+export const selectgetUserId = (state) => state.login.userId
 
 // process STARTUP actions
 export function * startup (action) {
@@ -18,6 +19,7 @@ export function * startup (action) {
   yield put(AppStateActions.setRehydrationComplete())
   const isLoggedIn = yield select(selectLoggedInStatus)
   if (isLoggedIn) {
-    yield put(LoggedInActions.autoLogin())
+    const userId = yield select(selectgetUserId)
+    yield put(LoggedInActions.autoLogin(userId))
   }
 }
