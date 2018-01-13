@@ -11,7 +11,7 @@
 		00C302E81ABCBA2D00DB3ED1 /* libRCTImage.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302C01ABCB91800DB3ED1 /* libRCTImage.a */; };
 		00C302E91ABCBA2D00DB3ED1 /* libRCTNetwork.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302DC1ABCB9D200DB3ED1 /* libRCTNetwork.a */; };
 		00C302EA1ABCBA2D00DB3ED1 /* libRCTVibration.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 00C302E41ABCB9EE00DB3ED1 /* libRCTVibration.a */; };
-		00E356F31AD99517003FC87E /* IgniteExampleLoginTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* IgniteExampleLoginTests.m */; };
+		00E356F31AD99517003FC87E /* relationshipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* relationshipTests.m */; };
 		133E29F31AD74F7200F7D852 /* libRCTLinking.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 78C398B91ACF4ADC00677621 /* libRCTLinking.a */; };
 		139105C61AF99C1200B5F7CC /* libRCTSettings.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139105C11AF99BAD00B5F7CC /* libRCTSettings.a */; };
 		139FDEF61B0652A700C62182 /* libRCTWebSocket.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 139FDEF41B06529B00C62182 /* libRCTWebSocket.a */; };
@@ -35,20 +35,20 @@
 		2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E941DF850E9000B6D8A /* libRCTText-tvOS.a */; };
 		2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3E991DF850E9000B6D8A /* libRCTWebSocket-tvOS.a */; };
 		2D02E4C91E0B4AEC006451C7 /* libReact.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 3DAD3EA31DF850E9000B6D8A /* libReact.a */; };
-		2DCD954D1E0B4F2C00145EB5 /* IgniteExampleLoginTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* IgniteExampleLoginTests.m */; };
+		2DCD954D1E0B4F2C00145EB5 /* relationshipTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 00E356F21AD99517003FC87E /* relationshipTests.m */; };
 		31DF625250FF4570A8DE16B0 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DE9C8F0E386483EA67F7167 /* FontAwesome.ttf */; };
-		334D8EC989FAB4795C1D69D6 /* libPods-IgniteExampleLoginTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1F0FAAD720C6FDEE5B342B /* libPods-IgniteExampleLoginTests.a */; };
+		334D8EC989FAB4795C1D69D6 /* libPods-relationshipTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1F0FAAD720C6FDEE5B342B /* libPods-relationshipTests.a */; };
 		392A46A214D14A8CBACF5286 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CF98DF263E6461E994E9976 /* SimpleLineIcons.ttf */; };
 		458CE5671FFB5165001499A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 458CE5661FFB5165001499A7 /* GoogleService-Info.plist */; };
 		4595C3681FFB32B600873958 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4595C3661FFB31D400873958 /* libRNVectorIcons.a */; };
-		4A226C2361978AA0458BAB4D /* libPods-IgniteExampleLogin-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF86AE325F19BC0B36227378 /* libPods-IgniteExampleLogin-tvOSTests.a */; };
+		4A226C2361978AA0458BAB4D /* libPods-relationship-tvOSTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = CF86AE325F19BC0B36227378 /* libPods-relationship-tvOSTests.a */; };
 		5E9157361DD0AC6A00FF2AA8 /* libRCTAnimation.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E9157331DD0AC6500FF2AA8 /* libRCTAnimation.a */; };
 		683B0EAC87BE4839A5E52457 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 7FC5DC04790B4463A93F8CEF /* libRNVectorIcons.a */; };
-		7491C2F87F8CE275A1B6FC08 /* libPods-IgniteExampleLogin-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB66F56FFB5F50CE599FD03 /* libPods-IgniteExampleLogin-tvOS.a */; };
+		7491C2F87F8CE275A1B6FC08 /* libPods-relationship-tvOS.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 8CB66F56FFB5F50CE599FD03 /* libPods-relationship-tvOS.a */; };
 		832341BD1AAA6AB300B99B32 /* libRCTText.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 832341B51AAA6A8300B99B32 /* libRCTText.a */; };
 		8C4656ACC0D741588A482E2D /* libRNFirebase.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 53E4140D7CF0463C9C2AE408 /* libRNFirebase.a */; };
 		930065FE7E2B41B7B30EA4ED /* Zocial.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BEB93D6D003A4B378C4A16D6 /* Zocial.ttf */; };
-		9983D700DB31997237A135D3 /* libPods-IgniteExampleLogin.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1140C866D085E09DC6617943 /* libPods-IgniteExampleLogin.a */; };
+		9983D700DB31997237A135D3 /* libPods-relationship.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 1140C866D085E09DC6617943 /* libPods-relationship.a */; };
 		ADBDB9381DFEBF1600ED6528 /* libRCTBlob.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ADBDB9271DFEBF0700ED6528 /* libRCTBlob.a */; };
 		B18B99137E7845348D2D02D3 /* Feather.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 445D833154B0493A8920C3DE /* Feather.ttf */; };
 		B2DEF8062FC8455695560513 /* MaterialCommunityIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 813D3259AF22410DB1AADF7D /* MaterialCommunityIcons.ttf */; };
@@ -100,7 +100,7 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 13B07F861A680F5B00A75B9A;
-			remoteInfo = IgniteExampleLogin;
+			remoteInfo = relationship;
 		};
 		139105C01AF99BAD00B5F7CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -128,7 +128,7 @@
 			containerPortal = 83CBB9F71A601CBA00E9B192 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 2D02E47A1E0B4A5D006451C7;
-			remoteInfo = "IgniteExampleLogin-tvOS";
+			remoteInfo = "relationship-tvOS";
 		};
 		3DAD3E831DF850E9000B6D8A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -356,48 +356,48 @@
 		00C302BB1ABCB91800DB3ED1 /* RCTImage.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTImage.xcodeproj; path = "../node_modules/react-native/Libraries/Image/RCTImage.xcodeproj"; sourceTree = "<group>"; };
 		00C302D31ABCB9D200DB3ED1 /* RCTNetwork.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTNetwork.xcodeproj; path = "../node_modules/react-native/Libraries/Network/RCTNetwork.xcodeproj"; sourceTree = "<group>"; };
 		00C302DF1ABCB9EE00DB3ED1 /* RCTVibration.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTVibration.xcodeproj; path = "../node_modules/react-native/Libraries/Vibration/RCTVibration.xcodeproj"; sourceTree = "<group>"; };
-		00E356EE1AD99517003FC87E /* IgniteExampleLoginTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IgniteExampleLoginTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		00E356EE1AD99517003FC87E /* relationshipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = relationshipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		00E356F11AD99517003FC87E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		00E356F21AD99517003FC87E /* IgniteExampleLoginTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IgniteExampleLoginTests.m; sourceTree = "<group>"; };
+		00E356F21AD99517003FC87E /* relationshipTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = relationshipTests.m; sourceTree = "<group>"; };
 		00ECB921A16E497784A0664D /* MaterialIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialIcons.ttf"; sourceTree = "<group>"; };
-		04EDCB17403183AE66323BF7 /* Pods-IgniteExampleLogin-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IgniteExampleLogin-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IgniteExampleLogin-tvOS/Pods-IgniteExampleLogin-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
+		04EDCB17403183AE66323BF7 /* Pods-relationship-tvOS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-relationship-tvOS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-relationship-tvOS/Pods-relationship-tvOS.debug.xcconfig"; sourceTree = "<group>"; };
 		0BCDD1517A4640508B455738 /* RNVectorIcons.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNVectorIcons.xcodeproj; path = "../node_modules/react-native-vector-icons/RNVectorIcons.xcodeproj"; sourceTree = "<group>"; };
 		0E72D17A9F3140FABCBA26B5 /* libRNDeviceInfo.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNDeviceInfo.a; sourceTree = "<group>"; };
-		1140C866D085E09DC6617943 /* libPods-IgniteExampleLogin.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IgniteExampleLogin.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		13438A1E5EA9020DBF9B5BBF /* Pods-IgniteExampleLogin-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IgniteExampleLogin-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-IgniteExampleLogin-tvOS/Pods-IgniteExampleLogin-tvOS.release.xcconfig"; sourceTree = "<group>"; };
+		1140C866D085E09DC6617943 /* libPods-relationship.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-relationship.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		13438A1E5EA9020DBF9B5BBF /* Pods-relationship-tvOS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-relationship-tvOS.release.xcconfig"; path = "Pods/Target Support Files/Pods-relationship-tvOS/Pods-relationship-tvOS.release.xcconfig"; sourceTree = "<group>"; };
 		139105B61AF99BAD00B5F7CC /* RCTSettings.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTSettings.xcodeproj; path = "../node_modules/react-native/Libraries/Settings/RCTSettings.xcodeproj"; sourceTree = "<group>"; };
 		139FDEE61B06529A00C62182 /* RCTWebSocket.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTWebSocket.xcodeproj; path = "../node_modules/react-native/Libraries/WebSocket/RCTWebSocket.xcodeproj"; sourceTree = "<group>"; };
-		13B07F961A680F5B00A75B9A /* IgniteExampleLogin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IgniteExampleLogin.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = IgniteExampleLogin/AppDelegate.h; sourceTree = "<group>"; };
-		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = IgniteExampleLogin/AppDelegate.m; sourceTree = "<group>"; };
+		13B07F961A680F5B00A75B9A /* relationship.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = relationship.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		13B07FAF1A68108700A75B9A /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = AppDelegate.h; path = relationship/AppDelegate.h; sourceTree = "<group>"; };
+		13B07FB01A68108700A75B9A /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = AppDelegate.m; path = relationship/AppDelegate.m; sourceTree = "<group>"; };
 		13B07FB21A68108700A75B9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
-		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = IgniteExampleLogin/Images.xcassets; sourceTree = "<group>"; };
-		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = IgniteExampleLogin/Info.plist; sourceTree = "<group>"; };
-		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = IgniteExampleLogin/main.m; sourceTree = "<group>"; };
+		13B07FB51A68108700A75B9A /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Images.xcassets; path = relationship/Images.xcassets; sourceTree = "<group>"; };
+		13B07FB61A68108700A75B9A /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = relationship/Info.plist; sourceTree = "<group>"; };
+		13B07FB71A68108700A75B9A /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = main.m; path = relationship/main.m; sourceTree = "<group>"; };
 		141748BAD1584889AB90C0CC /* Octicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Octicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Octicons.ttf"; sourceTree = "<group>"; };
 		146833FF1AC3E56700842450 /* React.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = React.xcodeproj; path = "../node_modules/react-native/React/React.xcodeproj"; sourceTree = "<group>"; };
 		16AEC89CD7234D0E9B54F826 /* Foundation.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Foundation.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Foundation.ttf"; sourceTree = "<group>"; };
 		1DE9C8F0E386483EA67F7167 /* FontAwesome.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = FontAwesome.ttf; path = "../node_modules/react-native-vector-icons/Fonts/FontAwesome.ttf"; sourceTree = "<group>"; };
-		2A7CCD329D357247FC8507D0 /* Pods-IgniteExampleLogin-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IgniteExampleLogin-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IgniteExampleLogin-tvOSTests/Pods-IgniteExampleLogin-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
-		2B3B653BA4A93E488930C524 /* Pods-IgniteExampleLoginTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IgniteExampleLoginTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IgniteExampleLoginTests/Pods-IgniteExampleLoginTests.release.xcconfig"; sourceTree = "<group>"; };
-		2D02E47B1E0B4A5D006451C7 /* IgniteExampleLogin-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "IgniteExampleLogin-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		2D02E4901E0B4A5D006451C7 /* IgniteExampleLogin-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "IgniteExampleLogin-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2A7CCD329D357247FC8507D0 /* Pods-relationship-tvOSTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-relationship-tvOSTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-relationship-tvOSTests/Pods-relationship-tvOSTests.release.xcconfig"; sourceTree = "<group>"; };
+		2B3B653BA4A93E488930C524 /* Pods-relationshipTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-relationshipTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-relationshipTests/Pods-relationshipTests.release.xcconfig"; sourceTree = "<group>"; };
+		2D02E47B1E0B4A5D006451C7 /* relationship-tvOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "relationship-tvOS.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2D02E4901E0B4A5D006451C7 /* relationship-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "relationship-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		445D833154B0493A8920C3DE /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
-		458CE4F41FFB44BE001499A7 /* IgniteExampleLogin.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = IgniteExampleLogin.entitlements; path = IgniteExampleLogin/IgniteExampleLogin.entitlements; sourceTree = "<group>"; };
+		458CE4F41FFB44BE001499A7 /* relationship.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = relationship.entitlements; path = relationship/relationship.entitlements; sourceTree = "<group>"; };
 		458CE5661FFB5165001499A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4B7DC94953214F158F56489A /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
 		53E4140D7CF0463C9C2AE408 /* libRNFirebase.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFirebase.a; sourceTree = "<group>"; };
 		5CF98DF263E6461E994E9976 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = SimpleLineIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/SimpleLineIcons.ttf"; sourceTree = "<group>"; };
 		5E91572D1DD0AC6500FF2AA8 /* RCTAnimation.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTAnimation.xcodeproj; path = "../node_modules/react-native/Libraries/NativeAnimation/RCTAnimation.xcodeproj"; sourceTree = "<group>"; };
 		613F613DC08F4D87A97EB44A /* Ionicons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Ionicons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Ionicons.ttf"; sourceTree = "<group>"; };
-		6D9E292418E729BF42E104C9 /* Pods-IgniteExampleLogin.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IgniteExampleLogin.release.xcconfig"; path = "Pods/Target Support Files/Pods-IgniteExampleLogin/Pods-IgniteExampleLogin.release.xcconfig"; sourceTree = "<group>"; };
+		6D9E292418E729BF42E104C9 /* Pods-relationship.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-relationship.release.xcconfig"; path = "Pods/Target Support Files/Pods-relationship/Pods-relationship.release.xcconfig"; sourceTree = "<group>"; };
 		78C398B01ACF4ADC00677621 /* RCTLinking.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTLinking.xcodeproj; path = "../node_modules/react-native/Libraries/LinkingIOS/RCTLinking.xcodeproj"; sourceTree = "<group>"; };
-		79F511C3F31FB2B348D5F279 /* Pods-IgniteExampleLogin-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IgniteExampleLogin-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IgniteExampleLogin-tvOSTests/Pods-IgniteExampleLogin-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
+		79F511C3F31FB2B348D5F279 /* Pods-relationship-tvOSTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-relationship-tvOSTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-relationship-tvOSTests/Pods-relationship-tvOSTests.debug.xcconfig"; sourceTree = "<group>"; };
 		7FC5DC04790B4463A93F8CEF /* libRNVectorIcons.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNVectorIcons.a; sourceTree = "<group>"; };
 		813D3259AF22410DB1AADF7D /* MaterialCommunityIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = MaterialCommunityIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/MaterialCommunityIcons.ttf"; sourceTree = "<group>"; };
 		81CAB33EA2BD49B38C77806E /* libReactNativeConfig.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libReactNativeConfig.a; sourceTree = "<group>"; };
 		832341B01AAA6A8300B99B32 /* RCTText.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTText.xcodeproj; path = "../node_modules/react-native/Libraries/Text/RCTText.xcodeproj"; sourceTree = "<group>"; };
-		8CB66F56FFB5F50CE599FD03 /* libPods-IgniteExampleLogin-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IgniteExampleLogin-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CB66F56FFB5F50CE599FD03 /* libPods-relationship-tvOS.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-relationship-tvOS.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F4CDD89D8044C6E93546725 /* RNFirebase.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNFirebase.xcodeproj; path = "../node_modules/react-native-firebase/ios/RNFirebase.xcodeproj"; sourceTree = "<group>"; };
 		918E2482B7F349C783B98119 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		989E18A14A6F418C81B5725B /* libRNFIRMessaging.a */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = archive.ar; path = libRNFIRMessaging.a; sourceTree = "<group>"; };
@@ -405,10 +405,10 @@
 		ADBDB91F1DFEBF0600ED6528 /* RCTBlob.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = RCTBlob.xcodeproj; path = "../node_modules/react-native/Libraries/Blob/RCTBlob.xcodeproj"; sourceTree = "<group>"; };
 		BEB93D6D003A4B378C4A16D6 /* Zocial.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Zocial.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Zocial.ttf"; sourceTree = "<group>"; };
 		C8F2C2BD9B794D5BA95D51D3 /* RNDeviceInfo.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = RNDeviceInfo.xcodeproj; path = "../node_modules/react-native-device-info/RNDeviceInfo.xcodeproj"; sourceTree = "<group>"; };
-		CF86AE325F19BC0B36227378 /* libPods-IgniteExampleLogin-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IgniteExampleLogin-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		D1A09CC65CC37C65310F9EF2 /* Pods-IgniteExampleLogin.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IgniteExampleLogin.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IgniteExampleLogin/Pods-IgniteExampleLogin.debug.xcconfig"; sourceTree = "<group>"; };
-		DD1F0FAAD720C6FDEE5B342B /* libPods-IgniteExampleLoginTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-IgniteExampleLoginTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		F9305F0CC062263623C833D5 /* Pods-IgniteExampleLoginTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IgniteExampleLoginTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IgniteExampleLoginTests/Pods-IgniteExampleLoginTests.debug.xcconfig"; sourceTree = "<group>"; };
+		CF86AE325F19BC0B36227378 /* libPods-relationship-tvOSTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-relationship-tvOSTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D1A09CC65CC37C65310F9EF2 /* Pods-relationship.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-relationship.debug.xcconfig"; path = "Pods/Target Support Files/Pods-relationship/Pods-relationship.debug.xcconfig"; sourceTree = "<group>"; };
+		DD1F0FAAD720C6FDEE5B342B /* libPods-relationshipTests.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-relationshipTests.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		F9305F0CC062263623C833D5 /* Pods-relationshipTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-relationshipTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-relationshipTests/Pods-relationshipTests.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -417,7 +417,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				140ED2AC1D01E1AD002B40FF /* libReact.a in Frameworks */,
-				334D8EC989FAB4795C1D69D6 /* libPods-IgniteExampleLoginTests.a in Frameworks */,
+				334D8EC989FAB4795C1D69D6 /* libPods-relationshipTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,7 +442,7 @@
 				20E76629586D4D678A657595 /* libReactNativeConfig.a in Frameworks */,
 				BA493C503F2A41988CAF9FBC /* libRNDeviceInfo.a in Frameworks */,
 				683B0EAC87BE4839A5E52457 /* libRNVectorIcons.a in Frameworks */,
-				9983D700DB31997237A135D3 /* libPods-IgniteExampleLogin.a in Frameworks */,
+				9983D700DB31997237A135D3 /* libPods-relationship.a in Frameworks */,
 				8C4656ACC0D741588A482E2D /* libRNFirebase.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -459,7 +459,7 @@
 				2D02E4C61E0B4AEC006451C7 /* libRCTSettings-tvOS.a in Frameworks */,
 				2D02E4C71E0B4AEC006451C7 /* libRCTText-tvOS.a in Frameworks */,
 				2D02E4C81E0B4AEC006451C7 /* libRCTWebSocket-tvOS.a in Frameworks */,
-				7491C2F87F8CE275A1B6FC08 /* libPods-IgniteExampleLogin-tvOS.a in Frameworks */,
+				7491C2F87F8CE275A1B6FC08 /* libPods-relationship-tvOS.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -467,7 +467,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4A226C2361978AA0458BAB4D /* libPods-IgniteExampleLogin-tvOSTests.a in Frameworks */,
+				4A226C2361978AA0458BAB4D /* libPods-relationship-tvOSTests.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -516,13 +516,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		00E356EF1AD99517003FC87E /* IgniteExampleLoginTests */ = {
+		00E356EF1AD99517003FC87E /* relationshipTests */ = {
 			isa = PBXGroup;
 			children = (
-				00E356F21AD99517003FC87E /* IgniteExampleLoginTests.m */,
+				00E356F21AD99517003FC87E /* relationshipTests.m */,
 				00E356F01AD99517003FC87E /* Supporting Files */,
 			);
-			path = IgniteExampleLoginTests;
+			path = relationshipTests;
 			sourceTree = "<group>";
 		};
 		00E356F01AD99517003FC87E /* Supporting Files */ = {
@@ -553,10 +553,10 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		13B07FAE1A68108700A75B9A /* IgniteExampleLogin */ = {
+		13B07FAE1A68108700A75B9A /* relationship */ = {
 			isa = PBXGroup;
 			children = (
-				458CE4F41FFB44BE001499A7 /* IgniteExampleLogin.entitlements */,
+				458CE4F41FFB44BE001499A7 /* relationship.entitlements */,
 				008F07F21AC5B25A0029DE68 /* main.jsbundle */,
 				13B07FAF1A68108700A75B9A /* AppDelegate.h */,
 				13B07FB01A68108700A75B9A /* AppDelegate.m */,
@@ -565,7 +565,7 @@
 				13B07FB11A68108700A75B9A /* LaunchScreen.xib */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
-			name = IgniteExampleLogin;
+			name = relationship;
 			sourceTree = "<group>";
 		};
 		146834001AC3E56700842450 /* Products */ = {
@@ -636,10 +636,10 @@
 		4595C3671FFB32B600873958 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				1140C866D085E09DC6617943 /* libPods-IgniteExampleLogin.a */,
-				8CB66F56FFB5F50CE599FD03 /* libPods-IgniteExampleLogin-tvOS.a */,
-				CF86AE325F19BC0B36227378 /* libPods-IgniteExampleLogin-tvOSTests.a */,
-				DD1F0FAAD720C6FDEE5B342B /* libPods-IgniteExampleLoginTests.a */,
+				1140C866D085E09DC6617943 /* libPods-relationship.a */,
+				8CB66F56FFB5F50CE599FD03 /* libPods-relationship-tvOS.a */,
+				CF86AE325F19BC0B36227378 /* libPods-relationship-tvOSTests.a */,
+				DD1F0FAAD720C6FDEE5B342B /* libPods-relationshipTests.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -647,14 +647,14 @@
 		4B01CEB3FDC65DEFAF8BDA8C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				D1A09CC65CC37C65310F9EF2 /* Pods-IgniteExampleLogin.debug.xcconfig */,
-				6D9E292418E729BF42E104C9 /* Pods-IgniteExampleLogin.release.xcconfig */,
-				04EDCB17403183AE66323BF7 /* Pods-IgniteExampleLogin-tvOS.debug.xcconfig */,
-				13438A1E5EA9020DBF9B5BBF /* Pods-IgniteExampleLogin-tvOS.release.xcconfig */,
-				79F511C3F31FB2B348D5F279 /* Pods-IgniteExampleLogin-tvOSTests.debug.xcconfig */,
-				2A7CCD329D357247FC8507D0 /* Pods-IgniteExampleLogin-tvOSTests.release.xcconfig */,
-				F9305F0CC062263623C833D5 /* Pods-IgniteExampleLoginTests.debug.xcconfig */,
-				2B3B653BA4A93E488930C524 /* Pods-IgniteExampleLoginTests.release.xcconfig */,
+				D1A09CC65CC37C65310F9EF2 /* Pods-relationship.debug.xcconfig */,
+				6D9E292418E729BF42E104C9 /* Pods-relationship.release.xcconfig */,
+				04EDCB17403183AE66323BF7 /* Pods-relationship-tvOS.debug.xcconfig */,
+				13438A1E5EA9020DBF9B5BBF /* Pods-relationship-tvOS.release.xcconfig */,
+				79F511C3F31FB2B348D5F279 /* Pods-relationship-tvOSTests.debug.xcconfig */,
+				2A7CCD329D357247FC8507D0 /* Pods-relationship-tvOSTests.release.xcconfig */,
+				F9305F0CC062263623C833D5 /* Pods-relationshipTests.debug.xcconfig */,
+				2B3B653BA4A93E488930C524 /* Pods-relationshipTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -731,9 +731,9 @@
 			isa = PBXGroup;
 			children = (
 				458CE5661FFB5165001499A7 /* GoogleService-Info.plist */,
-				13B07FAE1A68108700A75B9A /* IgniteExampleLogin */,
+				13B07FAE1A68108700A75B9A /* relationship */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
-				00E356EF1AD99517003FC87E /* IgniteExampleLoginTests */,
+				00E356EF1AD99517003FC87E /* relationshipTests */,
 				83CBBA001A601CBA00E9B192 /* Products */,
 				76A1E50E3D4B470B9FFF9372 /* Resources */,
 				4595C33C1FFB317600873958 /* Recovered References */,
@@ -748,10 +748,10 @@
 		83CBBA001A601CBA00E9B192 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				13B07F961A680F5B00A75B9A /* IgniteExampleLogin.app */,
-				00E356EE1AD99517003FC87E /* IgniteExampleLoginTests.xctest */,
-				2D02E47B1E0B4A5D006451C7 /* IgniteExampleLogin-tvOS.app */,
-				2D02E4901E0B4A5D006451C7 /* IgniteExampleLogin-tvOSTests.xctest */,
+				13B07F961A680F5B00A75B9A /* relationship.app */,
+				00E356EE1AD99517003FC87E /* relationshipTests.xctest */,
+				2D02E47B1E0B4A5D006451C7 /* relationship-tvOS.app */,
+				2D02E4901E0B4A5D006451C7 /* relationship-tvOSTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -768,9 +768,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		00E356ED1AD99517003FC87E /* IgniteExampleLoginTests */ = {
+		00E356ED1AD99517003FC87E /* relationshipTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "IgniteExampleLoginTests" */;
+			buildConfigurationList = 00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "relationshipTests" */;
 			buildPhases = (
 				5285D3718C76C4C778788144 /* [CP] Check Pods Manifest.lock */,
 				00E356EA1AD99517003FC87E /* Sources */,
@@ -784,14 +784,14 @@
 			dependencies = (
 				00E356F51AD99517003FC87E /* PBXTargetDependency */,
 			);
-			name = IgniteExampleLoginTests;
-			productName = IgniteExampleLoginTests;
-			productReference = 00E356EE1AD99517003FC87E /* IgniteExampleLoginTests.xctest */;
+			name = relationshipTests;
+			productName = relationshipTests;
+			productReference = 00E356EE1AD99517003FC87E /* relationshipTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		13B07F861A680F5B00A75B9A /* IgniteExampleLogin */ = {
+		13B07F861A680F5B00A75B9A /* relationship */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "IgniteExampleLogin" */;
+			buildConfigurationList = 13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "relationship" */;
 			buildPhases = (
 				75CA1262845E0364246A3035 /* [CP] Check Pods Manifest.lock */,
 				13B07F871A680F5B00A75B9A /* Sources */,
@@ -805,14 +805,14 @@
 			);
 			dependencies = (
 			);
-			name = IgniteExampleLogin;
+			name = relationship;
 			productName = "Hello World";
-			productReference = 13B07F961A680F5B00A75B9A /* IgniteExampleLogin.app */;
+			productReference = 13B07F961A680F5B00A75B9A /* relationship.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E47A1E0B4A5D006451C7 /* IgniteExampleLogin-tvOS */ = {
+		2D02E47A1E0B4A5D006451C7 /* relationship-tvOS */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "IgniteExampleLogin-tvOS" */;
+			buildConfigurationList = 2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "relationship-tvOS" */;
 			buildPhases = (
 				CDB4F800DDE2A62EC1AAC78F /* [CP] Check Pods Manifest.lock */,
 				2D02E4771E0B4A5D006451C7 /* Sources */,
@@ -826,14 +826,14 @@
 			);
 			dependencies = (
 			);
-			name = "IgniteExampleLogin-tvOS";
-			productName = "IgniteExampleLogin-tvOS";
-			productReference = 2D02E47B1E0B4A5D006451C7 /* IgniteExampleLogin-tvOS.app */;
+			name = "relationship-tvOS";
+			productName = "relationship-tvOS";
+			productReference = 2D02E47B1E0B4A5D006451C7 /* relationship-tvOS.app */;
 			productType = "com.apple.product-type.application";
 		};
-		2D02E48F1E0B4A5D006451C7 /* IgniteExampleLogin-tvOSTests */ = {
+		2D02E48F1E0B4A5D006451C7 /* relationship-tvOSTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "IgniteExampleLogin-tvOSTests" */;
+			buildConfigurationList = 2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "relationship-tvOSTests" */;
 			buildPhases = (
 				ABC8AD5E4EABB3EE06A975C0 /* [CP] Check Pods Manifest.lock */,
 				2D02E48C1E0B4A5D006451C7 /* Sources */,
@@ -847,9 +847,9 @@
 			dependencies = (
 				2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */,
 			);
-			name = "IgniteExampleLogin-tvOSTests";
-			productName = "IgniteExampleLogin-tvOSTests";
-			productReference = 2D02E4901E0B4A5D006451C7 /* IgniteExampleLogin-tvOSTests.xctest */;
+			name = "relationship-tvOSTests";
+			productName = "relationship-tvOSTests";
+			productReference = 2D02E4901E0B4A5D006451C7 /* relationship-tvOSTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 /* End PBXNativeTarget section */
@@ -891,7 +891,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "IgniteExampleLogin" */;
+			buildConfigurationList = 83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "relationship" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -970,10 +970,10 @@
 			);
 			projectRoot = "";
 			targets = (
-				13B07F861A680F5B00A75B9A /* IgniteExampleLogin */,
-				00E356ED1AD99517003FC87E /* IgniteExampleLoginTests */,
-				2D02E47A1E0B4A5D006451C7 /* IgniteExampleLogin-tvOS */,
-				2D02E48F1E0B4A5D006451C7 /* IgniteExampleLogin-tvOSTests */,
+				13B07F861A680F5B00A75B9A /* relationship */,
+				00E356ED1AD99517003FC87E /* relationshipTests */,
+				2D02E47A1E0B4A5D006451C7 /* relationship-tvOS */,
+				2D02E48F1E0B4A5D006451C7 /* relationship-tvOSTests */,
 			);
 		};
 /* End PBXProject section */
@@ -1327,7 +1327,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IgniteExampleLogin-tvOSTests/Pods-IgniteExampleLogin-tvOSTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-relationship-tvOSTests/Pods-relationship-tvOSTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		2D02E4CB1E0B4B27006451C7 /* Bundle React Native Code And Images */ = {
@@ -1355,7 +1355,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-IgniteExampleLoginTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-relationshipTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1374,7 +1374,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IgniteExampleLoginTests/Pods-IgniteExampleLoginTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-relationshipTests/Pods-relationshipTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		75CA1262845E0364246A3035 /* [CP] Check Pods Manifest.lock */ = {
@@ -1388,7 +1388,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-IgniteExampleLogin-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-relationship-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1407,7 +1407,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IgniteExampleLogin-tvOS/Pods-IgniteExampleLogin-tvOS-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-relationship-tvOS/Pods-relationship-tvOS-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		ABC8AD5E4EABB3EE06A975C0 /* [CP] Check Pods Manifest.lock */ = {
@@ -1421,7 +1421,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-IgniteExampleLogin-tvOSTests-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-relationship-tvOSTests-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1440,7 +1440,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IgniteExampleLogin/Pods-IgniteExampleLogin-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-relationship/Pods-relationship-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		CDB4F800DDE2A62EC1AAC78F /* [CP] Check Pods Manifest.lock */ = {
@@ -1454,7 +1454,7 @@
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-IgniteExampleLogin-tvOS-checkManifestLockResult.txt",
+				"$(DERIVED_FILE_DIR)/Pods-relationship-tvOS-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1473,7 +1473,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IgniteExampleLoginTests/Pods-IgniteExampleLoginTests-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-relationshipTests/Pods-relationshipTests-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E16C96FACE75C66EDE7F536D /* [CP] Copy Pods Resources */ = {
@@ -1488,7 +1488,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IgniteExampleLogin-tvOS/Pods-IgniteExampleLogin-tvOS-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-relationship-tvOS/Pods-relationship-tvOS-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E75484A20DFA1514092EB2BE /* [CP] Embed Pods Frameworks */ = {
@@ -1503,7 +1503,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IgniteExampleLogin-tvOSTests/Pods-IgniteExampleLogin-tvOSTests-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-relationship-tvOSTests/Pods-relationship-tvOSTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		F5A7A58B00264DCD11EA1756 /* [CP] Copy Pods Resources */ = {
@@ -1518,7 +1518,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IgniteExampleLogin/Pods-IgniteExampleLogin-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-relationship/Pods-relationship-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1528,7 +1528,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				00E356F31AD99517003FC87E /* IgniteExampleLoginTests.m in Sources */,
+				00E356F31AD99517003FC87E /* relationshipTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1554,7 +1554,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2DCD954D1E0B4F2C00145EB5 /* IgniteExampleLoginTests.m in Sources */,
+				2DCD954D1E0B4F2C00145EB5 /* relationshipTests.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1563,12 +1563,12 @@
 /* Begin PBXTargetDependency section */
 		00E356F51AD99517003FC87E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 13B07F861A680F5B00A75B9A /* IgniteExampleLogin */;
+			target = 13B07F861A680F5B00A75B9A /* relationship */;
 			targetProxy = 00E356F41AD99517003FC87E /* PBXContainerItemProxy */;
 		};
 		2D02E4921E0B4A5D006451C7 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 2D02E47A1E0B4A5D006451C7 /* IgniteExampleLogin-tvOS */;
+			target = 2D02E47A1E0B4A5D006451C7 /* relationship-tvOS */;
 			targetProxy = 2D02E4911E0B4A5D006451C7 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
@@ -1580,7 +1580,7 @@
 				13B07FB21A68108700A75B9A /* Base */,
 			);
 			name = LaunchScreen.xib;
-			path = IgniteExampleLogin;
+			path = relationship;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -1588,7 +1588,7 @@
 /* Begin XCBuildConfiguration section */
 		00E356F61AD99517003FC87E /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F9305F0CC062263623C833D5 /* Pods-IgniteExampleLoginTests.debug.xcconfig */;
+			baseConfigurationReference = F9305F0CC062263623C833D5 /* Pods-relationshipTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -1603,7 +1603,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
-				INFOPLIST_FILE = IgniteExampleLoginTests/Info.plist;
+				INFOPLIST_FILE = relationshipTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1619,13 +1619,13 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IgniteExampleLogin.app/IgniteExampleLogin";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/relationship.app/relationship";
 			};
 			name = Debug;
 		};
 		00E356F71AD99517003FC87E /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2B3B653BA4A93E488930C524 /* Pods-IgniteExampleLoginTests.release.xcconfig */;
+			baseConfigurationReference = 2B3B653BA4A93E488930C524 /* Pods-relationshipTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
@@ -1637,7 +1637,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
-				INFOPLIST_FILE = IgniteExampleLoginTests/Info.plist;
+				INFOPLIST_FILE = relationshipTests/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
@@ -1653,16 +1653,16 @@
 					"-lc++",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IgniteExampleLogin.app/IgniteExampleLogin";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/relationship.app/relationship";
 			};
 			name = Release;
 		};
 		13B07F941A680F5B00A75B9A /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D1A09CC65CC37C65310F9EF2 /* Pods-IgniteExampleLogin.debug.xcconfig */;
+			baseConfigurationReference = D1A09CC65CC37C65310F9EF2 /* Pods-relationship.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = IgniteExampleLogin/IgniteExampleLogin.entitlements;
+				CODE_SIGN_ENTITLEMENTS = relationship/relationship.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEAD_CODE_STRIPPING = NO;
 				DEVELOPMENT_TEAM = BKBF2YV69T;
@@ -1674,15 +1674,15 @@
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
-				INFOPLIST_FILE = IgniteExampleLogin/Info.plist;
+				INFOPLIST_FILE = relationship/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "IgniteExampleLogin-1";
-				PRODUCT_NAME = IgniteExampleLogin;
+				PRODUCT_BUNDLE_IDENTIFIER = "relationship-1";
+				PRODUCT_NAME = relationship;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1690,10 +1690,10 @@
 		};
 		13B07F951A680F5B00A75B9A /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6D9E292418E729BF42E104C9 /* Pods-IgniteExampleLogin.release.xcconfig */;
+			baseConfigurationReference = 6D9E292418E729BF42E104C9 /* Pods-relationship.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = IgniteExampleLogin/IgniteExampleLogin.entitlements;
+				CODE_SIGN_ENTITLEMENTS = relationship/relationship.entitlements;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = BKBF2YV69T;
 				HEADER_SEARCH_PATHS = (
@@ -1704,15 +1704,15 @@
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
-				INFOPLIST_FILE = IgniteExampleLogin/Info.plist;
+				INFOPLIST_FILE = relationship/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_LDFLAGS = (
 					"$(inherited)",
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "IgniteExampleLogin-1";
-				PRODUCT_NAME = IgniteExampleLogin;
+				PRODUCT_BUNDLE_IDENTIFIER = "relationship-1";
+				PRODUCT_NAME = relationship;
 				TARGETED_DEVICE_FAMILY = 1;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -1720,7 +1720,7 @@
 		};
 		2D02E4971E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 04EDCB17403183AE66323BF7 /* Pods-IgniteExampleLogin-tvOS.debug.xcconfig */;
+			baseConfigurationReference = 04EDCB17403183AE66323BF7 /* Pods-relationship-tvOS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1740,7 +1740,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
-				INFOPLIST_FILE = "IgniteExampleLogin-tvOS/Info.plist";
+				INFOPLIST_FILE = "relationship-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1754,7 +1754,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.IgniteExampleLogin-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.relationship-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1764,7 +1764,7 @@
 		};
 		2D02E4981E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13438A1E5EA9020DBF9B5BBF /* Pods-IgniteExampleLogin-tvOS.release.xcconfig */;
+			baseConfigurationReference = 13438A1E5EA9020DBF9B5BBF /* Pods-relationship-tvOS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "App Icon & Top Shelf Image";
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1784,7 +1784,7 @@
 					"$(SRCROOT)/../node_modules/react-native-fcm/ios",
 					"$(SRCROOT)/../node_modules/react-native-firebase/ios/RNFirebase/**",
 				);
-				INFOPLIST_FILE = "IgniteExampleLogin-tvOS/Info.plist";
+				INFOPLIST_FILE = "relationship-tvOS/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1798,7 +1798,7 @@
 					"-ObjC",
 					"-lc++",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.IgniteExampleLogin-tvOS";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.relationship-tvOS";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
 				TARGETED_DEVICE_FAMILY = 3;
@@ -1808,7 +1808,7 @@
 		};
 		2D02E4991E0B4A5E006451C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 79F511C3F31FB2B348D5F279 /* Pods-IgniteExampleLogin-tvOSTests.debug.xcconfig */;
+			baseConfigurationReference = 79F511C3F31FB2B348D5F279 /* Pods-relationship-tvOSTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1818,7 +1818,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_TESTABILITY = YES;
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "IgniteExampleLogin-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "relationship-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1828,17 +1828,17 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.IgniteExampleLogin-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.relationship-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IgniteExampleLogin-tvOS.app/IgniteExampleLogin-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/relationship-tvOS.app/relationship-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Debug;
 		};
 		2D02E49A1E0B4A5E006451C7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2A7CCD329D357247FC8507D0 /* Pods-IgniteExampleLogin-tvOSTests.release.xcconfig */;
+			baseConfigurationReference = 2A7CCD329D357247FC8507D0 /* Pods-relationship-tvOSTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1848,7 +1848,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_NO_COMMON_BLOCKS = YES;
-				INFOPLIST_FILE = "IgniteExampleLogin-tvOSTests/Info.plist";
+				INFOPLIST_FILE = "relationship-tvOSTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1858,10 +1858,10 @@
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 					"\"$(SRCROOT)/$(TARGET_NAME)\"",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.IgniteExampleLogin-tvOSTests";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.facebook.REACT.relationship-tvOSTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = appletvos;
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/IgniteExampleLogin-tvOS.app/IgniteExampleLogin-tvOS";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/relationship-tvOS.app/relationship-tvOS";
 				TVOS_DEPLOYMENT_TARGET = 10.1;
 			};
 			name = Release;
@@ -1945,7 +1945,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "IgniteExampleLoginTests" */ = {
+		00E357021AD99517003FC87E /* Build configuration list for PBXNativeTarget "relationshipTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				00E356F61AD99517003FC87E /* Debug */,
@@ -1954,7 +1954,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "IgniteExampleLogin" */ = {
+		13B07F931A680F5B00A75B9A /* Build configuration list for PBXNativeTarget "relationship" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				13B07F941A680F5B00A75B9A /* Debug */,
@@ -1963,7 +1963,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "IgniteExampleLogin-tvOS" */ = {
+		2D02E4BA1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "relationship-tvOS" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4971E0B4A5E006451C7 /* Debug */,
@@ -1972,7 +1972,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "IgniteExampleLogin-tvOSTests" */ = {
+		2D02E4BB1E0B4A5E006451C7 /* Build configuration list for PBXNativeTarget "relationship-tvOSTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2D02E4991E0B4A5E006451C7 /* Debug */,
@@ -1981,7 +1981,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "IgniteExampleLogin" */ = {
+		83CBB9FA1A601CBA00E9B192 /* Build configuration list for PBXProject "relationship" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				83CBBA201A601CBA00E9B192 /* Debug */,

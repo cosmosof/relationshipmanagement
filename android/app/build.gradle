@@ -98,7 +98,7 @@ android {
     buildToolsVersion "23.0.1"
 
     defaultConfig {
-        applicationId "com.igniteexamplelogin"
+        applicationId "com.relationship"
         minSdkVersion 16
         targetSdkVersion 22
         versionCode 1
