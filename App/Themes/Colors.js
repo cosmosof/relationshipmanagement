@@ -5,6 +5,7 @@ const colors = {
   transparent: 'rgba(0,0,0,0)',
   silver: '#F7F7F7',
   steel: '#CCCCCC',
+  lightGray: '#F9F9F9',
   error: 'rgba(200, 0, 0, 0.8)',
   ricePaper: 'rgba(255,255,255, 0.75)',
   frost: '#D8D8D8',
@@ -23,8 +24,11 @@ const colors = {
   banner: '#5F3E63',
   text: '#E0D7E5',
   lightSalmonPink: '#FFA69E',
-  pastelRed: '#FF686B'
-
+  pastelRed: '#FF686B',
+  lightMatPurple: '#D3C4D1',
+  medMatPurple: '#A999A7',
+  vividBlue: '#00A8E8',
+  darkMatPurple: '#8e808c'
 }
 
 export default colors

@@ -7,41 +7,44 @@ admin.initializeApp(functions.config().firebase);
 /**
  * Triggers when a user gets a new follower and sends a notification.
  *
- * Followers add a flag to `/followers/{followedUid}/{followerUid}`.
- * Users save their device notification tokens to `/users/{followedUid}/notificationTokens/{notificationToken}`.
+ * Followers add a flag to `/followers/{requested}/{requester}`.
+ * Users save their device notification tokens to `/users/{requested}/notificationTokens/{notificationToken}`.
  */
-exports.sendFollowerNotification = functions.database.ref('/matchrequest/{followedUid}/{followerUid}').onWrite(event => {
-  const followerUid = event.params.followerUid;
-  const followedUid = event.params.followedUid;
+exports.sendFollowerNotification = functions.database.ref('/matchrequest/{requested}/requester/{requester}').onCreate(event => {
+  const requester = event.params.requester;
+  const requested = event.params.requested;
   // If un-follow we exit the function.
   if (!event.data.val()) {
-    return console.log('User ', followerUid, 'un-followed user', followedUid);
+    return console.log('User ', requester, 'un-followed user', requested);
   }
-  console.log('We have a new follower UID:', followerUid, 'for user:', followedUid);
+  console.log('We have a new match request:', requester, 'for user:', requested);
 
   // Get the list of device notification tokens.
-  const getDeviceTokensPromise = admin.database().ref(`/users/${followedUid}/notificationTokens`).once('value');
+  const getDeviceTokensPromise = admin.database().ref(`/users/${requested}/notificationTokens`).once('value');
 
   // Get the follower profile.
-  const getFollowerProfilePromise = admin.auth().getUser(followerUid);
+  const getRequesterProfilePromise = admin.auth().getUser(requester);
 
-  return Promise.all([getDeviceTokensPromise, getFollowerProfilePromise]).then(results => {
+  return Promise.all([getDeviceTokensPromise, getRequesterProfilePromise]).then(results => {
     const tokensSnapshot = results[0];
-    const follower = results[1];
-    console.log(follower.email);
+    const requester = results[1];
+    console.log(requester.displayName);
+    console.log(requester.email);
     console.log(tokensSnapshot.val());
 
     // Check if there are any device tokens.
     if (!tokensSnapshot.val()) {
       return console.log('There are no notification tokens to send to.');
     }
-    console.log('Fetched follower profile', follower.email);
+    console.log('Fetched requester profile', `${requester.displayName} / ${requester.email}`);
+    const usernameOremail = requester.displayName ? requester.displayName : requester.email
+    console.log(usernameOremail);
 
     // Notification details.
     const payload = {
       notification: {
-        title: 'You have a new follower!',
-        body: `${follower.email} is now following you.`
+        title: 'You have a new connection request!',
+        body: `${usernameOremail} wants to connect with you!`
       }
     };
 

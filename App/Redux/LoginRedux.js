@@ -1,15 +1,15 @@
 import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
-import firebase from 'firebase'
 
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
   loginRequest: ['email', 'password'],
-  loginSuccess: ['email', 'userId'],
-  loginFailure: ['error'],
+  loginSuccess: ['email', 'userId', 'username'],
+  loginFailure: ['loginerror'],
   logout: null,
-  autoLogin: ['userId']
+  autoLogin: ['userId'],
+  isEmailVerified: ['isemailverified']
 })
 
 export const LoginTypes = Types
@@ -19,11 +19,13 @@ export default Creators
 
 export const INITIAL_STATE = Immutable({
   email: null,
-  error: null,
+  loginerror: null,
   fetching: false,
   success: null,
   invitation: null,
-  userId: null
+  userId: null,
+  username: null,
+  isemailverified: false
 })
 
 /* ------------- Reducers ------------- */
@@ -38,17 +40,20 @@ export const request = (state, { email, password }) => {
 
 
 // we've successfully logged in
-export const success = (state, { email, userId }) => {
-  console.log(userId)
+export const success = (state, { email, userId, username }) => {
+  console.log(username)
   return (
-    state.merge({ fetching: false, error: null, email, userId })
+    state.merge({ fetching: false, loginerror: null, email, userId, username })
   )
 }
 
 // we've had a problem logging in
-export const failure = (state, { userId }) =>
-  state.merge({ userId })
-
+export const failure = (state, { loginerror }) => {
+    console.log(loginerror)
+  return (
+    state.merge({ loginerror, fetching: false })
+  )
+}
 // we've logged out
 export const logout = (state) => INITIAL_STATE
 
@@ -56,7 +61,13 @@ export const logout = (state) => INITIAL_STATE
 export const autoLogin =  (state, { userId }) =>
 state.merge({ userId })
 
-
+// email verificatin warning 
+export const isemailverified = (state, { isemailverified }) => {
+  console.log(isemailverified)
+  return (
+    state.merge({ isemailverified })
+  )
+}
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -64,7 +75,8 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.LOGIN_SUCCESS]: success,
   [Types.LOGIN_FAILURE]: failure,
   [Types.LOGOUT]: logout,
-  [Types.AUTO_LOGIN]: autoLogin
+  [Types.AUTO_LOGIN]: autoLogin,
+  [Types.IS_EMAIL_VERIFIED]: isemailverified 
 })
 
 /* ------------- Selectors ------------- */

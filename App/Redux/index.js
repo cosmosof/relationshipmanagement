@@ -3,8 +3,9 @@ import { resettableReducer } from 'reduxsauce'
 import configureStore from './CreateStore'
 import rootSaga from '../Sagas/'
 
-// listen for the action type of 'RESET', you can change this.
-const resettable = resettableReducer('LOGOUT')
+
+// listen for the action type of 'RESET', you can change this. // DELETE_SUCCESS
+const resettable = resettableReducer('LOGOUT') 
 
 export default () => {
   /* ------------- Assemble The Reducers ------------- */
@@ -12,13 +13,12 @@ export default () => {
     navigation: require('./NavigationRedux').reducer,
     appState: require('./AppStateRedux').reducer,
     github: require('./GithubRedux').reducer,
-    login: require('./LoginRedux').reducer,
-    signup: require('./SignupRedux').reducer,
+    login: resettable(require('./LoginRedux').reducer),
+    signup: resettable(require('./SignupRedux').reducer),
+    profile: resettable(require('./ProfileRedux').reducer),
     search: require('./SearchRedux').reducer,
     questions: resettable(require('./questionsRedux').reducer),
-    homescreen: resettable(require('./HomeScreenRedux').reducer),
-    matchscreen: resettable(require('./MatchScreenRedux').reducer)
-
+    homescreen: resettable(require('./HomeScreenRedux').reducer)
   })
 
   return configureStore(rootReducer, rootSaga)

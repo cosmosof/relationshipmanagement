@@ -1,105 +1,105 @@
-import { put, call, take } from 'redux-saga/effects'
+import { put, call, take, select } from 'redux-saga/effects';
 import { eventChannel, buffers } from 'redux-saga';
-import QuestionsActions from '../Redux/questionsRedux'
-import firebase from 'firebase'
+import QuestionsActions from '../Redux/questionsRedux';
+import firebase from 'react-native-firebase';
 
-// attempts to write
-export function * answer ({ question1, question2, question3, userId }) {
-  console.log('answer saga')
 
-  //const userId = firebase.auth().currentUser.uid;
+export const selectPartnersId = state => state.homescreen.approvedPeerId;
 
-  const firebaseSaveAnswers = ({ question1, question2, question3 }) => 
-      firebase.database().ref(`/users/${userId}/answers/`)
-        .set({ question1, question2, question3 })
-        .then(response => ({ response }))
-        .catch(error => ({ error }))
-  
-  const firebaseUpdateAnswers = ({ question1, question2, question3 }) => { 
-    const data = { question1, question2, question3 }
-    firebase.database().ref(`users/${userId}/answers/`)
-    .set(data)
-  }
+//*********************************** Save users's answers ********************************************//
 
-  function connect() {
-    return new Promise(resolve => {
-      const database = firebase.database();
-      const connectionRef = database.ref('/users/' + userId);
-      connectionRef.once('value', resolve);
-    });
-  }
- 
-  const snapshot = yield call(connect);
+export function* saveuseranswer({ question1, question2, question3, userId }) {
+  console.log(`saving answer saga: ${question1} / ${question2} / ${question3} / ${userId}`);
 
-  if (snapshot.val() === null) {
+  const firebaseSaveAnswers = () =>
+    firebase
+      .database()
+      .ref(`/users/${userId}/answers/`)
+      .set({ question1, question2, question3 })
+      .then(response => ({ response }))
+      .catch(error => ({ error }));
+
+  if (userId) {
     try {
-      const { response, error } = yield call(firebaseSaveAnswers, { question1, question2, question3 })
-      if (response) {
-        yield put(QuestionsActions.saveAnswersSuccess('true', `${response.key}`))
-      } else { 
-        yield put(QuestionsActions.saveAnswersFailure(`${error.message}`))
+      const { response, error } = yield call(firebaseSaveAnswers);
+      console.log(response);
+      if (!error) {
+        yield put(
+          QuestionsActions.saveAnswersSuccess(true)
+        );
+      } else if(error) {
+        console.log(error);
+        yield put(QuestionsActions.saveAnswersFailure(`${error.message}`));
       }
     } catch (e) {
-      yield put(QuestionsActions.saveAnswersFailure(`'${e.message}'`))
-    }      
-  } else {
-    if (userId === Object.keys(snapshot.val().answers)[0]) {
-      console.log(userId)
-      try {
-        yield call(firebaseUpdateAnswers, { question1, question2, question3 })
-        yield put(QuestionsActions.saveAnswersSuccess('true', `${userId}`))
-      } catch (e) {
-        yield put(QuestionsActions.saveAnswersFailure(`'${e.message}'`))
-      } 
-    } else {
-      const userId = Object.keys(snapshot.val().answers)[0];
-      console.log(userId)
-      try {
-        yield call(firebaseUpdateAnswers, { question1, question2, question3 })
-        yield put(QuestionsActions.saveAnswersSuccess('true', `${userId}`))
-      } catch (e) {
-        yield put(QuestionsActions.saveAnswersFailure(`'${e.message}'`))
-      } 
-    }  
-  }           
+      console.log(e);
+      yield put(QuestionsActions.saveAnswersFailure(`'${e.message}'`));
+    }
+  }
 }
 
+//*********************************** Fetch users's answers ********************************************//
 
+export function* fetchuseranswers({ userId }) {
+  console.log(`fetching ${userId} answers`);
 
-// fetchanswers saga's helper function
-function createChannel (userId) {
-  const ref = firebase.database().ref(`/users/${userId}/answers/`)
-  const channel = eventChannel(emit => {
+  const firebaseGetUserAnswers = () =>
+  firebase
+    .database()
+    .ref(`/users/${userId}/answers/`)
+    .once('value')
+    .then(response => ({ response }))
+    .catch(error => ({ error }));
+
+  const { response, error } = yield call(firebaseGetUserAnswers);
+  console.log(response);
+  console.log(response.val());
+  if(response.val()) {
+    const item = response.val();
+    const val1 = item.question1;
+    const val2 = item.question2;
+    const val3 = item.question3;
+    console.log(`Users Answers: ${val1} / ${val2} / ${val3}` );
+  
+    yield put(QuestionsActions.fetchUsersAnswersSuccess(val1, val2, val3));
+  } else {
+    // new user might not save answer yet, first time signing
+    console.log(error)
+  } 
+}
+
+//*********************************** Fetch partner's answers ********************************************//
+
+export function* fetchpartnersanswers() {
+  const partnerId = yield select(selectPartnersId);
+
+  console.log(`fetching partner : ${partnerId} answers`);
+
+  function createChannel(partnerId) {
+    const ref = firebase.database().ref(`/users/${partnerId}/answers/`);
+    const channel = eventChannel(emit => {
       ref.on('value', snapshot => {
-        console.log(Object.keys(snapshot.val()))
-        snapshot.val() ? emit(snapshot.val()) : 'false'
+        snapshot.val() ? emit(snapshot.val()) : emit({ false: 'false' });
       });
       return () => ref.off();
-    }, buffers.expanding())	
-  return channel; 
-};
+    }, buffers.expanding());
+    return channel;
+  }
+  console.log('CONNECTION_SUCCEED');
 
-// Fetch answers 
-export function * fetchanswers ({ userId }) {
-  console.log('fetching answers saga')
-  console.log(userId)
-
-  const channel = createChannel(userId);
-  while(true) {
+  const channel = createChannel(partnerId);
+ 
+  while (true) {
     const item = yield take(channel);
-    console.log(item)
-    if(item === 'false') {
-      console.log('requestRevoke')
-      //yield put(HomeScreenActions.requestRevoke()) 
-    } else {
-      console.log('requestexist')
-      console.log(item)
-      const val1 = item.question1;
-      const val2 = item.question2;
-      const val3 = item.question3;
-      console.log(val1)
+    if (Object.keys(item)[0] === 'false') {
+      console.log('empty answers');
+      yield put(QuestionsActions.fetchPartnersAnswersFailure(false));
 
-      yield put(QuestionsActions.fetchSuccess(val1, val2, val3));
+    } else {
+      console.log(item);
+      const answers = item;
+      console.log(`${answers.question1} / ${answers.question2} / ${answers.question3}`);
+      yield put(QuestionsActions.fetchPartnersAnswersSuccess(answers, true));
     }
-  }   
+  } 
 }

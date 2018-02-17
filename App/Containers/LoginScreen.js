@@ -11,7 +11,7 @@ import {
   LayoutAnimation
 } from 'react-native'
 import { connect } from 'react-redux'
-import styles from './Styles/LoginScreenStyles'
+import styles from './Styles/LoginSignupScreenStyles'
 import {Images, Metrics} from '../Themes'
 import LoginActions from '../Redux/LoginRedux'
 
@@ -32,19 +32,21 @@ class LoginScreen extends React.Component {
       email: 'kahramanmm@gmail.com',
       password: '123456',
       visibleHeight: Metrics.screenHeight,
-      topLogo: { width: Metrics.screenWidth },
-      error: ''
+      //topLogo: { width: Metrics.screenWidth },
+      topLogo: null,
+      loginerror: '',
+      formBottomMargin: 0
     }
     this.isAttempting = false
   }
 
-  componentWillReceiveProps (newProps) {
+/*   componentWillReceiveProps (newProps) {
     this.forceUpdate()
     // Did the login attempt complete?
     if (this.isAttempting && !newProps.fetching) {
       this.props.navigation.goBack()
     }
-  }
+  } */
 
   componentWillMount () {
     // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
@@ -62,10 +64,16 @@ class LoginScreen extends React.Component {
     // Animation types easeInEaseOut/linear/spring
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
     let newSize = Metrics.screenHeight - e.endCoordinates.height
+    console.log(Metrics.screenHeight)
+    console.log(e.endCoordinates.height)
+
     this.setState({
       visibleHeight: newSize,
-      topLogo: {width: 100, height: 70}
+      topLogo: {width: 80, height: 40},
+      formBottomMargin: 160
     })
+    console.log(this.state.visibleHeight)
+
   }
 
   keyboardDidHide = (e) => {
@@ -73,7 +81,8 @@ class LoginScreen extends React.Component {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
     this.setState({
       visibleHeight: Metrics.screenHeight,
-      topLogo: {width: Metrics.screenWidth}
+      topLogo: {width: 100, height: 50},
+      formBottomMargin: 0
     })
   }
 
@@ -96,13 +105,13 @@ class LoginScreen extends React.Component {
   render () {
     const { email, password } = this.state
     const { fetching } = this.props
-    const { error } = this.props
+    const { loginerror } = this.props
     const editable = !fetching
-    const textInputStyle = editable ? styles.textInput : styles.textInputReadonly
+    const textInputStyle = editable ? styles.textInput : styles.textInput
     return (
-      <ScrollView contentContainerStyle={{justifyContent: 'center'}} style={[styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
+      <ScrollView contentContainerStyle={[styles.contentContainer]} style={[styles.container, {height: this.state.visibleHeight}]} keyboardShouldPersistTaps='always'>
         <Image source={Images.logo} style={[styles.topLogo, this.state.topLogo]} />
-        <View style={styles.form}>
+        <View style={[styles.form, {marginBottom: this.state.formBottomMargin}]}>
           <View style={styles.titleRow}>
             <View style={styles.formLine}>
               <Text style={styles.formTitle}>
@@ -117,7 +126,7 @@ class LoginScreen extends React.Component {
               style={textInputStyle}
               value={email}
               editable={editable}
-              keyboardType='default'
+              keyboardType='email-address'
               returnKeyType='next'
               autoCapitalize='none'
               autoCorrect={false}
@@ -134,7 +143,7 @@ class LoginScreen extends React.Component {
               style={textInputStyle}
               value={password}
               editable={editable}
-              keyboardType='default'
+              keyboardType='numeric'
               returnKeyType='go'
               autoCapitalize='none'
               autoCorrect={false}
@@ -145,17 +154,17 @@ class LoginScreen extends React.Component {
               placeholder='Password' />
           </View>
           <View style={[styles.warningRow]}>
-            <Text style={styles.warningTex}>{this.props.error}</Text>
+            <Text style={styles.warningTex}>{this.props.loginerror}</Text>
           </View>
           <View style={[styles.loginRow]}>
             <TouchableOpacity style={styles.loginButtonWrapper} onPress={this.handlePressLogin}>
-              <View style={styles.loginButton}>
-                <Text style={styles.loginText}>Sign In</Text>
+              <View style={styles.loginButtonLeft}>
+                <Text style={styles.loginTextBold}>Sign In</Text>
               </View>
             </TouchableOpacity>
             <TouchableOpacity style={styles.loginButtonWrapper} onPress={() => this.props.navigation.navigate("SignupScreen")}>
-              <View style={styles.loginButton}>
-                <Text style={styles.loginText}>Signup</Text>                  
+              <View style={styles.loginButtonRight}>
+                <Text style={styles.loginText}>Sign Up</Text>                  
               </View>
             </TouchableOpacity>
           </View>
@@ -167,9 +176,9 @@ class LoginScreen extends React.Component {
 }
 
 const mapStateToProps = (state) => {
+  const {fetching, loginerror} = state.login;
   return {
-    fetching: state.login.fetching,
-    error: state.login.error
+    fetching, loginerror
   }
 }
 

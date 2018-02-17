@@ -10,6 +10,7 @@ target 'relationship' do
   pod 'Firebase/Core'
   pod 'Firebase/Messaging'
   pod 'Firebase/Auth'
+  pod 'Firebase/Database'
 
   target 'relationshipTests' do
     inherit! :search_paths
