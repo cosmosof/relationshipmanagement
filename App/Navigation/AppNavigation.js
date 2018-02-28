@@ -7,6 +7,7 @@ import { StackNavigator, addNavigationHelpers, TabNavigator } from 'react-naviga
 import InviteScreen from '../Containers/InviteScreen'
 import InfoScreen from '../Containers/InfoScreen'
 import ProfileScreen from '../Containers/ProfileScreen'
+import ChatScreen from '../Containers/ChatScreen'
 import QuestionsScreen from '../Containers/QuestionsScreen'
 import LoadingScreen from '../Containers/LoadingScreen'
 import HomeScreen from '../Containers/HomeScreen'
@@ -198,6 +199,22 @@ const QuestionsTab = StackNavigator({
     },
   },
 });
+const ChatTab = StackNavigator({
+  Chat: {
+    screen: ChatScreen,
+    navigationOptions: () => ({
+      title: <View style={{ width: 79, height: 22}}>
+      <Image source={Images.peerler} style={{width: 79, height: 22}} />
+    </View>,
+    }),
+  },
+  NotifSettings2: {
+    screen: InfoScreen,
+    navigationOptions: {
+      title: 'Notifications',
+    },
+  },
+});
 
 const StacksInTabs = TabNavigator(
   {
@@ -227,9 +244,22 @@ const StacksInTabs = TabNavigator(
         ),
       },
     },
+    ChatTab: {
+      screen: ChatTab,
+      navigationOptions: {
+        tabBarLabel: 'Chat',
+        tabBarIcon: ({ focused }) => (
+          <Icon
+            name={focused ? 'ios-chatbubbles' : 'ios-chatbubbles-outline'}
+            size={26}
+            style={{ color: Colors.charcoal }}
+          />
+        ),
+      },
+    },
   },
   {         
-    //lazy: true,
+    lazy: true,
     initialRouteName: 'MainTab',
     tabBarPosition: 'bottom',
     animationEnabled: false,

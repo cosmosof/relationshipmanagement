@@ -53,8 +53,8 @@ class ProfileScreen extends Component {
       newusername: '',
       newpassword: '',
       isUsernameInputSectionVisible: true,
-      toggleInputBottomBorderColorRight: '#457B9D',
-      toggleInputBottomBorderColorLeft: '#A6E7FF',
+      toggleInputBottomBorderColorRight: Colors.lightMatPurple,
+      toggleInputBottomBorderColorLeft: Colors.darkMatPurple,
       formBottomMargin: null,
       iconSize: 48,
       marginTopTextInput: 5,
@@ -120,15 +120,15 @@ class ProfileScreen extends Component {
   changeUsernameToggle() {
     this.setState({
       isUsernameInputSectionVisible: true,
-      toggleInputBottomBorderColorRight: '#457B9D',
-      toggleInputBottomBorderColorLeft: '#A6E7FF'
+      toggleInputBottomBorderColorRight: Colors.lightMatPurple,
+      toggleInputBottomBorderColorLeft: Colors.darkMatPurple
     });
   }
   changePasswordToggle() {
     this.setState({
       isUsernameInputSectionVisible: false,
-      toggleInputBottomBorderColorRight: '#A6E7FF',
-      toggleInputBottomBorderColorLeft: '#457B9D'
+      toggleInputBottomBorderColorRight: Colors.darkMatPurple,
+      toggleInputBottomBorderColorLeft: Colors.lightMatPurple
     });
   }
   componentDidMount() {
@@ -239,7 +239,7 @@ class ProfileScreen extends Component {
               size={this.state.iconSize}
               padding={1}
               style={{ textAlign: 'center' }}
-              color={'#183446'}
+              color={Colors.charcoal}
             />
             <Text style={styles.sectionTitle}>Sorry to see you go!</Text>
             <Text style={styles.sectionTitle}>
@@ -258,7 +258,7 @@ class ProfileScreen extends Component {
               size={this.state.iconSize}
               padding={1}
               style={{ textAlign: 'center' }}
-              color={'#183446'}
+              color={Colors.charcoal}
             />
             <View>
               <Text style={styles.sectionUsernameTitle}>

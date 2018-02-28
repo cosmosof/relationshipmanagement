@@ -84,9 +84,10 @@ class QuestionsScreen extends Component {
   
   componentWillReceiveProps(nextProps){
     console.log(nextProps)
-    this.setState({ value1Index: nextProps.question1});
+    this.setState({ value1Index: nextProps.question1 });
     this.setState({ value2Index: nextProps.question2 });
     this.setState({ value3Index: nextProps.question3 });
+  
     
     if((nextProps.saveanswerssuccess === true && nextProps.connectionSucceed === true) || (nextProps.fetchusersanswerssuccess === true && nextProps.connectionSucceed === true)) {
       console.log('user answered questions')
@@ -102,6 +103,14 @@ class QuestionsScreen extends Component {
     const { question1, question2, question3, userId } = this.props;
     this.props.saveUsersAnswers(question1, question2, question3, userId);
   }
+  checkColor = (val, question) => {
+    console.log(` testit ${val} /` + this.props[`${question}`])
+    if(val === this.props[`${question}`]){
+      return (
+        Colors.lightMatBlue
+      )
+    }
+  }
 
   getPartnersAnswers = (val) =>  { 
     console.log(this.props.answers)
@@ -114,26 +123,59 @@ class QuestionsScreen extends Component {
         console.log(obj) 
         if(obj.hasOwnProperty(val)) {
           switch (obj[val]) {
-            case 0: return (
-              <Text>
-              your partner's answer: A
-              </Text>
-            );
-            case 1: return (
-              <Text>
-              your partner's answer: B
-              </Text>
-            );
-            case 2: return (
-              <Text>
-              your partner's answer: C
-              </Text>
-            );
-            case 3: return (
-              <Text>
-              your partner's answer: D
-              </Text>
-            );
+            case 0: if(this.props[`${val}`]!==0){
+              return (
+                <Text style={styles.partnerAnswerTextWarning}>
+                Your partner's answer: A
+                </Text>
+              );
+              } else {
+                return (
+                  <Text style={styles.partnerAnswerText}>
+                  Your partner's answer: A
+                  </Text>
+                );
+              }
+        
+            case 1: if(this.props[`${val}`]!==1){
+              return (
+                <Text style={styles.partnerAnswerTextWarning}>
+                Your partner's answer: B
+                </Text>
+              );
+              } else {
+                return (
+                  <Text style={styles.partnerAnswerText}>
+                  Your partner's answer: B
+                  </Text>
+                );
+              }
+            case 2: if(this.props[`${val}`]!==2){
+              return (
+                <Text style={styles.partnerAnswerTextWarning}>
+                Your partner's answer: C
+                </Text>
+              );
+              } else {
+                return (
+                  <Text style={styles.partnerAnswerText}>
+                  Your partner's answer: C
+                  </Text>
+                );
+              }
+            case 3: if(this.props[`${val}`]!==3){
+              return (
+                <Text style={styles.partnerAnswerTextWarning}>
+                Your partner's answer: D
+                </Text>
+              );
+              } else {
+                return (
+                  <Text style={styles.partnerAnswerText}>
+                  Your partner's answer: D
+                  </Text>
+                );
+              }
           }
         } 
       }    
@@ -167,26 +209,26 @@ class QuestionsScreen extends Component {
                     )
                 }
               </Text>
-              <Text style={styles.title}>Soru 1</Text>
+              <Text style={styles.title}>Question 1</Text>
               <View style={styles.lineBreak} />
               <View>
-                <Text style={styles.parapraph}>
-                  <Text style={{ color: '#30a2f2' }}>A) {'  '}</Text>
+                <Text style={[styles.parapraph, {color: this.checkColor(0, 'question1')}]}>
+                  <Text style={{ color: Colors.lightMatBlue }}>A) {'  '}</Text>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt
                 </Text>
-                <Text style={styles.parapraph}>
-                  <Text style={{ color: '#30a2f2' }}>B) {'  '}</Text>
+                <Text style={[styles.parapraph, {color: this.checkColor(1, 'question1')}]}>
+                  <Text style={{ color: Colors.lightMatBlue }}>B) {'  '}</Text>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt
                 </Text>
-                <Text style={styles.parapraph}>
-                  <Text style={{ color: '#30a2f2' }}>C) {'  '}</Text>
+                <Text style={[styles.parapraph, {color: this.checkColor(2, 'question1')}]}>
+                  <Text style={{ color: Colors.lightMatBlue }}>C) {'  '}</Text>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt
                 </Text>
-                <Text style={styles.parapraph}>
-                  <Text style={{ color: '#30a2f2' }}>D) {'  '}</Text>
+                <Text style={[styles.parapraph, {color: this.checkColor(3, 'question1')}]}>
+                  <Text style={{ color: Colors.lightMatBlue }}>D) {'  '}</Text>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt
                 </Text>
@@ -211,8 +253,8 @@ class QuestionsScreen extends Component {
                           labelHorizontal={true}
                           buttonSize={16}
                           buttonOuterSize={22}
-                          buttonColor={'#6F7C8A'}
-                          labelColor={'#6F7C8A'}
+                          buttonColor={Colors.lightMatBlue}
+                          labelColor={Colors.charcoal}
                           style={[i !== this.state.types1.length-1 && styles.radioStyle]}
                           onPress={(value, index) => {
                             this.props.questionUpdates('question1', value)
@@ -233,26 +275,26 @@ class QuestionsScreen extends Component {
           <View style={styles.container}>
             <View>
               <View>
-                <Text style={styles.title}>Soru 2</Text>
+                <Text style={styles.title}>Question 2</Text>
                 <View style={styles.lineBreak} />
                 <View>
-                  <Text style={styles.parapraph}>
-                    <Text style={{ color: '#30a2f2' }}>A) {'  '}</Text>
+                <Text style={[styles.parapraph, {color: this.checkColor(0, 'question2')}]}>
+                    <Text style={{ color: Colors.lightMatBlue }}>A) {'  '}</Text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt
                   </Text>
-                  <Text style={styles.parapraph}>
-                    <Text style={{ color: '#30a2f2' }}>B) {'  '}</Text>
+                  <Text style={[styles.parapraph, {color: this.checkColor(1, 'question2')}]}>
+                  <Text style={{ color: Colors.lightMatBlue }}>B) {'  '}</Text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt
                   </Text>
-                  <Text style={styles.parapraph}>
-                    <Text style={{ color: '#30a2f2' }}>C) {'  '}</Text>
+                  <Text style={[styles.parapraph, {color: this.checkColor(2, 'question2')}]}>
+                  <Text style={{ color: Colors.lightMatBlue }}>C) {'  '}</Text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt
                   </Text>
-                  <Text style={styles.parapraph}>
-                    <Text style={{ color: '#30a2f2' }}>D) {'  '}</Text>
+                  <Text style={[styles.parapraph, {color: this.checkColor(3, 'question2')}]}>
+                  <Text style={{ color: Colors.lightMatBlue }}>D) {'  '}</Text>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                     do eiusmod tempor incididunt
                   </Text>
@@ -277,8 +319,8 @@ class QuestionsScreen extends Component {
                           labelHorizontal={true}
                           buttonSize={16}
                           buttonOuterSize={22}
-                          buttonColor={'#6F7C8A'}
-                          labelColor={'#6F7C8A'}
+                          buttonColor={Colors.lightMatBlue}
+                          labelColor={Colors.charcoal}
                           style={[i !== this.state.types1.length-1 && styles.radioStyle]}
                           onPress={(value, index) => {
                             this.props.questionUpdates('question2', value)
@@ -300,26 +342,26 @@ class QuestionsScreen extends Component {
         <Card>
           <View style={styles.container}>
             <View>
-              <Text style={styles.title}>Soru 3</Text>
+              <Text style={styles.title}>Question 3</Text>
               <View style={styles.lineBreak} />
               <View>
-                <Text style={styles.parapraph}>
-                  <Text style={{ color: '#30a2f2' }}>A) {'  '}</Text>
+              <Text style={[styles.parapraph, {color: this.checkColor(0, 'question3')}]}>
+              <Text style={{ color: Colors.lightMatBlue }}>A) {'  '}</Text>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt
                 </Text>
-                <Text style={styles.parapraph}>
-                  <Text style={{ color: '#30a2f2' }}>B) {'  '}</Text>
+                <Text style={[styles.parapraph, {color: this.checkColor(1, 'question3')}]}>
+                  <Text style={{ color: Colors.lightMatBlue }}>B) {'  '}</Text>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt
                 </Text>
-                <Text style={styles.parapraph}>
-                  <Text style={{ color: '#30a2f2' }}>C) {'  '}</Text>
+                <Text style={[styles.parapraph, {color: this.checkColor(2, 'question3')}]}>
+                  <Text style={{ color: Colors.lightMatBlue }}>C) {'  '}</Text>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididuntmmn
                 </Text>
-                <Text style={styles.parapraph}>
-                  <Text style={{ color: '#30a2f2' }}>D) {'  '}</Text>
+                <Text style={[styles.parapraph, {color: this.checkColor(3, 'question3')}]}>
+                  <Text style={{ color: Colors.lightMatBlue }}>D) {'  '}</Text>
                   Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed
                   do eiusmod tempor incididunt
                 </Text>
@@ -344,8 +386,8 @@ class QuestionsScreen extends Component {
                           labelHorizontal={true}
                           buttonSize={16}
                           buttonOuterSize={22}
-                          buttonColor={'#6F7C8A'}
-                          labelColor={'#6F7C8A'}
+                          buttonColor={Colors.lightMatBlue}
+                          labelColor={Colors.charcoal}
                           style={[i !== this.state.types1.length-1 && styles.radioStyle]}
                           onPress={(value, index) => {
                             this.props.questionUpdates('question3', value)

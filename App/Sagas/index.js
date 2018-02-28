@@ -13,12 +13,13 @@ import { SignupTypes } from '../Redux/SignupRedux'
 import { ProfileTypes } from '../Redux/ProfileRedux'
 import { QuestionsTypes } from '../Redux/questionsRedux'
 import { HomeScreenTypes } from '../Redux/HomeScreenRedux'
+import { ChatTypes } from '../Redux/ChatRedux'
 
 
 /* ------------- Sagas ------------- */
 
 import { startup } from './StartupSagas'
-import { login, logout } from './LoginSagas'
+import { login, logout, resetpassword } from './LoginSagas'
 import { signup, saveusername } from './SignupSagas'
 import { deleteuser, changeusername, changepassword } from './ProfileSagas'
 import { saveuseranswer, fetchuseranswers, fetchpartnersanswers } from './QuestionsSagas'
@@ -27,6 +28,7 @@ import {
   getCurrentToken, savetokentodb, updatedItemSaga, 
   findpeer, acceptinv, declineinv, listenMatchrequestOnlogin
 } from './HomeScreenSagas'
+import { saveusermessage, fetchusermessages } from './ChatSagas'
 
 
 /* ------------- API ------------- */
@@ -48,7 +50,8 @@ export default function * root () {
   yield all([
     // some sagas only receive an action
     takeLatest(StartupTypes.STARTUP, startup),
-    takeLatest(LoginTypes.LOGIN_REQUEST, login),
+    takeLatest(LoginTypes.LOGIN_REQUEST, login), 
+    takeLatest(LoginTypes.RESET_PASSWORD, resetpassword), 
     takeLatest(LoginTypes.LOGOUT, logout),
     takeLatest(SignupTypes.SIGNUP_REQUEST, signup),
     takeLatest(SignupTypes.SAVE_USERNAME, saveusername),
@@ -63,12 +66,14 @@ export default function * root () {
     takeLatest(HomeScreenTypes.ACCEPT_INV, acceptinv),
     takeLatest(HomeScreenTypes.DECLINE_INV, declineinv),
     takeLatest(HomeScreenTypes.SAVE_DEVICE_TOKEN, savetokentodb),
+    takeLatest(ChatTypes.SAVE_USER_MESSAGE, saveusermessage), 
+    takeLatest(ChatTypes.FETCH_USER_MESSAGES, fetchusermessages), 
 
     // some sagas receive extra parameters in addition to an action
     takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
     //fork(acceptInvActionListener),
     takeLatest(LoginTypes.LOGIN_SUCCESS, listenMatchrequestOnlogin),
-    takeLatest(HomeScreenTypes.CONNECTION_SUCCEED, fetchpartnersanswers)
+    takeLatest(HomeScreenTypes.CONNECTION_SUCCEED, fetchpartnersanswers) 
 
   ])
 }

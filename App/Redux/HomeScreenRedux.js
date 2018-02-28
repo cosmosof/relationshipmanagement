@@ -22,7 +22,8 @@ const { Types, Creators } = createActions({
   connectionDeleted: ['connectionDeleted'],
   connectionSucceed: ['connectionSucceed', 'approvedPeerName', 'approvedPeerId'],
   fetchingPeerNameLookup: ['peerNameFetching', 'peerNameFoundError'],
-  waitingApproval: ['approvedUsername']
+  waitingApproval: ['approvedUsername'],
+  fetchChatId: ['chatId']
 })
 export const HomeScreenTypes = Types
 export default Creators
@@ -48,7 +49,8 @@ export const INITIAL_STATE = Immutable({
  peerNameFoundError: null,
  peerNameFetching: false,
  fetchingMatchRequest: false,
- approvedUsername: null
+ approvedUsername: null,
+ chatId: null
 })
 
 /* ------------- Reducers ------------- */
@@ -159,8 +161,13 @@ export const waitingapproval = (state, { approvedUsername }) => {
   return (
     state.merge({ approvedUsername })
   )
+} 
+export const fetchchatid = (state, { chatId }) => {
+  console.log(chatId)
+  return (
+    state.merge({ chatId })
+  )
 }
-
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -179,5 +186,6 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.FETCHING_PEER_NAME_LOOKUP]: fetchingpeernamelookup, 
   [Types.WAITING_APPROVAL]: waitingapproval,
   [Types.GET_CURRENT_TOKEN]: currentdevicetoken,
-  [Types.SAVE_DEVICE_TOKEN]: savedevicetoken
+  [Types.SAVE_DEVICE_TOKEN]: savedevicetoken,
+  [Types.FETCH_CHAT_ID]: fetchchatid
 })

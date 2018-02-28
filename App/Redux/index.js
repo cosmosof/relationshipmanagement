@@ -18,7 +18,8 @@ export default () => {
     profile: resettable(require('./ProfileRedux').reducer),
     search: require('./SearchRedux').reducer,
     questions: resettable(require('./questionsRedux').reducer),
-    homescreen: resettable(require('./HomeScreenRedux').reducer)
+    homescreen: resettable(require('./HomeScreenRedux').reducer),
+    chatscreen: resettable(require('./ChatRedux').reducer),
   })
 
   return configureStore(rootReducer, rootSaga)

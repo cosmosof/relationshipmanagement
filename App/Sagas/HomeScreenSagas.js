@@ -117,6 +117,12 @@ export function* listenMatchrequestOnlogin() {
         yield call(delay, 1000);
         yield put(HomeScreenActions.fetchingMatchRequest(false));
       }
+      if (Object.values(item)[2]['chatid']) {
+        console.log('chatid');
+        console.log(Object.values(item)[2]['chatid']);
+        const chatId = Object.values(item)[2]['chatid']
+        yield put(HomeScreenActions.fetchChatId(chatId));
+      }
       if (Object.values(item)[2]['approvedrequest']) {
         yield call(delay, 1000);
         yield put(HomeScreenActions.fetchingMatchedPeer(false));
@@ -245,6 +251,14 @@ export function* acceptinv() {
     .database()
     .ref('/matchrequest/' + `${userId}/` + 'approvedrequest/' + `${friendId}`)
     .set(friendname);
+  firebase
+    .database()
+    .ref('/matchrequest/' + `${friendId}/` + 'chatid/')
+    .set(friendId+userId);
+  firebase
+    .database()
+    .ref('/matchrequest/' + `${userId}/` + 'chatid/')
+    .set(friendId+userId);
   firebase
     .database()
     .ref('/matchrequest/' + `${friendId}/` + 'pendingrequest/')

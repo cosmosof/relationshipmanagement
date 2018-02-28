@@ -47,7 +47,7 @@ class InfoScreen extends Component {
                       size={36}
                       padding={10}
                       style={{}}
-                      color={'#183446'}
+                      color={Colors.charcoal}
                     />
     </TouchableHighlight>
     </View>

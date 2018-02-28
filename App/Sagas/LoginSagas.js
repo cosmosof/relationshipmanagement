@@ -58,11 +58,31 @@ export function * login ({ email, password }) {
   }
 }
 
-export function * logout () {
+export function * logout() {
   console.log('logoutsaga')
   firebase.auth().signOut().then(function() {
     console.log('Signed Out');
   }, function(error) {
     console.error('Sign Out Error', error);
   });
+}
+
+export function * resetpassword({ email }) {
+  console.log(`resetpassword saga: ${email}`)
+
+  const firebasesendPasswordResetEmail = () =>
+    firebase
+      .auth()
+      .sendPasswordResetEmail(email)
+      .then(response => ({ response }))
+      .catch(error => ({ error }));
+
+  if(!email){
+    yield put(LoginActions.resetPasswordFailure('enter your email address!'))
+  } else {
+    const { response, error } = yield call(firebasesendPasswordResetEmail);
+    if(!error){
+      yield put(LoginActions.resetPasswordFailure('Password reset link sent to your email address!'))
+    }  
+  }
 }

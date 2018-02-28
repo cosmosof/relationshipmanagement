@@ -94,12 +94,17 @@ class LoginScreen extends React.Component {
     
   }
 
-  handleChangeemail = (text) => {
+  handleEmailText = (text) => {
     this.setState({ email: text })
   }
 
-  handleChangePassword = (text) => {
+  handlePasswordText = (text) => {
     this.setState({ password: text })
+  }
+
+  handleForgotPassword = () => {
+    const { email } = this.state
+    this.props.resetPassword(email);
   }
 
   render () {
@@ -130,7 +135,7 @@ class LoginScreen extends React.Component {
               returnKeyType='next'
               autoCapitalize='none'
               autoCorrect={false}
-              onChangeText={this.handleChangeemail}
+              onChangeText={this.handleEmailText}
               underlineColorAndroid='transparent'
               onSubmitEditing={() => this.refs.password.focus()}
               placeholder='email' />
@@ -148,7 +153,7 @@ class LoginScreen extends React.Component {
               autoCapitalize='none'
               autoCorrect={false}
               secureTextEntry
-              onChangeText={this.handleChangePassword}
+              onChangeText={this.handlePasswordText}
               underlineColorAndroid='transparent'
               onSubmitEditing={this.handlePressLogin}
               placeholder='Password' />
@@ -168,23 +173,34 @@ class LoginScreen extends React.Component {
               </View>
             </TouchableOpacity>
           </View>
+          <View style={[styles.warningRowForPasswordRecovery]}>
+            <Text style={styles.warningTexPasswordRecovery}>{this.props.resetpasswordfailure}</Text>
+          </View>
+          <View style={styles.forgotPasswordRow}>
+          <TouchableOpacity onPress={this.handleForgotPassword}>
+            <Text style={styles.forgotPasswordText}>
+              Forgot your password?
+            </Text>
+          </TouchableOpacity>
+          </View>
+        
         </View>
-
       </ScrollView>
     )
   }
 }
 
 const mapStateToProps = (state) => {
-  const {fetching, loginerror} = state.login;
+  const {fetching, loginerror, resetpasswordfetching, resetpasswordfailure} = state.login;
   return {
-    fetching, loginerror
+    fetching, loginerror, resetpasswordfetching, resetpasswordfailure
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    attemptLogin: (email, password) => dispatch(LoginActions.loginRequest(email, password))
+    attemptLogin: (email, password) => dispatch(LoginActions.loginRequest(email, password)),
+    resetPassword: (email) => dispatch(LoginActions.resetPassword(email))
   }
 }
 

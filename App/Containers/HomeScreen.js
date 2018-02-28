@@ -87,6 +87,13 @@ class HomeScreen extends React.Component {
   }
 
   componentWillMount() {
+    firebase.auth().onAuthStateChanged(function(user) {
+      console.log('auth state')
+      console.log(user)
+      console.log('auth state changed')
+      if (user) {
+      }
+    }); 
     // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
     // TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
     this.keyboardDidShowListener = Keyboard.addListener(

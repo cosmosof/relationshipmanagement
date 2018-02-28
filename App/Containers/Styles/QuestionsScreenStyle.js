@@ -13,10 +13,20 @@ export default StyleSheet.create({
   },
   parapraph: {
     fontSize: 14,
-    color: Colors.coal,
+    color: Colors.charcoal,
     paddingBottom: 15,
     lineHeight: 24
   },
+ partnerAnswerText: {
+  fontSize: 14,
+  color: Colors.lightMatBlue,
+  lineHeight: 24
+ },
+ partnerAnswerTextWarning: {
+  fontSize: 14,
+  color: Colors.fire,
+  lineHeight: 24
+ },
   title: {
     fontSize: 18,
     color: Colors.coal,

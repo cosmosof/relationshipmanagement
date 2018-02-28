@@ -59,6 +59,23 @@ export default StyleSheet.create({
     borderBottomColor: Colors.silver,
     minWidth:220
   },
+  forgotPasswordRow: {
+    paddingBottom: Metrics.doubleBaseMargin,
+    paddingHorizontal: Metrics.doubleBaseMargin,
+    flexDirection: 'row',
+    minWidth: 320
+  },
+  forgotPasswordText: {
+    color: Colors.charcoal,
+    fontSize: 12
+  },
+  warningTexPasswordRecovery: {
+    fontSize: 12,
+    color: Colors.darkMatPurple,
+    textAlign: 'left',
+    minWidth: 320,
+    paddingHorizontal: Metrics.doubleBaseMargin
+  },
   warningTex: {
     fontSize: 12,
     color: Colors.darkMatPurple,
@@ -76,7 +93,7 @@ export default StyleSheet.create({
     color: Colors.steel
   },
   loginRow: {
-    paddingBottom: Metrics.doubleBaseMargin,
+    paddingBottom: Metrics.smallMargin,
     paddingHorizontal: Metrics.doubleBaseMargin,
     flexDirection: 'row',
     minWidth: 320
@@ -84,6 +101,11 @@ export default StyleSheet.create({
   },
   warningRow: {
     paddingBottom: Metrics.smallMargin,
+    paddingHorizontal: Metrics.doubleBaseMargin,
+    flexDirection: 'row'
+  },
+  warningRowForPasswordRecovery: {
+    //paddingBottom: Metrics.smallMargin,
     paddingHorizontal: Metrics.doubleBaseMargin,
     flexDirection: 'row'
   },

@@ -28,7 +28,13 @@ const colors = {
   lightMatPurple: '#D3C4D1',
   medMatPurple: '#A999A7',
   vividBlue: '#00A8E8',
-  darkMatPurple: '#8e808c'
+  darkMatPurple: '#8e808c',
+  matBlue: '#183446',
+  lightMatBlue: '#95CFE5',
+  medMatBlue: '#0494C6',
+  darkMatBlue: '#0386B8',
+
+
 }
 
 export default colors

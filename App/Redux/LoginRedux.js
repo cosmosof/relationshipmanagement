@@ -9,7 +9,9 @@ const { Types, Creators } = createActions({
   loginFailure: ['loginerror'],
   logout: null,
   autoLogin: ['userId'],
-  isEmailVerified: ['isemailverified']
+  isEmailVerified: ['isemailverified'],
+  resetPassword: ['email'],
+  resetPasswordFailure: ['resetpasswordfailure']
 })
 
 export const LoginTypes = Types
@@ -25,7 +27,10 @@ export const INITIAL_STATE = Immutable({
   invitation: null,
   userId: null,
   username: null,
-  isemailverified: false
+  isemailverified: false,
+  resetpasswordfetching: false,
+  resetpasswordsuccess: false,
+  resetpasswordfailure: null
 })
 
 /* ------------- Reducers ------------- */
@@ -68,6 +73,20 @@ export const isemailverified = (state, { isemailverified }) => {
     state.merge({ isemailverified })
   )
 }
+// attemping to reset password 
+export const resetpassword = (state, { email }) => {
+  console.log(email)
+  return (
+    state.merge({ resetpasswordfetching: true, resetpasswordfailure: null })
+  )
+} 
+// password reset failure
+export const resetpasswordfailure = (state, { resetpasswordfailure }) => {
+  console.log(resetpasswordfailure)
+  return (
+    state.merge({ resetpasswordfetching: false, resetpasswordfailure })
+  )
+} //resetpasswordfailure
 /* ------------- Hookup Reducers To Types ------------- */
 
 export const reducer = createReducer(INITIAL_STATE, {
@@ -76,7 +95,9 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.LOGIN_FAILURE]: failure,
   [Types.LOGOUT]: logout,
   [Types.AUTO_LOGIN]: autoLogin,
-  [Types.IS_EMAIL_VERIFIED]: isemailverified 
+  [Types.IS_EMAIL_VERIFIED]: isemailverified,
+  [Types.RESET_PASSWORD]: resetpassword,
+  [Types.RESET_PASSWORD_FAILURE]: resetpasswordfailure 
 })
 
 /* ------------- Selectors ------------- */
