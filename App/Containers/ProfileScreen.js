@@ -12,7 +12,8 @@ import {
   AppState,
   LayoutAnimation,
   Keyboard,
-  Alert
+  Alert,
+  TouchableWithoutFeedback
 } from 'react-native';
 import { Images, Metrics, Colors } from '../Themes';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -21,6 +22,8 @@ import { NavigationActions } from 'react-navigation';
 import ProfileActions from '../Redux/ProfileRedux';
 import LoginActions from '../Redux/LoginRedux';
 import firebase from 'react-native-firebase';
+import RoundedButton from '../Components/RoundedButton';
+import InputArea from '../Components/InputArea';
 
 // Add Actions - replace 'Your' with whatever your reducer is called :)
 // import YourActions from '../Redux/YourRedux'
@@ -30,18 +33,18 @@ import styles from './Styles/ProfileScreenStyle';
 
 class ProfileScreen extends Component {
   static navigationOptions = ({ navigation }) => {
-    const { state, setParams } = navigation;
+    const { state, setParams, goBack } = navigation;
     return {
-      //headerTitleStyle: { color: Colors.ricePaper },
       headerLeft: (
-        <Icon
-          name='ios-arrow-back'
-          size={20}
-          padding={20}
-          style={{ padding: 20 }}
-          //color= {Colors.ricePaper}
-          onPress={() => navigation.navigate('Home')}
-        />
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+          <Icon
+            name='ios-arrow-back'
+            size={20}
+            padding={20}
+            style={{ padding: 20, color: Colors.medMatBlue2 }}
+            onPress={() => goBack()}
+          />
+        </TouchableWithoutFeedback>
       )
     };
   };
@@ -58,8 +61,8 @@ class ProfileScreen extends Component {
       formBottomMargin: null,
       iconSize: 48,
       marginTopTextInput: 5,
-      marginBottomSectionLine: 40,
-      marginTopSectionLine: 40
+      marginBottomSectionLine: 20,
+      marginTopSectionLine: 35
     };
   }
   handleChangeUsername = text => {
@@ -165,8 +168,8 @@ class ProfileScreen extends Component {
       formBottomMargin: 180,
       iconSize: 28,
       marginTopTextInput: 0,
-      marginBottomSectionLine: 20,
-      marginTopSectionLine: 20
+      marginBottomSectionLine: 10,
+      marginTopSectionLine: 30
     });
     console.log(this.state.visibleHeight);
   };
@@ -179,8 +182,8 @@ class ProfileScreen extends Component {
       formBottomMargin: 0,
       iconSize: 48,
       marginTopTextInput: 5,
-      marginBottomSectionLine: 40,
-      marginTopSectionLine: 40
+      marginBottomSectionLine: 20,
+      marginTopSectionLine: 35
     });
   };
 
@@ -191,42 +194,32 @@ class ProfileScreen extends Component {
     return (
       <ScrollView
         contentContainerStyle={{
-          //flex: 1,
-          //alignItems: 'center',
           flexGrow: 1,
           justifyContent: 'center'
         }}
         style={[styles.container]}
         keyboardShouldPersistTaps='always'
       >
-      {this.props.isemailverified ? false : <View style={{flexDirection: 'row', alignItems: 'center', justifyContent: 'center'}}>
-      <Icon
-        name='ios-notifications'
-        size={10}
-        style={{paddingRight: 5, paddingTop: 2}} 
-      />
-      <Text style={{textAlign: 'center', fontSize: 10}}>Please verify your email address!</Text>
-      </View> }
-      
-        {/* {
-         this.props.successmessage ?            
-            <Text>Successfully DELETED</Text> 
-              :
-            <Text>main screen</Text> 
-       } */}
-        {/* 
-         <Text> fetching: {this.props.fetching ? 'true' : 'false'}</Text>
-        <Text> error: {this.props.error}</Text>
-        <Text> success: {this.props.success ? 'true' : 'false'}</Text>
-        <Text>
-          successmessage: {this.props.successmessage ? 'true' : 'false'}
-        </Text> 
-        <Text>
-        isUsernameInputSectionVisible: {this.state.isUsernameInputSectionVisible ? 'true' : 'false'}
-        </Text> 
-        <Text>
-        isPasswordInputSectionVisible: {this.state.isPasswordInputSectionVisible ? 'true' : 'false'}
-        </Text>  */}
+        {this.props.isemailverified ? (
+          false
+        ) : (
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center',
+              justifyContent: 'center'
+            }}
+          >
+            <Icon
+              name='ios-notifications'
+              size={10}
+              style={{ paddingRight: 5, paddingTop: 2, color: Colors.charcoal }}
+            />
+            <Text style={{ textAlign: 'center', fontSize: 10, color: Colors.charcoal }}>
+              Please verify your email address!
+            </Text>
+          </View>
+        )}
         {this.props.successmessage ? (
           <View
             style={[
@@ -234,13 +227,8 @@ class ProfileScreen extends Component {
               { marginBottom: this.state.formBottomMargin }
             ]}
           >
-            <Icon
-              name='ios-people-outline'
-              size={this.state.iconSize}
-              padding={1}
-              style={{ textAlign: 'center' }}
-              color={Colors.charcoal}
-            />
+            <Image source={Images.profile} style={[styles.image]} />
+
             <Text style={styles.sectionTitle}>Sorry to see you go!</Text>
             <Text style={styles.sectionTitle}>
               Account Successfully Deleted
@@ -253,13 +241,8 @@ class ProfileScreen extends Component {
               { marginBottom: this.state.formBottomMargin }
             ]}
           >
-            <Icon
-              name='ios-people-outline'
-              size={this.state.iconSize}
-              padding={1}
-              style={{ textAlign: 'center' }}
-              color={Colors.charcoal}
-            />
+            <Image source={Images.profile} style={[styles.image]} />
+
             <View>
               <Text style={styles.sectionUsernameTitle}>
                 {this.props.newusername
@@ -306,23 +289,6 @@ class ProfileScreen extends Component {
                 marginBottom: 10
               }}
             />
-            {/*   
-              { 
-                this.state.isUsernameInputSectionVisible ? 
-                  (
-                    this.props.fetching ?
-                      <Text> FETCHING </Text>
-                        :
-                      (
-                        this.props.usernamechangesuccess ? 
-                          <Text> you have successfully changed your username </Text>
-                            :
-                          <Text>Change username</Text>
-                      )
-                  )
-                    :
-                  <Text>Change password</Text>
-              } */}
             {this.state.isUsernameInputSectionVisible ? (
               this.props.fetching ? (
                 <View>
@@ -331,7 +297,7 @@ class ProfileScreen extends Component {
                       marginTop: 7,
                       height: 35,
                       width: 200,
-                      backgroundColor: '#1EAFE6'
+                      backgroundColor: Colors.silver
                     }}
                   />
                   <View
@@ -339,7 +305,7 @@ class ProfileScreen extends Component {
                       marginTop: 20,
                       height: 35,
                       width: 200,
-                      backgroundColor: '#1EAFE6'
+                      backgroundColor: Colors.silver
                     }}
                   />
                 </View>
@@ -350,36 +316,25 @@ class ProfileScreen extends Component {
                 </Text>
               ) : (
                 <View>
-                  <View style={styles.row}>
-                    <TextInput
-                      ref='username'
-                      style={[
-                        styles.textInput,
-                        { marginTop: this.state.marginTopTextInput }
-                      ]}
-                      value={newusername}
-                      keyboardType='default'
-                      returnKeyType='next'
-                      autoCapitalize='none'
-                      autoCorrect={false}
-                      onChangeText={this.handleChangeUsername}
-                      underlineColorAndroid='transparent'
-                      placeholder='enter new username'
-                    />
-                  </View>
+                  <InputArea
+                    placeholder={'enter new username'}
+                    styles={{
+                      alignSelf: 'center',
+                      marginTop: this.state.marginTopTextInput,
+                      fontSize: 12
+                    }}
+                    onChangeText={this.handleChangeUsername}
+                  />
                   <View style={styles.warningRow}>
                     <Text style={styles.warningTex}>
                       {this.props.usernamechangefailure}
                     </Text>
                   </View>
-                  <TouchableOpacity
-                    style={styles.buttonWrapper}
+                  <RoundedButton
+                    title={'Change Username'}
                     onPress={this.changeUsernameButton}
-                  >
-                    <View style={styles.button}>
-                      <Text style={styles.buttonText}>Change Username</Text>
-                    </View>
-                  </TouchableOpacity>
+                    buttonTextStyles={{ fontWeight: 'normal', fontSize: 12 }}
+                  />
                 </View>
               )
             ) : this.props.fetching ? (
@@ -389,7 +344,7 @@ class ProfileScreen extends Component {
                     marginTop: 7,
                     height: 35,
                     width: 200,
-                    backgroundColor: '#1EAFE6'
+                    backgroundColor: Colors.silver
                   }}
                 />
                 <View
@@ -397,7 +352,7 @@ class ProfileScreen extends Component {
                     marginTop: 20,
                     height: 35,
                     width: 200,
-                    backgroundColor: '#1EAFE6'
+                    backgroundColor: Colors.silver
                   }}
                 />
               </View>
@@ -407,37 +362,27 @@ class ProfileScreen extends Component {
               </Text>
             ) : (
               <View>
-                <View style={styles.row}>
-                  <TextInput
-                    ref='username'
-                    style={[
-                      styles.textInput,
-                      { marginTop: this.state.marginTopTextInput }
-                    ]}
-                    value={newpassword}
-                    keyboardType='numeric'
-                    returnKeyType='next'
-                    autoCapitalize='none'
-                    autoCorrect={false}
-                    onChangeText={this.handleChangePassword}
-                    underlineColorAndroid='transparent'
-                    placeholder='enter new password'
-                    secureTextEntry={true}
-                  />
-                </View>
+                <InputArea
+                  placeholder={'enter new password'}
+                  styles={{
+                    alignSelf: 'center',
+                    marginTop: this.state.marginTopTextInput,
+                    fontSize: 12
+                  }}
+                  onChangeText={this.handleChangePassword}
+                  secureTextEntry={true}
+                />
+
                 <View style={styles.warningRow}>
                   <Text style={styles.warningTex}>
                     {this.props.passwordchangefailure}
                   </Text>
                 </View>
-                <TouchableOpacity
-                  style={styles.buttonWrapper}
+                <RoundedButton
+                  title={'Change Password'}
                   onPress={this.changePasswordButton}
-                >
-                  <View style={styles.button}>
-                    <Text style={styles.buttonText}>Change Password</Text>
-                  </View>
-                </TouchableOpacity>
+                  buttonTextStyles={{ fontWeight: 'normal', fontSize: 12 }}
+                />
               </View>
             )}
             <View
@@ -450,37 +395,37 @@ class ProfileScreen extends Component {
               ]}
             />
             <View style={styles.warningRow}>
-                  <Text style={styles.warningTex}>
-                    {this.props.userdeletingerror}
-                  </Text>
-                </View>
-            {this.props.deletefetching ? (
-                  <View
-                    style={{
-                      marginTop: 7,
-                      height: 35,
-                      width: 200,
-                      backgroundColor: '#1EAFE6', 
-                      alignSelf: 'center'
-                    }}
-                  />
-                ) : ( 
-                  <View style={{ flexDirection: 'row' }}>
-                  <TouchableOpacity
-                style={styles.buttonWrapperDoubleButtonsLeft}
-                onPress={this.onpresshandler.bind(this)}
-              >
-                <Text style={styles.buttonText}> Log Out </Text>
-              </TouchableOpacity>
-              <TouchableOpacity
-                style={styles.buttonWrapperDoubleButtonsRight}
-                onPress={this.deletehandler.bind(this)}
-              >
-                <Text style={styles.buttonText}> Delete User </Text>
-              </TouchableOpacity>
-              </View>
-                )} 
+              <Text style={styles.warningTex}>
+                {this.props.userdeletingerror}
+              </Text>
             </View>
+            {this.props.deletefetching ? (
+              <View
+                style={{
+                  marginTop: 7,
+                  height: 35,
+                  width: 200,
+                  backgroundColor: Colors.silver,
+                  alignSelf: 'center'
+                }}
+              />
+            ) : (
+              <View style={{ flexDirection: 'row' }}>
+                <TouchableOpacity
+                  style={styles.buttonWrapperDoubleButtonsLeft}
+                  onPress={this.onpresshandler.bind(this)}
+                >
+                  <Text style={styles.buttonText}> Log Out </Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                  style={styles.buttonWrapperDoubleButtonsRight}
+                  onPress={this.deletehandler.bind(this)}
+                >
+                  <Text style={styles.buttonText}> Delete User </Text>
+                </TouchableOpacity>
+              </View>
+            )}
+          </View>
         )}
       </ScrollView>
     );

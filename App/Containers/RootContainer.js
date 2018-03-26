@@ -1,16 +1,15 @@
 import React, { Component } from 'react'
 import { View, StatusBar } from 'react-native'
-import Navigation from '../Navigation/AppNavigation'
+import ReduxNavigation from '../Navigation/ReduxNavigation'
 import { connect } from 'react-redux'
 import StartupActions from '../Redux/StartupRedux'
 import ReduxPersist from '../Config/ReduxPersist'
-import firebase from 'firebase'
+
 // Styles
 import styles from './Styles/RootContainerStyles'
 console.ignoredYellowBox = ['Remote debugger'];
 
 class RootContainer extends Component {
- 
   componentDidMount () {
     // if redux persist is not active fire startup action
     if (!ReduxPersist.active) {
@@ -22,7 +21,7 @@ class RootContainer extends Component {
     return (
       <View style={styles.applicationView}>
         <StatusBar barStyle='dark-content' />
-        <Navigation />
+        <ReduxNavigation />
       </View>
     )
   }

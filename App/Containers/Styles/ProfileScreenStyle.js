@@ -26,23 +26,6 @@ export default StyleSheet.create({
     color: Colors.charcoal,
     padding: 10
   },
-  textInput: {
-    backgroundColor:  Colors.lightGray,
-    height: 36,
-    padding: 10,
-    borderRadius: 2,
-    width: 200,
-    marginTop: 5
-  },
-  buttonWrapper: {
-    backgroundColor: Colors.medMatPurple,
-    height: 36,
-    padding: 10,
-    borderRadius: 2,
-    borderWidth: 1,
-    borderColor: Colors.darkMatPurple,
-    width: 200
-  },
   buttonWrapperDoubleButtonsLeft: {
     backgroundColor: Colors.medMatPurple,
     height: 36,
@@ -68,19 +51,18 @@ export default StyleSheet.create({
     borderLeftWidth: 0
   },
   buttonText: {
-    color: Colors.ricePaper,
+    color: Colors.snow,
     textAlign: 'center',
-    fontSize: 13
+    fontSize: 12
   },
   warningRow: {
-    paddingTop: Metrics.smallMargin,
     paddingBottom: Metrics.smallMargin,
     flexDirection: 'row',
     alignSelf: 'center'
   },
   warningTex: {
-    fontSize: 12,
-    color: '#457B9D'
+    fontSize: 10,
+    color: Colors.medMatPurple
   },
   toggleInput: {
     borderBottomWidth: 1,
@@ -88,9 +70,12 @@ export default StyleSheet.create({
   },
   sectionLine: {
     borderBottomWidth: 1,
-    borderBottomColor: Colors.darkMatPurple,
-    width: 280,
-    marginBottom: 40,
-    marginTop: 40
+    borderBottomColor: Colors.steel,
+    width: 280
+  },
+  image: {
+    marginTop: 4,
+    height: 40,
+    width: 40
   }
 });

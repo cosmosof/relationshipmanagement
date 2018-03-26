@@ -1,72 +1,74 @@
-import React, { Component } from 'react'
-import { Dimensions, StyleSheet, ScrollView, Text, Linking, KeyboardAvoidingView, View, Image, Button, TouchableOpacity, AlertIOS, TextInput, TouchableHighlight } from 'react-native'
-import { Colors, Metrics, Images } from '../Themes'
-
-import Icon from 'react-native-vector-icons/Ionicons'
-
-import { connect } from 'react-redux'
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
-
-// Styles
-import styles from './Styles/InfoScreenStyle'
+import React, { Component } from "react";
+import {
+  TouchableWithoutFeedback,
+  ScrollView,
+  Keyboard,
+  Text,
+  Linking,
+  View,
+  Image,
+  TouchableHighlight
+} from "react-native";
+import { Colors, Images } from "../Themes";
+import Icon from "react-native-vector-icons/Ionicons";
+import { connect } from "react-redux";
+import styles from "./Styles/InfoScreenStyle";
 
 class InfoScreen extends Component {
   static navigationOptions = ({ navigation }) => {
-    const {state, setParams} = navigation;
+    const { state, setParams, goBack } = navigation;
     return {
       headerLeft: (
-        <Icon
-          name= "ios-arrow-back"
-          size={20}
-          padding= {20}
-          style={{padding: 20}}
-          onPress={() => navigation.navigate('Home')
-          }
-        />
-        ),
-      };
-    };
-  render () {
-    var {winheight, winwidth} = Dimensions.get('window');
-
-    return (
-      <View style={styles.container}> 
-
-      <ScrollView
-      contentContainerStyle={{
-        flexGrow: 1,
-        justifyContent: 'center'
-      }}
-    >
-        <View style={[styles.container]}>
-          <Text style={styles.sectionTitle}>This Beta release will be update it soon! We are looking to hear your opinion, please let us know!</Text>
-          <TouchableHighlight onPress={() => Linking.openURL('mailto:support@foodonchart.com?subject=Feedback&body=body')}>
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
           <Icon
-                      name='ios-mail-outline'
-                      size={36}
-                      padding={10}
-                      style={{}}
-                      color={Colors.charcoal}
-                    />
-    </TouchableHighlight>
-    </View>
+            name="ios-arrow-back"
+            size={20}
+            padding={20}
+            style={{ padding: 20, color: Colors.medMatBlue2 }}
+            onPress={() => goBack()}
+          />
+        </TouchableWithoutFeedback>
+      )
+    };
+  };
+  render() {
+    return (
+      <ScrollView
+        contentContainerStyle={{
+          flexGrow: 1,
+          justifyContent: "center"
+        }}
+      >
+        <View style={styles.container}>
+       
+          <Text style={styles.sectionTitle}>
+            This is a Beta release, we look forward to hearing
+            your suggestions and opinions. Please drops us an email below!
+          </Text>
+          <TouchableHighlight
+            onPress={() =>
+              Linking.openURL(
+                "mailto:support@foodonchart.com?subject=Feedback&body=body"
+              )
+            }
+          >
+            <Image source={Images.note} style={[styles.image]} />
+          </TouchableHighlight>
+          <Text style={styles.sectionTitle}>
+            Thanks for taking time and trying out 'Relate' app!
+          </Text>
+        </View>
       </ScrollView>
-      </View>
-
-
-    )
+    );
   }
 }
 
-const mapStateToProps = (state) => {
-  return {
-  }
-}
+const mapStateToProps = state => {
+  return {};
+};
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-  }
-}
+const mapDispatchToProps = dispatch => {
+  return {};
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(InfoScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(InfoScreen);

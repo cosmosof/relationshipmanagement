@@ -14,6 +14,8 @@ import { connect } from 'react-redux'
 import styles from './Styles/LoginSignupScreenStyles'
 import {Images, Metrics} from '../Themes'
 import LoginActions from '../Redux/LoginRedux'
+import InputArea from '../Components/InputArea';
+import { StackNavigator } from 'react-navigation';
 
 class LoginScreen extends React.Component {
   static propTypes = {
@@ -69,7 +71,7 @@ class LoginScreen extends React.Component {
 
     this.setState({
       visibleHeight: newSize,
-      topLogo: {width: 80, height: 40},
+      topLogo: {width: 74, height: 22},
       formBottomMargin: 160
     })
     console.log(this.state.visibleHeight)
@@ -81,7 +83,7 @@ class LoginScreen extends React.Component {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
     this.setState({
       visibleHeight: Metrics.screenHeight,
-      topLogo: {width: 100, height: 50},
+      topLogo: {width: 100, height: 29},
       formBottomMargin: 0
     })
   }
@@ -125,10 +127,10 @@ class LoginScreen extends React.Component {
             </View> 
           </View>
           <View style={styles.row}>
-            <Text style={styles.rowLabel}>email</Text>
+            <Text style={styles.rowLabel}>Email</Text>
             <TextInput
               ref='email'
-              style={textInputStyle}
+              style={[textInputStyle, styles.inputStyle]}
               value={email}
               editable={editable}
               keyboardType='email-address'
@@ -138,17 +140,16 @@ class LoginScreen extends React.Component {
               onChangeText={this.handleEmailText}
               underlineColorAndroid='transparent'
               onSubmitEditing={() => this.refs.password.focus()}
-              placeholder='email' />
+              placeholder='enter your email' />
           </View>
-
-          <View style={styles.row}>
+           <View style={styles.row}>
             <Text style={styles.rowLabel}>Password</Text>
             <TextInput
               ref='password'
-              style={textInputStyle}
+              style={[textInputStyle, styles.inputStyle]}
               value={password}
               editable={editable}
-              keyboardType='numeric'
+              keyboardType='default'
               returnKeyType='go'
               autoCapitalize='none'
               autoCorrect={false}
@@ -156,7 +157,7 @@ class LoginScreen extends React.Component {
               onChangeText={this.handlePasswordText}
               underlineColorAndroid='transparent'
               onSubmitEditing={this.handlePressLogin}
-              placeholder='Password' />
+              placeholder='enter your password' />
           </View>
           <View style={[styles.warningRow]}>
             <Text style={styles.warningTex}>{this.props.loginerror}</Text>

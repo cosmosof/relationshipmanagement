@@ -6,6 +6,7 @@ const colors = {
   silver: '#F7F7F7',
   steel: '#CCCCCC',
   lightGray: '#F9F9F9',
+  gray: '#EDECEC',
   error: 'rgba(200, 0, 0, 0.8)',
   ricePaper: 'rgba(255,255,255, 0.75)',
   frost: '#D8D8D8',
@@ -31,10 +32,16 @@ const colors = {
   darkMatPurple: '#8e808c',
   matBlue: '#183446',
   lightMatBlue: '#95CFE5',
-  medMatBlue: '#0494C6',
+  lighterMatBlue: '#DBF0F8',
+  lighterMatPurple: '#F2ECF1',
+  medMatBlue: '#07A5DB',
   darkMatBlue: '#0386B8',
-
-
+  medGray: '#8D8D8D',
+  medMatPurple2: '#BEB8BD',
+  darkMatPurple2: '#7B787A',
+  medMatBlue2: '#A7BBC3',
+  darkMatBlue2: '#6E7C81',
+  lightMatBlue2: '#C9DEE6',
+  lightMatPurple2: '#E3DBE2'
 }
-
 export default colors

@@ -2,7 +2,6 @@ import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
 import { filter } from 'ramda'
 import { startsWith } from 'ramdasauce'
-import firebase from 'firebase';
 
 
 /* ------------- Types and Action Creators ------------- */
@@ -12,11 +11,12 @@ const { Types, Creators } = createActions({
   fetchPartnersAnswers: null,
   fetchPartnersAnswersSuccess:['answers', 'fetchpartnersanswerssuccess'],
   fetchPartnersAnswersFailure:['fetchpartnersanswerssuccess'],
-  saveUsersAnswers: ['question1', 'question2', 'question3', 'userId'],
+  saveUsersAnswers: ['question1', 'question2', 'question3', 'question4', 'question5', 'question4Text', 'question5Text', 'question6Text', 'question7Text', 'question8Text', 'question9Text', 'question10Text', 'userId'],
   saveAnswersSuccess: ['saveanswerssuccess'],
   saveAnswersFailure: ['error'],
   fetchUsersAnswers: ['userId'],
-  fetchUsersAnswersSuccess: ['question1', 'question2', 'question3']
+  fetchUsersAnswersSuccess: ['question1', 'question2', 'question3', 'question4', 'question5', 'question4Text', 'question5Text', 'question6Text', 'question7Text', 'question8Text', 'question9Text', 'question10Text'],
+  fetchUsersAnswersFailure: ['error']
 })
 export const QuestionsTypes = Types
 export default Creators
@@ -27,6 +27,15 @@ export const INITIAL_STATE = Immutable({
   question1: null,
   question2: null,
   question3: null,
+  question4: null,
+  question5: null,
+  question4Text: null,
+  question5Text: null,
+  question6Text: null,
+  question7Text: null,
+  question8Text: null,
+  question9Text: null,
+  question10Text: null,
   fetching: false,
   error: null,
   saveanswerssuccess: false,
@@ -44,10 +53,10 @@ export const questionsupdate = (state = INITIAL_STATE, { prop, value }) => {
   return state.merge({ ...state, [prop]: value })
 }
 
-export const saveusersanswers = (state = INITIAL_STATE, { question1, question2, question3, userId }) => {
-  console.log(`${question1} / ${question2} / ${question3} / ${userId}`)
+export const saveusersanswers = (state = INITIAL_STATE, { question1, question2, question3, question4, question5, question4Text, question5Text, question6Text, question7Text, question8Text, question9Text, question10Text, userId }) => {
+  console.log(`${question1} / ${question2} / ${question3} / ${userId} / ${question4Text}`)
   return (
-    state.merge({ fetching: true })
+    state.merge({ fetching: true, saveanswerssuccess: false})
   )
 }
 // Fetch answers
@@ -65,10 +74,17 @@ export const saveanswerssuccess = (state, { saveanswerssuccess }) => {
   )
 }
 // we've successfully fetch users answers
-export const fetchusersanswerssuccess = (state, { question1, question2, question3 }) => {
+export const fetchusersanswerssuccess = (state, { question1, question2, question3, question4, question5, question4Text, question5Text, question6Text, question7Text, question8Text, question9Text, question10Text }) => {
   console.log(question1)
   return (
-    state.merge({ fetching: false, error: null, question1: question1, question2: question2, question3: question3, fetchusersanswerssuccess: true })
+    state.merge({ fetching: false, error: null, question1, question2, question3, question4, question5, question4Text, question5Text, question6Text, question7Text, question8Text, question9Text, question10Text, fetchusersanswerssuccess: true })
+  )
+}
+// we've had a problem fetching users answers
+export const fetchusersanswersfailure = (state, { error }) => {
+  console.log(error)
+  return (
+    state.merge({ fetching: false, error })
   )
 }
 // we've had a problem saving
@@ -101,6 +117,7 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SAVE_ANSWERS_FAILURE]: saveanswersfailure,
   [Types.FETCH_USERS_ANSWERS]: fetchusersanswers,
   [Types.FETCH_USERS_ANSWERS_SUCCESS]: fetchusersanswerssuccess,
+  [Types.FETCH_USERS_ANSWERS_FAILURE]: fetchusersanswersfailure,
   [Types.FETCH_PARTNERS_ANSWERS]: fetchpartnersanswers,
   [Types.FETCH_PARTNERS_ANSWERS_SUCCESS]: fecthpartnersanswerssuccess,
   [Types.FETCH_PARTNERS_ANSWERS_FAILURE]: fecthpartnersanswersfailure

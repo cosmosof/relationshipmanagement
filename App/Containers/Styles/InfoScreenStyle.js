@@ -16,5 +16,8 @@ export default StyleSheet.create({
     textAlign: 'center',
     color: Colors.charcoal,
     paddingTop: Metrics.doubleBaseMargin
+  },
+  image: {
+    marginTop: 20
   }
 })

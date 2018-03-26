@@ -6,10 +6,12 @@ export default StyleSheet.create({
   ...ApplicationStyles.screen,
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
+    backgroundColor: Colors.snow,
+    alignItems: 'stretch',
     justifyContent: 'center',
-    padding: 20
+    alignSelf: 'center',
+    padding: 20,
+    maxWidth: 600,
   },
   parapraph: {
     fontSize: 14,
@@ -19,46 +21,64 @@ export default StyleSheet.create({
   },
  partnerAnswerText: {
   fontSize: 14,
-  color: Colors.lightMatBlue,
-  lineHeight: 24
+  color: Colors.medGray,
+  lineHeight: 24,
+  flexDirection: 'row'
  },
- partnerAnswerTextWarning: {
+ partnerAnswerTextWarning:{
   fontSize: 14,
-  color: Colors.fire,
+  color: Colors.darkMatBlue,
+  lineHeight: 24,
+  flexDirection: 'row'
+ },
+ partnerAnswerTextTitle: {
+  marginTop: 10,
+  marginBottom: 10,
+  color: Colors.charcoal
+ },
+ partnerAnswerTextLeft: {
+  fontSize: 14,
+  color: Colors.medGray,
   lineHeight: 24
  },
   title: {
-    fontSize: 18,
+    fontSize: 16,
     color: Colors.coal,
     paddingBottom: 5,
-    lineHeight: 28
+    lineHeight: 28,
+    marginBottom: 20,
+    marginTop: 10
+  },
+  titleBold: {
+    fontSize: 16,
+    color: Colors.coal,
+    paddingBottom: 5,
+    lineHeight: 28,
+    fontWeight: 'bold',
+    marginTop: 20
   },
   lineBreak: {
     borderWidth: 0.5,
     borderColor: Colors.steel,
     marginBottom: 10
   },
-  loginButtonWrapper: {
-    flex: 1,
-    minWidth: 160
+  boxShadow: {
+    borderColor: Colors.lightMatBlue,
+    shadowColor: Colors.medMatBlue,
+		shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.5,
+		shadowRadius: 3,
+    elevation: 1
   },
-  loginButton: {
-    flex: 1,
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: Colors.lightSalmonPink,
-    backgroundColor: Colors.pastelRed,
-    padding: 6,
-    justifyContent: 'center'
-  },
-  loginText: {
+  submitAnswersWarningText: {
+    fontSize: 12,
+    color: Colors.fire,
+    marginBottom: 4,
     textAlign: 'center',
-    color: Colors.silver
+    alignSelf: 'center'
   },
-  buttonStyle: {
-    backgroundColor: Colors.grayBlue,
-    borderColor: Colors.grayBlue,
-    borderRadius: 2,
-    marginTop: 10
-  }
+  topWarning: {
+    fontSize: 12,
+    color: Colors.medMatBlue2
+  } 
 })

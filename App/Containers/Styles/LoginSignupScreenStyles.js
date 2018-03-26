@@ -50,7 +50,8 @@ export default StyleSheet.create({
     color: Colors.charcoal
   },
   rowLabel: {
-    color: Colors.charcoal
+    color: Colors.charcoal,
+    fontWeight: '600'
   },
   textInput: {
     height: 40,
@@ -116,7 +117,7 @@ export default StyleSheet.create({
     alignSelf: 'center'
   },
   loginButtonWrapper: {
-    flex: 1
+    flex: 1, height: 36
   },
   loginButtonLeft: {
     flex: 1,
@@ -126,7 +127,8 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderTopLeftRadius: 2,
     borderBottomLeftRadius: 2,
-    borderRightWidth: 0
+    borderRightWidth: 0,
+    justifyContent: 'center'
   },
   loginButtonRight: {
     flex: 1,
@@ -136,7 +138,8 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderTopRightRadius: 2,
     borderBottomRightRadius: 2,
-    borderLeftWidth: 0 
+    borderLeftWidth: 0,
+    justifyContent: 'center'
   },
   loginButton: {
     flex: 1,
@@ -144,7 +147,9 @@ export default StyleSheet.create({
     borderColor: Colors.darkMatPurple,
     backgroundColor: Colors.medMatPurple,
     padding: 6,
-    borderRadius: 2
+    borderRadius: 2,
+    justifyContent: 'center'
+
   },
   loginText: {
     textAlign: 'center',
@@ -159,8 +164,16 @@ export default StyleSheet.create({
     flexGrow: 1, justifyContent: 'center', alignItems: 'center'
   },
   topLogo: {
-    width: 100, 
-    height: 50,
+    width: 147/1.5,
+    height: 43/1.5,
     marginBottom: 20
+  },
+  inputStyle: {
+    color: Colors.charcoal,
+    fontSize: 12
+  },
+  cancelText: {
+    fontSize: 12,
+    color: Colors.medMatPurple
   }
 })

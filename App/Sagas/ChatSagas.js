@@ -6,55 +6,56 @@ export const selectPartnersId = state => state.homescreen.approvedPeerId;
 export const selectchatId = state => state.homescreen.chatId;
 export const selectUserId = state => state.login.userId;
 
-/************************** SAVE USER  MESSAGE SAGA ******************************/
+/*
+  SAVE USER  MESSAGE SAGA  
+*/
 
 export function* saveusermessage({ usermessage, userId }) {
   yield call(delay, 1000);
   const chatId = yield select(selectchatId);
-
-  console.log(`saveusermessage saga / ${usermessage} / ${userId} / ${chatId}`)
-
-  let createdAt = new Date().getTime()
-  let chatMessage = {
-      text: usermessage,
-      createdAt: createdAt,
-      userId: userId 
-  }
-    const firebaseSaveUserMessage = () => 
-      firebase
-        .database()
-        .ref(`/messages/${chatId}`)
-        .push()  
-        .set(chatMessage)
-        .then(response => ({ response }))
-        .catch(error => ({ error }));
-    try {
-    const { response, error } = yield call(firebaseSaveUserMessage);
-    console.log(response)
-    if(!error){ 
-      yield put(ChatActions.saveMessageSuccess());
+  if(chatId){
+    let createdAt = new Date().getTime()
+    let chatMessage = {
+        text: usermessage,
+        createdAt: createdAt,
+        userId: userId 
     }
-  } catch(error){
-    console.log(error)
+      const firebaseSaveUserMessage = () => 
+        firebase
+          .database()
+          .ref(`/messages/${chatId}`)
+          .push()  
+          .set(chatMessage)
+          .then(response => ({ response }))
+          .catch(error => ({ error }));
+      try {
+      const { response, error } = yield call(firebaseSaveUserMessage);
+      if(!error){ 
+        yield put(ChatActions.saveMessageSuccess());
+      }
+    } catch(error){
+      yield put(ChatActions.saveMessageFailure());
+    }      
+  } else {
     yield put(ChatActions.saveMessageFailure());
-  }  
+  }
 }
 
-/************************** FETCH USER MESSAGE SAGA ******************************/
+/*
+  FETCH USER MESSAGE SAGA 
+*/
 
-
-
-//fruitRef.orderByKey().startAt(“5”).limitToFirst(3): returns keys 5, 6, 7
+//Ref.orderByKey().startAt(“5”).limitToFirst(3): returns keys 5, 6, 7
 
 export function* fetchusermessages() {
-  console.log('fetchusermessages')
   const userId = yield select(selectUserId);
+  const friendId = yield select(selectPartnersId);
+
+  // TODO- after react-navigation upgrade check this code out again
+  yield call(delay, 1000);
 
   const chatId = yield select(selectchatId);
   const ref = firebase.database().ref(`/messages/${chatId}/`);
-
-  console.log(chatId)
-
   function createChannel(chatId) {
     const ref = firebase.database().ref(`/messages/${chatId}/`);
     const channel = eventChannel(emit => {
@@ -63,7 +64,6 @@ export function* fetchusermessages() {
         snapshot.forEach(function(el) {
           messages.push(el.val());
       });
-      console.log(messages)
         snapshot.val() ? emit(messages) : emit({ false: 'false' });
       });
       return () => ref.off();
@@ -74,10 +74,8 @@ export function* fetchusermessages() {
   const channel = createChannel(chatId);
   while (true) {
     const item = yield take(channel);
-    console.log(item) 
     
     if (Object.keys(item)[0] === 'false') {
-      console.log('empty chat');
       let messages = [];
 
       let createdAt = new Date().getTime()
@@ -87,7 +85,6 @@ export function* fetchusermessages() {
         userId: userId 
     }
      messages.push(newMessage);
-     console.log(messages) 
 
       yield put(ChatActions.fetchUserMessagesSuccess(messages));
       yield call(delay, 1000);
@@ -102,20 +99,10 @@ export function* fetchusermessages() {
       yield put(ChatActions.fetchUserMessagesSuccess(messages2));
 
     } else {
-      console.log(Object.values(item)) 
-      console.log(Object.values(item)[0]) 
-      console.log(Object.values(item)[1])
       const data = item;
-
       if(data) {
-        console.log(data)
-        console.log(Object.keys(data)) 
-        console.log(Object.values(data)) 
-        console.log(Object.entries(data))
         const usermesssagedata = Object.keys(data).map(key => data[key]);
-        console.log(usermesssagedata) 
         const newData = usermesssagedata.reverse()
-        console.log(newData) 
         yield put(ChatActions.fetchUserMessagesSuccess(newData));
       } else {
         yield put(ChatActions.fetchUserMessagesFailure());

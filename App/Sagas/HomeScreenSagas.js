@@ -29,11 +29,6 @@ export function* getCurrentToken() {
       console.log('Unable to get permission to notify.', err);
     });
 
-  FCM.onTokenRefresh(token => {
-    console.log('onTokenRefresh');
-    console.log(token);
-  });
-
   const currentToken = () =>
     FCM.getToken()
       .then(function(token) {
@@ -296,33 +291,23 @@ export function* declineinv() {
   console.log(`${userId} / ${username} / ${friendname} / ${friendId}`);
   firebase
     .database()
-    .ref('/matchrequest/' + `${friendId}/` + 'approvedrequest/')
-    .child(userId)
-    .remove();
-  firebase
-    .database()
-    .ref('/matchrequest/' + `${userId}/` + 'approvedrequest/')
+    .ref('/matchrequest/')
     .child(friendId)
     .remove();
   firebase
     .database()
-    .ref('/matchrequest/' + `${userId}/` + 'requester/')
-    .child(friendId)
-    .remove();
-  firebase
-    .database()
-    .ref('/matchrequest/' + `${friendId}/` + 'requester/')
+    .ref('/matchrequest/')
     .child(userId)
     .remove();
   firebase
     .database()
-    .ref('/matchrequest/' + `${friendId}/` + 'pendingrequest/')
-    .child(userId)
+    .ref(`/todos/`)
+    .child(friendId+userId)
     .remove();
   firebase
     .database()
-    .ref('/matchrequest/' + `${userId}/` + 'pendingrequest/')
-    .child(friendId)
-    .remove();
+    .ref(`/messages/`)
+    .child(friendId+userId)
+    .remove(); 
   yield put(HomeScreenActions.connectionDeleted(true));
 }

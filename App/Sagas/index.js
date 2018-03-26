@@ -14,7 +14,7 @@ import { ProfileTypes } from '../Redux/ProfileRedux'
 import { QuestionsTypes } from '../Redux/questionsRedux'
 import { HomeScreenTypes } from '../Redux/HomeScreenRedux'
 import { ChatTypes } from '../Redux/ChatRedux'
-
+import { ToDoTypes } from '../Redux/ToDoRedux'
 
 /* ------------- Sagas ------------- */
 
@@ -29,7 +29,7 @@ import {
   findpeer, acceptinv, declineinv, listenMatchrequestOnlogin
 } from './HomeScreenSagas'
 import { saveusermessage, fetchusermessages } from './ChatSagas'
-
+import { saveusertodos, fetchusertodos, updatetodonode, deletetodonode } from './ToDoSagas'
 
 /* ------------- API ------------- */
 
@@ -68,6 +68,10 @@ export default function * root () {
     takeLatest(HomeScreenTypes.SAVE_DEVICE_TOKEN, savetokentodb),
     takeLatest(ChatTypes.SAVE_USER_MESSAGE, saveusermessage), 
     takeLatest(ChatTypes.FETCH_USER_MESSAGES, fetchusermessages), 
+    takeLatest(ToDoTypes.FETCH_USER_TODOS, fetchusertodos), 
+    takeLatest(ToDoTypes.SAVE_USER_TODOS, saveusertodos), 
+    takeLatest(ToDoTypes.UPDATE_TODO_STATUS, updatetodonode), 
+    takeLatest(ToDoTypes.DELETE_TODO, deletetodonode), 
 
     // some sagas receive extra parameters in addition to an action
     takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
@@ -77,4 +81,3 @@ export default function * root () {
 
   ])
 }
-

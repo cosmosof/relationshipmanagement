@@ -1,72 +1,79 @@
 import React from 'react';
 import {
-  StyleSheet,
+  Alert,
   Text,
   View,
   ScrollView,
-  Image,
-  Button,
-  TouchableOpacity,
-  AlertIOS,
-  TextInput,
+  Alert,
   AsyncStorage,
   AppState,
   LayoutAnimation,
-  Keyboard
+  Keyboard,
+  TouchableWithoutFeedback
 } from 'react-native';
 import Colors from '../Themes/Colors';
 import Icon from 'react-native-vector-icons/Ionicons';
-import FullButton from '../Components/FullButton';
+import HomeScreenPreLoader from '../Components/HomeScreenPreLoader';
+import HomeScreenWelcome from '../Components/HomeScreenWelcome';
+import HomeScreenMatched from '../Components/HomeScreenMatched';
+import HomeScreenRequest from '../Components/HomeScreenRequest';
+import HomeScreenPendingRequest from '../Components/HomeScreenPendingRequest';
 import firebase from 'react-native-firebase';
 import { connect } from 'react-redux';
 import HomeScreenActions from '../Redux/HomeScreenRedux';
 import styles from './Styles/HomeScreenStyles';
-import { Images, Metrics } from '../Themes';
-import * as Animatable from 'react-native-animatable';
-import Card from '../Themes/Card';
+import { Metrics } from '../Themes';
 
 class HomeScreen extends React.Component {
   static navigationOptions = ({ navigation }) => {
-    //const { state, setParams } = navigation;
-    const {params = {}} = navigation.state;
-
-    //const warningIconBackgroundColor = this.state;
-    console.log(params)
-    //console.log(navigation.state.params.warningIconBackgroundColor)
+    const { params = {} } = navigation.state;
     return {
       headerLeft: (
-        <Icon
-          name='ios-information-circle-outline'
-          size={20}
-          padding={20}
-          style={{ padding: 20 }}
-          onPress={() => navigation.navigate('Info')}
-        />
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+          <Icon
+            name='ios-information-circle-outline'
+            size={20}
+            padding={20}
+            style={{ padding: 20, color: Colors.darkMatBlue2 }}
+            onPress={() => navigation.navigate('Info')}
+          />
+        </TouchableWithoutFeedback>
       ),
       headerRight: (
-        <View>
-        <Icon
-          name='ios-person-outline'
-          size={20}
-          padding={20}
-          style={{ padding: 20 }}
-          onPress={() => navigation.navigate('Profile')}
-        /> 
-        <View style={{ 
-          borderRadius: 50, backgroundColor: params? params.warningIconBackgroundColor : Colors.charcoal, 
-          position: 'absolute', right: 10, top: 15, width: 16, height: 16, justifyContent: 'center', alignItems: 'center' }} 
->
-<Icon
-        name='ios-notifications'
-        size={12}
-        //padding={20}
-        style={{ color: Colors.silver, textAlign: 'center'}} 
-        onPress={() => navigation.navigate('Profile')}
-      />
-        </View>
-        
-        </View>
-       
+        <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
+          <View>
+            <Icon
+              name='ios-person-outline'
+              size={20}
+              padding={20}
+              style={{ padding: 20, color: Colors.darkMatBlue2 }}
+              onPress={() => navigation.navigate('Profile')}
+            />
+            <View
+              style={{
+                borderRadius: 50,
+                backgroundColor: params
+                  ? params.warningIconBackgroundColor
+                  : Colors.charcoal,
+                position: 'absolute',
+                right: 10,
+                top: 15,
+                width: 16,
+                height: 16,
+                justifyContent: 'center',
+                alignItems: 'center'
+              }}
+            >
+              <Icon
+                name='ios-notifications'
+                size={12}
+                //padding={20}
+                style={{ color: Colors.silver, textAlign: 'center' }}
+                onPress={() => navigation.navigate('Profile')}
+              />
+            </View>
+          </View>
+        </TouchableWithoutFeedback>
       )
     };
   };
@@ -83,18 +90,17 @@ class HomeScreen extends React.Component {
   componentDidMount() {
     console.log('homescreen componentDidMount');
     AppState.addEventListener('change', this._handleAppStateChange);
-    this.props.getDeviceCurrentToken();  
+    this.props.getDeviceCurrentToken();
   }
 
   componentWillMount() {
     firebase.auth().onAuthStateChanged(function(user) {
-      console.log('auth state')
-      console.log(user)
-      console.log('auth state changed')
+      console.log('auth state');
+      console.log(user);
+      console.log('auth state changed');
       if (user) {
       }
-    }); 
-    // Using keyboardWillShow/Hide looks 1,000 times better, but doesn't work on Android
+    });
     // TODO: Revisit this if Android begins to support - https://github.com/facebook/react-native/issues/3468
     this.keyboardDidShowListener = Keyboard.addListener(
       'keyboardDidShow',
@@ -110,7 +116,9 @@ class HomeScreen extends React.Component {
     this.keyboardDidShowListener.remove();
     this.keyboardDidHideListener.remove();
   }
+
   handleChangeFriendname = text => {
+    console.log(text);
     this.setState({ friendname: text });
   };
   keyboardDidShow = e => {
@@ -122,7 +130,6 @@ class HomeScreen extends React.Component {
 
     this.setState({
       visibleHeight: newSize,
-      //topLogo: {width: 80, height: 40},
       formBottomMargin: 100
     });
     console.log(this.state.visibleHeight);
@@ -133,7 +140,6 @@ class HomeScreen extends React.Component {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     this.setState({
       visibleHeight: Metrics.screenHeight,
-      //topLogo: {width: 100, height: 50},
       formBottomMargin: 0
     });
   };
@@ -165,23 +171,37 @@ class HomeScreen extends React.Component {
     this.setState({ appState: nextAppState });
   };
 
-
+ 
+  deleteMatchHandler() {
+    Alert.alert(
+      'Delete Connection',
+      'Are you sure you want to delete this connection?',
+      [
+        {
+          text: 'Cancel'
+        },
+        {
+          text: 'Delete',
+          onPress: () => this.props.handleDeclineInvitation()
+        }
+      ]
+    );
+  }
   componentWillReceiveProps(newProps) {
     console.log(newProps);
     console.log(newProps.token);
-  
-       if( newProps.isemailverified !==  this.props.isemailverified ){
-        console.log('emailverified changed');
-        console.log(newProps.isemailverified);
-        const {setParams} = this.props.navigation;
-        setParams({ warningIconBackgroundColor: Colors.transparent })
-      }  else if(!newProps.isemailverified&&!this.state.isemailverified) {
-        console.log('emailverified changed 2');
-        this.setState({ isemailverified: true });
-        const {setParams} = this.props.navigation;
-        setParams({ warningIconBackgroundColor: Colors.charcoal })
-      }
-      
+
+    if (newProps.isemailverified !== this.props.isemailverified) {
+      console.log('emailverified changed');
+      console.log(newProps.isemailverified);
+      const { setParams } = this.props.navigation;
+      setParams({ warningIconBackgroundColor: Colors.transparent });
+    } else if (!newProps.isemailverified && !this.state.isemailverified) {
+      console.log('emailverified changed 2');
+      this.setState({ isemailverified: true });
+      const { setParams } = this.props.navigation;
+      setParams({ warningIconBackgroundColor: Colors.charcoal });
+    }
 
     if (newProps.token) {
       console.log(newProps.token);
@@ -232,675 +252,54 @@ class HomeScreen extends React.Component {
     const { friendname } = this.state;
     return (
       <ScrollView
-        contentContainerStyle={{
-          //flex: 1,
-          //alignItems: 'center',
-          flexGrow: 1,
-          justifyContent: 'center'
-        }}
+        contentContainerStyle={[styles.containerStyle]}
         style={[styles.container]}
         keyboardShouldPersistTaps='always'
       >
-        {/* 
-        //          <View style={{height: this.state.visibleHeight, backgroundColor: Colors.bloodOrange}}>
-
-                this.props.fetchingMatchedPeer ?   
-                  <Text> Fetching </Text>
-                    :
-                  (
-                    this.props.invitation ? 
-                      ( 
-                        this.props.invAccepted ? 
-                        <Text>you are connected</Text> 
-                          : 
-                        (
-                          this.props.fetchingMatchRequest ? <Text> Fethcing< /Text> 
-                          :                           
-                          <Text>invitation from: {Object.values(this.props.invitation)[0]}</Text> 
-                        )
-                      ) 
-                        : 
-                      ( 
-                        this.props.pendingMatchPeer ? 
-                          <Text> Pending REQUEST </Text>
-                            : 
-                          ( 
-                            this.props.connectionSucceed ? 
-                              <Text> your are connected </Text>
-                                :  
-                              <Text> WELCOME PEERLER </Text> 
-                          )
-                      )
-                  )
-                    
-                */
-        this.props.fetchingMatchedPeer ? (
-          <Card>
-            <View
-              style={[
-                styles.container,
-                {
-                  marginBottom: this.state.formBottomMargin,
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }
-              ]}
-            >
-              <View
-                style={{
-                  height: 40,
-                  width: '10%',
-                  backgroundColor: Colors.lightGray,
-                  marginTop: 10,
-                  borderRadius: 50
-                }}
-              />
-
-              <View
-                style={{
-                  height: 40,
-                  width: '40%',
-                  backgroundColor: Colors.lightGray,
-                  marginTop: 10
-                }}
-              />
-
-              <View
-                style={{
-                  height: 40,
-                  width: '70%',
-                  backgroundColor: Colors.lightGray,
-                  marginTop: 10
-                }}
-              />
-
-              <View
-                style={{
-                  height: 40,
-                  width: '70%',
-                  backgroundColor: Colors.lightGray,
-                  marginTop: 10
-                }}
-              />
-
-              <View
-                style={{
-                  height: 40,
-                  width: '50%',
-                  backgroundColor: Colors.lightGray,
-                  marginTop: 50
-                }}
-              />
-
-              <View
-                style={{
-                  height: 40,
-                  width: '50%',
-                  backgroundColor: Colors.lightGray,
-                  marginTop: 10
-                }}
-              />
-            </View>
-          </Card>
+        {this.props.fetchingMatchedPeer ? (
+          <HomeScreenPreLoader marginBottom={this.state.formBottomMargin} />
         ) : this.props.invitation ? (
           this.props.invAccepted ? (
-            <Card>
-              <View
-                style={[
-                  styles.container,
-                  {
-                    marginBottom: this.state.formBottomMargin,
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }
-                ]}
-              >
-                <View>
-                  <Icon
-                    name='ios-checkmark-circle-outline'
-                    size={40}
-                    padding={10}
-                    style={{ alignSelf: 'center' }}
-                    color={Colors.lightMatPurple}
-                  />
-                  <Text
-                    style={{
-                      alignSelf: 'center',
-                      fontSize: 20,
-                      marginBottom: 10
-                    }}
-                  >
-                    {Object.values(this.props.invitation)[0]}
-                  </Text>
-                  <Text style={{ alignSelf: 'center', marginBottom: 20 }}>
-                    connected with you
-                  </Text>
-                </View>
-                <View style={{ flex: 1, flexDirection: 'row', maxHeight: 30 }}>
-                  <View>
-                    <Icon
-                      name='ios-checkmark'
-                      size={32}
-                      padding={2}
-                      style={{ alignSelf: 'center', marginRight: 5 }}
-                      color={Colors.lightMatPurple}
-                      onPress={() =>
-                        this.props.navigation.navigate('MatchScreen')
-                      }
-                    />
-                  </View>
-                  <View>
-                    <Text style={{ marginTop: 6 }}>
-                      you will get to see peer’s questions-answers
-                    </Text>
-                  </View>
-                </View>
-                <View style={{ flex: 1, flexDirection: 'row', maxHeight: 60 }}>
-                  <View>
-                    <Icon
-                      name='ios-checkmark'
-                      size={32}
-                      padding={2}
-                      style={{ alignSelf: 'center', marginRight: 5 }}
-                      color={Colors.lightMatPurple}
-                      onPress={() =>
-                        this.props.navigation.navigate('MatchScreen')
-                      }
-                    />
-                  </View>
-                  <View>
-                    <Text style={{ marginTop: 6 }}>
-                      peer will get to see your questions-answers
-                    </Text>
-                  </View>
-                </View>
-                <TouchableOpacity onPress={this.props.handleDeclineInvitation}>
-                  <Text style={{ textAlign: 'center', color: Colors.ember }}>
-                    DELETE THIS CONNECTION
-                  </Text>
-                </TouchableOpacity>
-              </View>
-            </Card>
+            <HomeScreenMatched
+              onPress={this.deleteMatchHandler.bind(this)}
+              approvedPeerName={this.props.approvedPeerName}
+            />
           ) : this.props.fetchingMatchRequest ? (
-            <Card>
-              <View
-                style={[
-                  styles.container,
-                  {
-                    marginBottom: this.state.formBottomMargin,
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }
-                ]}
-              >
-                <View
-                  style={{
-                    height: 40,
-                    width: '10%',
-                    backgroundColor: Colors.lightGray,
-                    marginTop: 10,
-                    borderRadius: 50
-                  }}
-                />
-
-                <View
-                  style={{
-                    height: 40,
-                    width: '40%',
-                    backgroundColor: Colors.lightGray,
-                    marginTop: 10
-                  }}
-                />
-
-                <View
-                  style={{
-                    height: 40,
-                    width: '70%',
-                    backgroundColor: Colors.lightGray,
-                    marginTop: 10
-                  }}
-                />
-
-                <View
-                  style={{
-                    height: 40,
-                    width: '70%',
-                    backgroundColor: Colors.lightGray,
-                    marginTop: 10
-                  }}
-                />
-
-                <View
-                  style={{
-                    height: 40,
-                    width: '50%',
-                    backgroundColor: Colors.lightGray,
-                    marginTop: 50
-                  }}
-                />
-
-                <View
-                  style={{
-                    height: 40,
-                    width: '50%',
-                    backgroundColor: Colors.lightGray,
-                    marginTop: 10
-                  }}
-                />
-              </View>
-            </Card>
+            <HomeScreenPreLoader marginBottom={this.state.formBottomMargin} />
           ) : (
-            <Card>
-              <View
-                style={[
-                  styles.container,
-                  {
-                    marginBottom: this.state.formBottomMargin,
-                    alignItems: 'center',
-                    justifyContent: 'center'
-                  }
-                ]}
-              >
-                <View>
-                  <View
-                    style={{
-                      flex: 1,
-                      alignItems: 'center',
-                      flexDirection: 'row',
-                      justifyContent: 'center',
-                      maxHeight: 30
-                    }}
-                  >
-                    <Animatable.View
-                      animation='flash'
-                      easing='ease-in-out'
-                      iterationCount={20}
-                    >
-                      <Icon
-                        name='ios-mail-outline'
-                        size={32}
-                        padding={10}
-                        style={{}}
-                        color={Colors.lightMatPurple}
-                        onPress={() =>
-                          this.props.navigation.navigate('MatchScreen')
-                        }
-                      />
-                    </Animatable.View>
-                  </View>
-                  <Text
-                    style={{
-                      alignSelf: 'center',
-                      fontSize: 20,
-                      marginBottom: 10
-                    }}
-                  >
-                    {Object.values(this.props.invitation)[0]}
-                  </Text>
-                  <Text style={{ alignSelf: 'center', marginBottom: 20 }}>
-                    wants to connect with you
-                  </Text>
-                </View>
-                <View style={{ flex: 1, flexDirection: 'row', maxHeight: 30 }}>
-                  <View>
-                    <Icon
-                      name='ios-checkmark'
-                      size={32}
-                      padding={2}
-                      style={{ alignSelf: 'center', marginRight: 5 }}
-                      color={Colors.lightMatPurple}
-                      onPress={() =>
-                        this.props.navigation.navigate('MatchScreen')
-                      }
-                    />
-                  </View>
-                  <View>
-                    <Text style={{ marginTop: 6 }}>
-                      you will get to see peer’s questions-answers
-                    </Text>
-                  </View>
-                </View>
-                <View style={{ flex: 1, flexDirection: 'row', maxHeight: 60 }}>
-                  <View>
-                    <Icon
-                      name='ios-checkmark'
-                      size={32}
-                      padding={2}
-                      style={{ alignSelf: 'center', marginRight: 5 }}
-                      color={Colors.lightMatPurple}
-                      onPress={() =>
-                        this.props.navigation.navigate('MatchScreen')
-                      }
-                    />
-                  </View>
-                  <View>
-                    <Text style={{ marginTop: 6 }}>
-                      peer will get to see your questions-answers
-                    </Text>
-                  </View>
-                </View>
-
-                <View style={[styles.loginRow]}>
-                  <TouchableOpacity
-                    style={styles.doubleButtonRow}
-                    onPress={this.props.handleAcceptInvitation}
-                  >
-                    <View style={styles.resButton}>
-                      <Text style={styles.buttonText}>Accept</Text>
-                    </View>
-                  </TouchableOpacity>
-                  <TouchableOpacity
-                    style={styles.doubleButtonRow}
-                    onPress={this.props.handleDeclineInvitation}
-                  >
-                    <View style={styles.resButton}>
-                      <Text style={styles.buttonText}>Decline</Text>
-                    </View>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </Card>
+            <HomeScreenRequest
+              requestername={Object.values(this.props.invitation)[0]}
+              handleAcceptInvitation={this.props.handleAcceptInvitation.bind(
+                this
+              )}
+              handleDeclineInvitation={this.props.handleDeclineInvitation.bind(
+                this
+              )}
+            />
           )
         ) : this.props.pendingMatchPeer ? (
-          <Card>
-            <View
-              style={[
-                styles.container,
-                {
-                  marginBottom: this.state.formBottomMargin,
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }
-              ]}
-            >
-              <View>
-                <View>
-                  <Icon
-                    name='ios-clock-outline'
-                    size={40}
-                    padding={10}
-                    style={{ alignSelf: 'center' }}
-                    color={Colors.lightMatPurple}
-                  />
-                  <Text style={{ alignSelf: 'center', marginBottom: 20 }}>
-                    waiting for
-                  </Text>
-                  <Text
-                    style={{
-                      alignSelf: 'center',
-                      fontSize: 20,
-                      marginBottom: 10
-                    }}
-                  >
-                    {this.state.friendname
-                      ? this.state.friendname
-                      : this.props.approvedUsername}'s Approval
-                  </Text>
-                  <TouchableOpacity
-                    onPress={this.props.handleDeclineInvitation}
-                  >
-                    <Text
-                      style={{
-                        textAlign: 'center',
-                        color: Colors.ember,
-                        marginTop: 20
-                      }}
-                    >
-                      DELETE THIS REQUEST
-                    </Text>
-                  </TouchableOpacity>
-                </View>
-              </View>
-            </View>
-          </Card>
+          <HomeScreenPendingRequest
+            friendname={this.state.friendname}
+            approvedUsername={this.props.approvedUsername}
+            handleDeclineInvitation={this.props.handleDeclineInvitation.bind(
+              this
+            )}
+          />
         ) : this.props.connectionSucceed ? (
-          <Card>
-            <View
-              style={[
-                styles.container,
-                {
-                  marginBottom: this.state.formBottomMargin,
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }
-              ]}
-            >
-              <View>
-                <Icon
-                  name='ios-checkmark-circle-outline'
-                  size={40}
-                  padding={10}
-                  style={{ alignSelf: 'center' }}
-                  color={Colors.lightMatPurple}
-                />
-                <Text
-                  style={{
-                    alignSelf: 'center',
-                    fontSize: 20,
-                    marginBottom: 10
-                  }}
-                >
-                  {this.props.approvedPeerName}
-                </Text>
-                <Text style={{ alignSelf: 'center', marginBottom: 20 }}>
-                  connected with you
-                </Text>
-              </View>
-              <View style={{ flex: 1, flexDirection: 'row', maxHeight: 30 }}>
-                <View>
-                  <Icon
-                    name='ios-checkmark'
-                    size={32}
-                    padding={2}
-                    style={{ alignSelf: 'center', marginRight: 5 }}
-                    color={Colors.lightMatPurple}
-                    onPress={() =>
-                      this.props.navigation.navigate('MatchScreen')
-                    }
-                  />
-                </View>
-                <View>
-                  <Text style={{ marginTop: 6 }}>
-                    you will get to see peer’s questions-answers
-                  </Text>
-                </View>
-              </View>
-              <View style={{ flex: 1, flexDirection: 'row', maxHeight: 60 }}>
-                <View>
-                  <Icon
-                    name='ios-checkmark'
-                    size={32}
-                    padding={2}
-                    style={{ alignSelf: 'center', marginRight: 5 }}
-                    color={Colors.lightMatPurple}
-                    onPress={() =>
-                      this.props.navigation.navigate('MatchScreen')
-                    }
-                  />
-                </View>
-                <View>
-                  <Text style={{ marginTop: 6 }}>
-                    peer will get to see your questions-answers
-                  </Text>
-                </View>
-              </View>
-              <TouchableOpacity onPress={this.props.handleDeclineInvitation}>
-                <Text style={{ textAlign: 'center', color: Colors.ember }}>
-                  DELETE THIS CONNECTION
-                </Text>
-              </TouchableOpacity>
-            </View>
-          </Card>
+          <HomeScreenMatched
+            onPress={this.deleteMatchHandler.bind(this)}
+            approvedPeerName={this.props.approvedPeerName}
+          />
         ) : this.props.peerNameFetching ? (
-          <Card>
-            <View
-              style={[
-                styles.container,
-                {
-                  marginBottom: this.state.formBottomMargin,
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }
-              ]}
-            >
-              <View
-                style={{
-                  height: 40,
-                  width: '10%',
-                  backgroundColor: Colors.lightGray,
-                  marginTop: 10,
-                  borderRadius: 50
-                }}
-              />
-
-              <View
-                style={{
-                  height: 40,
-                  width: '40%',
-                  backgroundColor: Colors.lightGray,
-                  marginTop: 10
-                }}
-              />
-
-              <View
-                style={{
-                  height: 40,
-                  width: '70%',
-                  backgroundColor: Colors.lightGray,
-                  marginTop: 10
-                }}
-              />
-
-              <View
-                style={{
-                  height: 40,
-                  width: '70%',
-                  backgroundColor: Colors.lightGray,
-                  marginTop: 10
-                }}
-              />
-
-              <View
-                style={{
-                  height: 40,
-                  width: '50%',
-                  backgroundColor: Colors.lightGray,
-                  marginTop: 50
-                }}
-              />
-
-              <View
-                style={{
-                  height: 40,
-                  width: '50%',
-                  backgroundColor: Colors.lightGray,
-                  marginTop: 10
-                }}
-              />
-            </View>
-          </Card>
+          <HomeScreenPreLoader marginBottom={this.state.formBottomMargin} />
         ) : (
-          <Card>
-            <View
-              style={[
-                styles.container,
-                {
-                  marginBottom: this.state.formBottomMargin,
-                  alignItems: 'center',
-                  justifyContent: 'center'
-                }
-              ]}
-            >
-              <View>
-                <Icon
-                  name='ios-send-outline'
-                  size={40}
-                  padding={10}
-                  style={{ alignSelf: 'center' }}
-                  color={Colors.steel}
-                  onPress={() => this.props.navigation.navigate('MatchScreen')}
-                />
-                <Text
-                  style={{
-                    alignSelf: 'center',
-                    fontSize: 20,
-                    marginBottom: 10
-                  }}
-                >
-                  Welcome to Peerler
-                </Text>
-                <Text style={{ alignSelf: 'center', marginBottom: 20 }}>
-                  Start by connecting your partner
-                </Text>
-              </View>
-              <View style={{ flex: 1, flexDirection: 'row', maxHeight: 30 }}>
-                <View>
-                  <Icon
-                    name='ios-checkmark'
-                    size={32}
-                    padding={2}
-                    style={{ alignSelf: 'center', marginRight: 5 }}
-                    color={Colors.lightMatPurple}
-                    onPress={() =>
-                      this.props.navigation.navigate('MatchScreen')
-                    }
-                  />
-                </View>
-                <View>
-                  <Text style={{ marginTop: 6 }}>
-                    get the app username and send invititation
-                  </Text>
-                </View>
-              </View>
-              <View style={{ flex: 1, flexDirection: 'row', maxHeight: 30 }}>
-                <View>
-                  <Icon
-                    name='ios-checkmark'
-                    size={32}
-                    padding={2}
-                    style={{ alignSelf: 'center', marginRight: 5 }}
-                    color={Colors.lightMatPurple}
-                    onPress={() =>
-                      this.props.navigation.navigate('MatchScreen')
-                    }
-                  />
-                </View>
-                <View>
-                  <Text style={{ marginTop: 6 }}>
-                    make sure your partner downloaded the app
-                  </Text>
-                </View>
-              </View>
-
-              <View style={styles.row}>
-                <TextInput
-                  ref='username'
-                  style={styles.textInput}
-                  value={friendname}
-                  keyboardType='default'
-                  returnKeyType='next'
-                  autoCapitalize='none'
-                  autoCorrect={false}
-                  onChangeText={this.handleChangeFriendname}
-                  underlineColorAndroid='transparent'
-                  placeholder='peer username'
-                />
-              </View>
-              <View>
-                <Text style={styles.warningTexInvite}>
-                  {this.props.peerNameFoundError}
-                </Text>
-              </View>
-              <TouchableOpacity
-                style={styles.inviveButtonRow}
-                onPress={this.handlePressFindFriend}
-              >
-                <View style={styles.inviteButton}>
-                  <Text style={styles.buttonText}>Invite Peer</Text>
-                </View>
-              </TouchableOpacity>
-            </View>
-          </Card>
+          <HomeScreenWelcome
+            handleChangeFriendname={this.handleChangeFriendname.bind(this)}
+            handlePressFindFriend={this.handlePressFindFriend}
+            marginBottom={this.state.formBottomMargin}
+            friendname={this.state.friendname}
+            peerNameFoundError={this.props.peerNameFoundError}
+          />
         )}
       </ScrollView>
     );
@@ -923,7 +322,7 @@ const mapStateToProps = state => {
     peerNameFoundError,
     peerNameFetching,
     approvedUsername,
-    fetchingMatchRequest 
+    fetchingMatchRequest
   } = state.homescreen;
   const { userId, username, isemailverified } = state.login;
   const usernameFromSignup = state.signup.username;

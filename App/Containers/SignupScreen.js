@@ -12,9 +12,8 @@ import {
 } from 'react-native'
 import { connect } from 'react-redux'
 import styles from './Styles/LoginSignupScreenStyles'
-import {Images, Metrics} from '../Themes'
+import {Images, Metrics, Colors} from '../Themes'
 import SignupActions from '../Redux/SignupRedux'
-import firebase from 'firebase'
 
 class SignupScreen extends React.Component {
   static propTypes = {
@@ -69,7 +68,7 @@ class SignupScreen extends React.Component {
     
     this.setState({
       visibleHeight: newSize,
-      topLogo: {width: 80, height: 40},
+      topLogo: {width: 74, height: 22},
       formBottomMargin: 160
     })
   }
@@ -79,15 +78,20 @@ class SignupScreen extends React.Component {
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut)
     this.setState({
       visibleHeight: Metrics.screenHeight,
-      topLogo: {width: 100, height: 50},
+      topLogo: {width: 100, height: 29},
       formBottomMargin: 0
     })
   }
 
-  handlePressLogin = () => {
+  handlePressSignup = () => {
+    this.setState({ error: null })
     const { email, password } = this.state
-    this.isAttempting = true
-    this.props.attemptSignup(email, password)
+    if(password.length<6){
+      this.setState({ error: 'Password length must be at least six' })
+    } else {
+      this.isAttempting = true
+      this.props.attemptSignup(email, password)
+    }
   }
 
   handleChangeemail = (text) => {
@@ -108,6 +112,10 @@ class SignupScreen extends React.Component {
     this.props.saveUsername(this.state.username);
     //this.props.navigation.navigate("LoginScreen")
   }
+  handleSignupCancel = () => {
+    this.props.signupCancel();
+    this.props.navigation.navigate("SignupScreen")
+  }
   render () {
     const { email, password, username } = this.state
     const { fetching } = this.props
@@ -122,9 +130,9 @@ class SignupScreen extends React.Component {
             <View style={styles.formLine}>
               {
                 this.props.signupsucsess?
-                  <Text style={styles.formTitle}>
-                    Create a username
-                  </Text>
+                    <Text style={styles.formTitle}>
+                      Create Username
+                    </Text>
                   :
                   <Text style={styles.formTitle}>
                     Sign Up
@@ -136,11 +144,10 @@ class SignupScreen extends React.Component {
             this.props.signupsucsess?
               <View>
                 <View style={[styles.row, {width: 240, alignSelf: 'center', marginTop: 20}]}>
-                  <Text style={styles.rowLabel}>username</Text>
+                  <Text style={styles.rowLabel}>Username</Text>
                   <TextInput
                     ref='username'
-                    style={[textInputStyle, {borderBottomWidth: 1, borderBottomColor: '#dadada'}]}
-                    //value={username}
+                    style={[textInputStyle, styles.inputStyle, {borderBottomWidth: 1, borderBottomColor: Colors.silver}]}
                     editable={editable}
                     keyboardType='default'
                     returnKeyType='next'
@@ -148,28 +155,32 @@ class SignupScreen extends React.Component {
                     autoCorrect={false}
                     onChangeText={this.handleChangeUsername}
                     underlineColorAndroid='transparent'
-                    //onSubmitEditing={() => this.refs.password.focus()}
-                    placeholder='username' 
+                    placeholder='enter your username' 
                   />
                 </View>
                 <View style={[styles.warningRowForCreate]}>
                   <Text style={styles.warningTexForCreate}>{this.props.error}</Text>
                 </View>
-                <View style={[styles.loginRow, {width: 180, alignSelf: 'center'}]}>
+                <View style={[styles.loginRow, {width: 180, alignSelf: 'center', marginBottom: 30}]}>
                   <TouchableOpacity style={styles.loginButtonWrapper} onPress={this.handlePressUsername}>
                     <View style={styles.loginButton}>
                      <Text style={styles.loginText}>Create</Text>
                     </View>
                   </TouchableOpacity>
                 </View>
+                <View>
+                <TouchableOpacity style={{alignSelf: 'flex-end', marginBottom: 10}} onPress={this.handleSignupCancel}>
+                     <Text style={styles.cancelText}>Cancel</Text>                  
+                </TouchableOpacity>
+                </View>
               </View>
               :
-              <View>
+              <View style={{ marginBottom: 40}}>
                 <View style={styles.row}>
-                  <Text style={styles.rowLabel}>email</Text>
+                  <Text style={styles.rowLabel}>Email</Text>
                   <TextInput
                     ref='email'
-                    style={textInputStyle}
+                    style={[textInputStyle, styles.inputStyle]}
                     value={email}
                     editable={editable}
                     keyboardType='email-address'
@@ -186,25 +197,25 @@ class SignupScreen extends React.Component {
                   <Text style={styles.rowLabel}>Password</Text>
                   <TextInput
                     ref='password'
-                    style={textInputStyle}
+                    style={[textInputStyle, styles.inputStyle]}
                     value={password}
                     editable={editable}
-                    keyboardType='numeric'
+                    keyboardType='default'
                     returnKeyType='go'
                     autoCapitalize='none'
                     autoCorrect={false}
                     secureTextEntry
                     onChangeText={this.handleChangePassword}
                     underlineColorAndroid='transparent'
-                    onSubmitEditing={this.handlePressLogin}
+                    onSubmitEditing={this.handlePressSignup}
                     placeholder='create your password' 
                   />
                 </View>
                 <View style={[styles.warningRow]}>
-                  <Text style={styles.warningTex}>{this.props.error}</Text>
+                  <Text style={styles.warningTex}>{this.state.error||this.props.error}</Text>
                 </View>
                 <View style={[styles.loginRow]}>
-                  <TouchableOpacity style={styles.loginButtonWrapper} onPress={this.handlePressLogin}>
+                  <TouchableOpacity style={styles.loginButtonWrapper} onPress={this.handlePressSignup}>
                     <View style={styles.loginButtonLeft}>
                      <Text style={styles.loginTextBold}>Sign Up</Text>
                     </View>
@@ -233,7 +244,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     attemptSignup: (email, password) => dispatch(SignupActions.signupRequest(email, password)),
-    saveUsername: (username) => dispatch(SignupActions.saveUsername(username))
+    saveUsername: (username) => dispatch(SignupActions.saveUsername(username)),
+    signupCancel: () =>  dispatch(SignupActions.signupCancel())
   }
 }
 

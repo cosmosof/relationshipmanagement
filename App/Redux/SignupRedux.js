@@ -1,6 +1,5 @@
 import { createReducer, createActions } from 'reduxsauce'
 import Immutable from 'seamless-immutable'
-import firebase from 'firebase'
 
 /* ------------- Types and Action Creators ------------- */
 
@@ -12,7 +11,8 @@ const { Types, Creators } = createActions({
   saveUsernameSuccess: ['username'],
   saveUsernameFailure: ['error'],
   logout: null,
-  autoLogin: null
+  autoLogin: null,
+  signupCancel: null
 })
 
 export const SignupTypes = Types
@@ -78,6 +78,8 @@ export const saveusernamefailure = (state, { error }) => {
     state.merge({ fetching: false, error, usernamesucsess: false })
   )
 }
+// signup cancel
+export const signupcancel = (state) => INITIAL_STATE
 
 // we've logged out
 export const logout = (state) => INITIAL_STATE
@@ -90,6 +92,7 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SIGNUP_REQUEST]: request,
   [Types.SIGNUP_SUCCESS]: success,
   [Types.SIGNUP_FAILURE]: failure,
+  [Types.SIGNUP_CANCEL]: signupcancel,
   [Types.SAVE_USERNAME]: saveusername,
   [Types.SAVE_USERNAME_SUCCESS]: saveusernamesuccess,
   [Types.SAVE_USERNAME_FAILURE]: saveusernamefailure,

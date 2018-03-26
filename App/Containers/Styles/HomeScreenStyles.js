@@ -6,6 +6,10 @@ export default StyleSheet.create({
     flex: 1,
     backgroundColor: '#fff'
   },
+  containerStyle: {
+    flexGrow: 1,
+    justifyContent: 'center'
+  },
   form: {
     backgroundColor: Colors.snow,
     margin: Metrics.baseMargin,
@@ -23,14 +27,6 @@ export default StyleSheet.create({
   row: {
     paddingTop: Metrics.doubleBaseMargin,
     paddingHorizontal: Metrics.doubleBaseMargin
-  },
-  inviveButtonRow: {
-    paddingTop: 5,
-    paddingHorizontal: Metrics.doubleBaseMargin
-  },
-  doubleButtonRow: {
-    paddingTop: Metrics.baseMargin,
-    paddingHorizontal: Metrics.baseMargin
   },
   titleRow: {
     paddingTop: Metrics.doubleBaseMargin,
@@ -50,62 +46,12 @@ export default StyleSheet.create({
   rowLabel: {
     color: Colors.charcoal
   },
-  textInput: {
-    height: 40,
-    color: Colors.coal,
-    padding: 10,
-    minWidth: 200,
-    maxHeight: 40,
-    borderWidth: 1,
-    borderColor: Colors.steel,
-    borderRadius: 2
-  },
-  warningTex: {
-    fontSize: 12,
-    color: Colors.fire,
-    paddingTop: Metrics.doubleBaseMargin
-  },
-  warningTexInvite: {
-    fontSize: 12,
-    color: Colors.darkMatPurple,
-    paddingTop: 5
-  },
-  textInputReadonly: {
-    height: 40,
-    color: Colors.steel
-  },
-  loginRow: {
-    paddingBottom: Metrics.doubleBaseMargin,
-    paddingHorizontal: Metrics.doubleBaseMargin,
-    flexDirection: 'row'
-  },
-  warningRow: {
-    paddingBottom: Metrics.smallMargin,
-    paddingHorizontal: Metrics.doubleBaseMargin,
-    flexDirection: 'row'
-  },
-  inviteButton: {
-    minWidth: 200,
-    height: 40,
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: Colors.medMatPurple,
-    backgroundColor: Colors.lightMatPurple,
-    padding: 6,
-    justifyContent: 'center'
-  },
-  resButton: {
-    minWidth: 120,
-    height: 30,
-    borderWidth: 1,
-    borderRadius: 4,
-    borderColor: Colors.medMatPurple,
-    backgroundColor: Colors.lightMatPurple,
-    padding: 6,
-    justifyContent: 'center'
-  },
-  buttonText: {
-    textAlign: 'center',
-    color: Colors.silver
+  boxShadow: {
+    borderColor: Colors.lightMatBlue,
+    shadowColor: Colors.medMatBlue,
+		shadowOffset: { width: 0, height: 0 },
+    shadowOpacity: 0.5,
+		shadowRadius: 3,
+    elevation: 1
   }
 })

@@ -1,13 +1,14 @@
-import { put, call } from 'redux-saga/effects'
+import { put, call, select } from 'redux-saga/effects'
 import LoginActions from '../Redux/LoginRedux'
 import firebase from 'react-native-firebase'
+
 
 // attempts to login
 export function * login ({ email, password }) {
   console.log('logging in')
   const firebaseAuth = ({ email, password }) =>
-  firebase.auth().signInWithEmailAndPassword(email, password)
-    .then(User => ({ User }))
+  firebase.auth().signInAndRetrieveDataWithEmailAndPassword(email, password)
+    .then(Data => ({ Data }))
     .catch(error => ({ error }))
 
   const firebaseGetUsername = ({ userId }) =>
@@ -22,13 +23,12 @@ export function * login ({ email, password }) {
     yield put(LoginActions.loginFailure('password can not be empty!'))
   } else {
     try {
-      const { User, error } = yield call(firebaseAuth, { email, password })
-      if (User){
-        console.log(User)
-        const userId = User.uid;
-        console.log(userId)
-
+      const { Data, error } = yield call(firebaseAuth, { email, password })
+      if (Data){
+        console.log(Data.user.uid);
+        const userId = Data.user.uid;
         try {
+          console.log(userId);
           const { response, error } = yield call(firebaseGetUsername, { userId });
           
           console.log(response.val())
@@ -40,8 +40,8 @@ export function * login ({ email, password }) {
             /* User.emailVerified ? yield put(LoginActions.loginSuccess(email, userId, username)) 
             : 
             yield put(LoginActions.loginFailure('A verification email sent to your Signup email address')) */
-            console.log(User.emailVerified)
-            User.emailVerified ? yield put(LoginActions.isEmailVerified(true)) : false
+            console.log(Data.user.emailVerified)
+            Data.user.emailVerified ? yield put(LoginActions.isEmailVerified(true)) : false
           } else {
             console.log(error)
           }   

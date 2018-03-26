@@ -3,6 +3,23 @@ package com.relationship;
 import android.app.Application;
 
 import com.facebook.react.ReactApplication;
+import com.oblador.vectoricons.VectorIconsPackage;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import io.invertase.firebase.RNFirebasePackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import io.invertase.firebase.RNFirebasePackage;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import com.oblador.vectoricons.VectorIconsPackage;
+import io.invertase.firebase.RNFirebasePackage;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import com.learnium.RNDeviceInfo.RNDeviceInfo;
+import com.oblador.vectoricons.VectorIconsPackage;
+import io.invertase.firebase.RNFirebasePackage;
+import com.lugg.ReactNativeConfig.ReactNativeConfigPackage;
+import io.invertase.firebase.RNFirebasePackage;
 import com.evollu.react.fcm.FIRMessagingPackage;
 import com.oblador.vectoricons.VectorIconsPackage;
 import io.invertase.firebase.RNFirebasePackage;
@@ -28,6 +45,23 @@ public class MainApplication extends Application implements ReactApplication {
     protected List<ReactPackage> getPackages() {
       return Arrays.<ReactPackage>asList(
           new MainReactPackage(),
+            new VectorIconsPackage(),
+            new RNDeviceInfo(),
+            new RNFirebasePackage(),
+            new ReactNativeConfigPackage(),
+            new VectorIconsPackage(),
+            new RNFirebasePackage(),
+            new RNDeviceInfo(),
+            new ReactNativeConfigPackage(),
+            new VectorIconsPackage(),
+            new RNFirebasePackage(),
+            new RNDeviceInfo(),
+            new ReactNativeConfigPackage(),
+            new RNDeviceInfo(),
+            new VectorIconsPackage(),
+            new RNFirebasePackage(),
+            new ReactNativeConfigPackage(),
+            new RNFirebasePackage(),
             new FIRMessagingPackage(),
             new VectorIconsPackage(),
             new RNFirebasePackage(),

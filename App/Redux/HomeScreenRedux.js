@@ -117,7 +117,8 @@ export const connectiondeleted = (state, { connectionDeleted }) => {
       matchedPeerFailure: null,
       peerData: null,
       mathcedPeerId: null,
-      connectionSucceed: false
+      connectionSucceed: false,
+      chatId: null
    })
   )
 }
@@ -189,3 +190,5 @@ export const reducer = createReducer(INITIAL_STATE, {
   [Types.SAVE_DEVICE_TOKEN]: savedevicetoken,
   [Types.FETCH_CHAT_ID]: fetchchatid
 })
+
+

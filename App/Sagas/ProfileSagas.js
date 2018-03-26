@@ -4,15 +4,13 @@ import ProfileActions from '../Redux/ProfileRedux';
 import firebase from 'react-native-firebase';
 export const selectgetUserId = state => state.login.userId;
 
-/************************** DELETE USER SAGA ******************************/
+/*
+ DELETE USER SAGA 
+ */
 
 export function* deleteuser({ approvedPeerId }) {
   console.log('deleting user');
   yield call(delay, 1000);
-
-  /*  yield put(ProfileActions.deleteUserMessage())
-  yield call(delay, 4000);
-  yield put(ProfileActions.deleteSuccess(true)) */
   const userId = yield select(selectgetUserId);
   const user = firebase.auth().currentUser;
   console.log(user);
@@ -82,7 +80,9 @@ export function* deleteuser({ approvedPeerId }) {
   }
 }
 
-/**************************  PASSWORD CHANGE SAGA ******************************/
+/*
+  PASSWORD CHANGE SAGA
+*/
 
 export function* changepassword({ password }) {
   console.log(password);
@@ -129,7 +129,9 @@ export function* changepassword({ password }) {
   }
 }
 
-/**************************  USERNAME CHANGE SAGA ******************************/
+/*
+  USERNAME CHANGE SAGA 
+  */
 
 export function* changeusername({ newusername, userId, approvedPeerId }) {
   yield call(delay, 1000);
