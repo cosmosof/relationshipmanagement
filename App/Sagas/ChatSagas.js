@@ -80,7 +80,7 @@ export function* fetchusermessages() {
 
       let createdAt = new Date().getTime()
       let newMessage = {
-        text: "Hi there! How are you doing? I am Peerler",
+        text: "Hi there! How are you doing? I am Relate",
         createdAt: createdAt,
         userId: userId 
     }
@@ -90,7 +90,7 @@ export function* fetchusermessages() {
       yield call(delay, 1000);
       let createdAt2 = new Date().getTime()
       let newMessage2 = {
-        text: "Please connect with your peer!",
+        text: "Please connect with your partner!",
         createdAt: createdAt2,
         userId: userId 
     }

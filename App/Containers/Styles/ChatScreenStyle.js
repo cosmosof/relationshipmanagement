@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Colors, Metrics, ApplicationStyles } from '../../Themes';
+import { Colors, Fonts } from '../../Themes';
 
 export default StyleSheet.create({
   container: {
@@ -8,6 +8,9 @@ export default StyleSheet.create({
     padding: 10
   },
   textInput: {
+    color: Colors.charcoal,
+    fontFamily: Fonts.type.base,
+    fontSize: Fonts.size.medium,
     flex: 0.95,
     backgroundColor: 'white',
     alignItems: 'stretch',
@@ -31,7 +34,8 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   placeholder: {
-    fontSize: 16,
+    fontFamily: Fonts.type.base,
+    fontSize: Fonts.size.medium,
     color: 'grey',
     textAlign: 'center'
   }

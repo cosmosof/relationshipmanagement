@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { Colors, Metrics, ApplicationStyles } from '../../Themes'
+import { StyleSheet } from 'react-native';
+import { Colors, Fonts } from '../../Themes';
 
 export default StyleSheet.create({
   container: {
@@ -10,7 +10,8 @@ export default StyleSheet.create({
     padding: 20
   },
   sectionTextLast: {
-    fontSize: 14,
+    fontSize: Fonts.size.medium,
+    fontFamily: Fonts.type.condensed,
     fontWeight: 'normal',
     textAlign: 'center',
     maxWidth: 360,
@@ -20,4 +21,4 @@ export default StyleSheet.create({
   image: {
     marginTop: 20
   }
-})
+});

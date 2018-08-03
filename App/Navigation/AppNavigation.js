@@ -1,104 +1,11 @@
-/* import React from 'react';
-import { Image, Platform } from 'react-native';
-import { StackNavigator, TabNavigator } from 'react-navigation';
-import LaunchScreen from '../Containers/LaunchScreen'
-import LaunchScreen2 from '../Containers/LaunchScreen2'
-import HeaderLogo from '../Components/HeaderLogo';
-import { Images, Metrics } from '../Themes';
-import Colors from '../Themes/Colors';
-import Icon from 'react-native-vector-icons/Ionicons';
-//import InfoScreen from '../Containers/InfoScreen';
-//import LoginScreen from '../Containers/LoginScreen';
-//import SignupScreen from '../Containers/SignupScreen';
-//import ProfileScreen from '../Containers/ProfileScreen';
-import OnboardingScreen from '../Containers/OnboardingScreen';
-//import ChatScreen from '../Containers/ChatScreen';
-//import ToDoScreen from '../Containers/ToDoScreen';
-//import QuestionsScreen from '../Containers/QuestionsScreen';
-//import LoadingScreen from '../Containers/LoadingScreen';
-//import HomeScreen from '../Containers/HomeScreen';
-import NotLoggedInStack from './NotLoggedInStack';
-import styles from './Styles/NavigationStyles';
-
-
-const MainTab = StackNavigator({
-  Home: {
-    screen: LaunchScreen,
-    navigationOptions: {
-      headerTitle: <HeaderLogo />
-    }
-  }
-});
-const QuestionsTab = StackNavigator({
-  Questions: {
-    screen: LaunchScreen2,
-    navigationOptions: () => ({
-      headerTitle: <HeaderLogo />
-    })
-  }
-});
-const StacksInTabs = TabNavigator(
-  {
-    MainTab: {
-      screen: MainTab,
-      navigationOptions: {
-        tabBarLabel: 'Home',
-        tabBarIcon: ({ focused }) => (
-          <Image source={focused ? Images.houseFocused : Images.house} style={[styles.image]} />
-        )
-      }
-    },
-    QuestionsTab: {
-      screen: QuestionsTab,
-      navigationOptions: {
-        tabBarLabel: 'Questions',
-        tabBarIcon: ({ focused }) => (
-          <Image source={focused ? Images.envelopeFocused : Images.envelope} style={[styles.image]} />
-        )
-      }
-    },
-  },
-  {
-    lazy: true,
-    initialRouteName: 'MainTab',
-    tabBarPosition: 'bottom',
-    animationEnabled: false,
-    swipeEnabled: false,
-    tabBarOptions: {
-      activeTintColor: Colors.charcoal
-    }
-  }
-);
-// Manifest of possible screens
-export const PrimaryNav = StackNavigator(
-  {  
-    NotLoggedInStack: { screen: NotLoggedInStack },  
-    StacksInTabs: { screen: StacksInTabs },
-  },
-  {
-    // Default config for all screens
-    headerMode: 'none',
-    mode: Platform.OS === 'ios' ? 'modal' : 'card',
-    navigationOptions: {
-      headerStyle: styles.header
-    }
-  }
-);
-
-export default PrimaryNav */
- 
 import React from 'react';
-import { StyleSheet, Text, View, Image, Platform } from 'react-native';
+import { Image, Platform } from 'react-native';
 import PropTypes from 'prop-types';
-import { connect } from 'react-redux';
-import Icon from 'react-native-vector-icons/Ionicons';
 import {
   StackNavigator,
   TabNavigator
 } from 'react-navigation';
 import InfoScreen from '../Containers/InfoScreen';
-import LoginScreen from '../Containers/LoginScreen';
-import SignupScreen from '../Containers/SignupScreen';
 import ProfileScreen from '../Containers/ProfileScreen';
 import OnboardingScreen from '../Containers/OnboardingScreen';
 import ChatScreen from '../Containers/ChatScreen';
@@ -107,10 +14,10 @@ import QuestionsScreen from '../Containers/QuestionsScreen';
 import LoadingScreen from '../Containers/LoadingScreen';
 import HomeScreen from '../Containers/HomeScreen';
 import HeaderLogo from '../Components/HeaderLogo';
-import { Images, Metrics } from '../Themes';
+import { Images, Fonts } from '../Themes';
 import Colors from '../Themes/Colors';
 import styles from './Styles/NavigationStyles';
-import NotLoggedInStack from './NotLoggedInStack'
+import NotLoggedInStack from './NotLoggedInStack';
 
 const MainTab = StackNavigator({
   Home: {
@@ -121,19 +28,23 @@ const MainTab = StackNavigator({
   },
   Profile: {
     screen: ProfileScreen,
-    navigationOptions: ({ navigation }) => ({
+    navigationOptions: () => ({
       title: 'Profile',
       headerTitleStyle: {
-        color: Colors.darkMatBlue2
+        color: Colors.darkMatPurple2,
+        fontFamily: Fonts.type.condensed,
+        fontSize: Fonts.size.medium
       }
     })
   },
   Info: {
     screen: InfoScreen,
-    navigationOptions: ({ navigation }) => ({
+    navigationOptions: () => ({
       title: 'About',
       headerTitleStyle: {
-        color: Colors.darkMatBlue2
+        color: Colors.darkMatPurple2,
+        fontFamily: Fonts.type.condensed,
+        fontSize: Fonts.size.medium
       }
     })
   }
@@ -156,10 +67,12 @@ const ToDoTab = StackNavigator({
   },
   Chat: {
     screen: ChatScreen,
-    navigationOptions: ({ navigation }) => ({
+    navigationOptions: () => ({
       title: 'Messages',
       headerTitleStyle: {
-        color: Colors.darkMatBlue2
+        color: Colors.darkMatPurple2,
+        fontFamily: Fonts.type.condensed,
+        fontSize: Fonts.size.medium
       }
     })
   }
@@ -179,7 +92,7 @@ const StacksInTabs = TabNavigator(
     QuestionsTab: {
       screen: QuestionsTab,
       navigationOptions: {
-        tabBarLabel: 'Questions',
+        tabBarLabel: 'Discussions',
         tabBarIcon: ({ focused }) => (
           <Image source={focused ? Images.envelopeFocused : Images.envelope} style={[styles.image]} />
         )
@@ -188,7 +101,7 @@ const StacksInTabs = TabNavigator(
     ToDoTab: {
       screen: ToDoTab,
       navigationOptions: {
-        tabBarLabel: 'ToDos',
+        tabBarLabel: 'Lists',
         tabBarIcon: ({ focused }) => (
           <Image source={focused ? Images.postitFocused : Images.postit} style={[styles.image]} />
         )
@@ -199,23 +112,17 @@ const StacksInTabs = TabNavigator(
     lazy: true,
     initialRouteName: 'MainTab',
     tabBarPosition: 'bottom',
-    animationEnabled: false,
+    animationEnabled: true,
     swipeEnabled: false,
     tabBarOptions: {
-      activeTintColor: Colors.charcoal
+      activeTintColor: Colors.coal,
+      inactiveTintColor: Colors.darkMatPurple2,
+      labelStyle: { fontFamily: Fonts.type.base,
+      fontSize: Fonts.size.smaller },    
     }
   }
 );
 
-const OnboardingStack = StackNavigator({
-  OnboardingScreen: {
-    screen: OnboardingScreen,
-  },  
-},
-{
-  headerMode: 'none',
-  initialRouteName: 'Onboarding'
-}) 
 
 // Manifest of possible screens
 export const PrimaryNav = StackNavigator(

@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../Themes'
+import { StyleSheet } from 'react-native';
+import { Colors, Metrics, Fonts } from '../../Themes';
 
 export default StyleSheet.create({
   container: {
@@ -9,7 +9,8 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   warningTexInvite: {
-    fontSize: 10,
+    fontFamily: Fonts.type.base,
+    fontSize: Fonts.size.smaller,
     color: Colors.darkMatPurple,
     textAlign: 'center' 
   },
@@ -19,7 +20,8 @@ export default StyleSheet.create({
   },
   title: {
     alignSelf: 'center',
-    fontSize: 18,
+    fontFamily: Fonts.type.condensed,
+    fontSize: Fonts.size.regular, 
     marginBottom: 6,
     fontWeight: 'bold',
     color: Colors.charcoal 
@@ -27,7 +29,8 @@ export default StyleSheet.create({
   subTitle: {
     alignSelf: 'center', 
     marginBottom: 12,
-    fontSize: 16,
+    fontFamily: Fonts.type.base,
+    fontSize: Fonts.size.regular, 
     color: Colors.charcoal 
   },
   centerRow: {
@@ -37,7 +40,8 @@ export default StyleSheet.create({
     alignSelf: 'flex-start' 
   },
   text: {
-    fontSize: 12,
+    fontFamily: Fonts.type.base,
+    fontSize: Fonts.size.small, 
     color: Colors.charcoal,
     marginTop: 6,
     textAlign: 'left' 
@@ -55,4 +59,4 @@ export default StyleSheet.create({
     alignSelf: 'center' 
 
   }
-})
+});

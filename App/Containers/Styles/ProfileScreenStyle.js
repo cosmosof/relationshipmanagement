@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native';
-import { Colors, Metrics, ApplicationStyles } from '../../Themes';
+import { Colors, Metrics, Fonts } from '../../Themes';
 
 export default StyleSheet.create({
   container: {
@@ -12,16 +12,16 @@ export default StyleSheet.create({
     justifyContent: 'center'
   },
   sectionTitle: {
-    fontSize: 14,
-    fontWeight: 'bold',
+    fontSize: Fonts.size.small,
+    fontFamily: Fonts.type.semiBold,
     textAlign: 'center',
-    color: Colors.charcoal,
+    color: Colors.darkMatPurple2,
     paddingTop: Metrics.doubleBaseMargin,
     padding: 10
   },
   sectionUsernameTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontFamily: Fonts.type.condensed,
+    fontSize: Fonts.size.medium,
     textAlign: 'center',
     color: Colors.charcoal,
     padding: 10
@@ -33,7 +33,6 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.darkMatPurple,
     width: 100,
-    borderWidth: 1,
     borderTopLeftRadius: 2,
     borderBottomLeftRadius: 2,
     borderRightWidth: 0
@@ -45,7 +44,6 @@ export default StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.medMatPurple,
     width: 100,
-    borderWidth: 1,
     borderTopRightRadius: 2,
     borderBottomRightRadius: 2,
     borderLeftWidth: 0
@@ -53,7 +51,8 @@ export default StyleSheet.create({
   buttonText: {
     color: Colors.snow,
     textAlign: 'center',
-    fontSize: 12
+    fontSize: Fonts.size.small,
+    fontFamily: Fonts.type.condensed,
   },
   warningRow: {
     paddingBottom: Metrics.smallMargin,
@@ -61,7 +60,8 @@ export default StyleSheet.create({
     alignSelf: 'center'
   },
   warningTex: {
-    fontSize: 10,
+    fontSize: Fonts.size.smaller,
+    fontFamily: Fonts.type.base,
     color: Colors.medMatPurple
   },
   toggleInput: {

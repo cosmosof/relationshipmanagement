@@ -3,18 +3,11 @@ import PropTypes from 'prop-types';
 import {
   Text,
   View,
-  Image,
-  ScrollView,
-  TouchableOpacity,
-  AlertIOS,
-  TextInput,
-  Keyboard
+  Image
 } from 'react-native';
-import Card from '../Themes/Card';
 import Icon from 'react-native-vector-icons/Ionicons';
-import { Colors } from './../Themes';
+import { Colors, Card, Images } from './../Themes';
 import styles from './Styles/HomeScreenWelcomeStyles';
-import { Images } from '../Themes';
 import RoundedButton from '../Components/RoundedButton';
 import InputArea from '../Components/InputArea';
 
@@ -33,7 +26,7 @@ export default class HomeScreenWelcome extends React.Component {
             <Image source={Images.comments} style={[styles.image]} />
             <View>
               <Text style={styles.title}>WELCOME TO RELATE</Text>
-              <Text style={styles.subTitle}>Dedicated to Couples</Text>
+              <Text style={styles.subTitle}>Just You and Your Partner</Text>
             </View>
             <View style={styles.centerRow}>
               <View>
@@ -47,7 +40,7 @@ export default class HomeScreenWelcome extends React.Component {
               </View>
               <View>
                 <Text style={styles.text}>
-                  Send invititation to your partner's username.
+                  Send connection request to your partner's username.
                 </Text>
               </View>
             </View>
@@ -63,7 +56,7 @@ export default class HomeScreenWelcome extends React.Component {
               </View>
               <View>
                 <Text style={styles.text}>
-                  Once you connected, you can start using all the features.
+                  Once you are connected, you can start using all the features.
                 </Text>
               </View>
             </View>
@@ -86,7 +79,6 @@ export default class HomeScreenWelcome extends React.Component {
                   backgroundColor: Colors.lightMatPurple,
                   borderColor: Colors.medMatPurple
                 }}
-                buttonTextStyles={{ fontWeight: 'normal' }}
               />
             </View>
           </View>

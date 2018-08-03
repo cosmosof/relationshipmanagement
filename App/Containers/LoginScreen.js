@@ -31,8 +31,8 @@ class LoginScreen extends React.Component {
   constructor (props) {
     super(props)
     this.state = {
-      email: 'kahramanmm@gmail.com',
-      password: '123456',
+      email: null,
+      password: null,
       visibleHeight: Metrics.screenHeight,
       //topLogo: { width: Metrics.screenWidth },
       topLogo: null,

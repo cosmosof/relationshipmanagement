@@ -26,7 +26,6 @@ export default class TodoCard extends React.Component {
       : Colors.darkMatPurple2;
     const marginleft = this.props.isCurrentUser ? 30 : 0;
     const marginRight = this.props.isCurrentUser ? 0 : 30;
-    const textAlign = this.props.isCurrentUser ? 'right' : 'left';
 
     const checkmarkColor = this.props.isCurrentUser
       ? Colors.medMatBlue2
@@ -63,7 +62,7 @@ export default class TodoCard extends React.Component {
           <View style={[styles.row, { marginTop: 10, marginBottom: 10 }]}>
             <TouchableOpacity
               style={[styles.button]}
-              onPress={event =>
+              onPress={() =>
                 this.updateToDoHandle(
                   this.props.item.nodekey,
                   this.props.item.isCompleted,
@@ -83,12 +82,13 @@ export default class TodoCard extends React.Component {
             </Text>
           </View>
           <Text style={[styles.dateText]}>{this.props.date}</Text>
+          {this.props.item.isPriority ? <Text style={[styles.priorityText]}>Priority</Text> : false}
         </View>
       </TouchableOpacity>
     );
   }
   checkmark = (val, checkmarkColor) => {
-    if (val == true) {
+    if (val === true) {
       return (
         <View style={[styles.checkmarkCirc, { borderColor: checkmarkColor }]}>
           <View
@@ -116,7 +116,7 @@ export default class TodoCard extends React.Component {
     this.props.deleteTodo(val, index);
   }
   deleteToDoHandler(nodekey, index) {
-    Alert.alert('Delete ToDo', 'Are you sure you want to delete this ToDo?', [
+    Alert.alert('Delete the List', 'Are you sure you want to delete this list?', [
       {
         text: 'Cancel'
       },

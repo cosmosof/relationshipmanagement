@@ -1,15 +1,15 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../Themes'
+import { Colors, Metrics, Fonts } from '../../Themes'
 
 export default StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: Colors.background,
   },
+  contentContainer: {
+    flexGrow: 1, justifyContent: 'center', alignItems: 'center'
+  },
   form: {
-    //alignSelf: 'center',
-    //flex: 1,
-    //flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: Colors.snow,
@@ -18,12 +18,11 @@ export default StyleSheet.create({
     minWidth: 360,
     maxWidth: 440,
     borderWidth: 1,
-		borderRadius: 2,
-		borderColor: '#D5DEE5',
-		borderBottomWidth: 0,
-		shadowColor: '#000',
-		shadowOffset: { width: 0, height: 2 },
-		shadowOpacity: 0.1,
+    borderColor: '#D5DEE5',
+    borderBottomWidth: 0,
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.1,
     shadowRadius: 2,
     //marginTop: 50
   },
@@ -44,21 +43,24 @@ export default StyleSheet.create({
     paddingBottom: Metrics.doubleBaseMargin
   },
   formTitle: {
-    fontSize: 16,
-    fontWeight: 'bold',
+    fontSize: Fonts.size.regular,
+    fontFamily: Fonts.type.condensed,
     textAlign: 'center',
     color: Colors.charcoal
   },
   rowLabel: {
-    color: Colors.charcoal,
-    fontWeight: '600'
+    fontSize: Fonts.size.medium,
+    fontFamily: Fonts.type.condensed,
+    color: Colors.charcoal
   },
   textInput: {
+    fontSize: Fonts.size.small,
+    fontFamily: Fonts.type.base,
     height: 40,
     color: Colors.coal,
     borderBottomWidth: 1,
     borderBottomColor: Colors.silver,
-    minWidth:220
+    minWidth: 220
   },
   forgotPasswordRow: {
     paddingBottom: Metrics.doubleBaseMargin,
@@ -67,8 +69,9 @@ export default StyleSheet.create({
     minWidth: 320
   },
   forgotPasswordText: {
+    fontSize: Fonts.size.small,
+    fontFamily: Fonts.type.medium,
     color: Colors.charcoal,
-    fontSize: 12
   },
   warningTexPasswordRecovery: {
     fontSize: 12,
@@ -78,12 +81,14 @@ export default StyleSheet.create({
     paddingHorizontal: Metrics.doubleBaseMargin
   },
   warningTex: {
-    fontSize: 12,
+    fontSize: Fonts.size.small,
+    fontFamily: Fonts.type.base,
     color: Colors.darkMatPurple,
     paddingTop: Metrics.baseMargin
   },
   warningTexForCreate: {
-    fontSize: 12,
+    fontSize: Fonts.size.small,
+    fontFamily: Fonts.type.base,
     color: Colors.fire,
     paddingTop: Metrics.baseMargin,
     textAlign: 'center',
@@ -106,7 +111,6 @@ export default StyleSheet.create({
     flexDirection: 'row'
   },
   warningRowForPasswordRecovery: {
-    //paddingBottom: Metrics.smallMargin,
     paddingHorizontal: Metrics.doubleBaseMargin,
     flexDirection: 'row'
   },
@@ -152,20 +156,20 @@ export default StyleSheet.create({
 
   },
   loginText: {
+    fontSize: Fonts.size.medium,
+    fontFamily: Fonts.type.medium,
+    textAlign: 'center',
+    color: Colors.snow
+  },
+  loginTextBold: {
+    fontSize: Fonts.size.medium,
+    fontFamily: Fonts.type.cbold,
     textAlign: 'center',
     color: Colors.ricePaper
   },
-  loginTextBold: {
-    fontWeight: 'bold',
-    textAlign: 'center',
-    color: Colors.silver
-  },
-  contentContainer: {
-    flexGrow: 1, justifyContent: 'center', alignItems: 'center'
-  },
   topLogo: {
-    width: 147/1.5,
-    height: 43/1.5,
+    width: 147 / 1.5,
+    height: 43 / 1.5,
     marginBottom: 20
   },
   inputStyle: {
@@ -173,7 +177,8 @@ export default StyleSheet.create({
     fontSize: 12
   },
   cancelText: {
-    fontSize: 12,
+    fontSize: Fonts.size.small,
+    fontFamily: Fonts.type.medium,
     color: Colors.medMatPurple
   }
 })

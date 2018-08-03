@@ -5,13 +5,13 @@ import {
   TouchableOpacity,
   TextInput,
   Keyboard,
-  Alert,
   KeyboardAvoidingView,
   FlatList,
   TouchableWithoutFeedback
 } from 'react-native';
-import { Images, Metrics, Colors } from '../Themes';
+import { Fonts, Colors } from '../Themes';
 import TodoCard from '../Components/TodoCard';
+import ChatandToDosFetchingView from '../Components/ChatandToDosFetchingView';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import ToDoActions from '../Redux/ToDoRedux';
@@ -53,7 +53,9 @@ class ToDoScreen extends Component {
 
     this.state = {
       text: null,
-      placeholder: 'make it happen...'
+      placeholder: 'make it happen...',
+      priority: false,
+      priorityWarningStyle: { fontFamily: Fonts.type.base }
     };
     this.props.updateTodoStatus = this.props.updateTodoStatus.bind(this);
     this.props.deleteTodo = this.props.deleteTodo.bind(this);
@@ -95,21 +97,31 @@ class ToDoScreen extends Component {
     }
   }
   componentDidMount() {
-    this.props.fetchUserMessages();
+    this.props.fetchUserTodos();
   }
 
   saveUserMessageHandler = () => {
-    let currentMessage = this.state.text;
+    const currentMessage = this.state.text;
     const userId = this.props.userId;
+    const isPriority = this.state.priority;
 
     if (currentMessage) {
-      this.props.saveUserMessage(currentMessage, userId);
+      this.props.saveUserMessage(currentMessage, userId, isPriority);
       this.setState({ text: null, placeholder: 'make it happen...' });
     } else {
-      this.setState({ placeholder: 'To-Do is empty!' });
+      this.setState({ placeholder: 'List is empty!' });
     }
   };
-
+  updateToDoPriority = () => {
+    switch (this.state.priorityWarningStyle.fontFamily) {
+      case Fonts.type.base:
+      this.setState({ priorityWarningStyle: { fontFamily: Fonts.type.bold }, priority: true });
+      break;
+      default:
+      this.setState({ priorityWarningStyle: { fontFamily: Fonts.type.base }, priority: false });
+    }
+  }
+ 
   render() {
     const { newusername } = this.state;
     const { newpassword } = this.state;
@@ -129,7 +141,10 @@ class ToDoScreen extends Component {
           justifyContent: 'flex-end'
         }}
       >
-        <FlatList
+            {this.props.fetchingmessages ? 
+              <ChatandToDosFetchingView />
+            :
+              <FlatList
           ref={c => {
             this.flatList = c;
           }}
@@ -141,6 +156,7 @@ class ToDoScreen extends Component {
           getItemLayout={this.itemLayout}
           inverted
         />
+            }
         <View style={styles.typeMessage}>
           <TextInput
             ref='username'
@@ -148,7 +164,7 @@ class ToDoScreen extends Component {
             value={this.state.text}
             returnKeyType='next'
             autoCapitalize='none'
-            autoCorrect={false}
+            autoCorrect={true}
             onChangeText={text => this.setState({ text })}
             underlineColorAndroid='transparent'
             placeholder={this.state.placeholder}
@@ -156,7 +172,7 @@ class ToDoScreen extends Component {
             multiline={true}
             autoGrow={true}
           />
-          {this.props.savemessagefetching ? (
+          { this.props.savemessagefetching ? (
             <Icon
               name='ios-send-outline'
               size={28}
@@ -165,17 +181,27 @@ class ToDoScreen extends Component {
               color={Colors.ember}
             />
           ) : (
+            <View style={{ flexDirection: 'row', alignItems: 'center' }}>
             <TouchableOpacity onPress={this.saveUserMessageHandler}>
               <Icon
                 name='ios-add-outline'
-                size={28}
+                size={32}
                 padding={2}
-                style={{ padding: 2, alignSelf: 'center' }}
-                color={Colors.matBlue}
+                style={{ padding: 2, alignSelf: 'center', marginRight: 10 }}
+                color={Colors.medMatPurple2}
               />
             </TouchableOpacity>
+            <TouchableOpacity
+             onPress={() =>
+              this.updateToDoPriority()
+            }
+            >
+            <Text style={[this.state.priorityWarningStyle, { textAlign: 'center', color: Colors.darkMatBlue2, marginBottom: -5 }]}>P</Text><Text style={[this.state.priorityWarningStyle, { color: Colors.darkMatBlue2, fontSize: Fonts.size.tiny }]}>Priority</Text>
+            </TouchableOpacity>
+            </View>
           )}
         </View>
+           
       </KeyboardAvoidingView>
     );
   }
@@ -183,6 +209,7 @@ class ToDoScreen extends Component {
 
 const mapStateToProps = state => {
   const {
+    fetchingmessages,
     savemessagefetching,
     savemessagesuccess,
     savemessagefailure,
@@ -191,6 +218,7 @@ const mapStateToProps = state => {
   } = state.todoscreen;
   const { userId } = state.login;
   return {
+    fetchingmessages,
     savemessagefetching,
     savemessagesuccess,
     savemessagefailure,
@@ -202,9 +230,9 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    saveUserMessage: (usermessage, userId) =>
-      dispatch(ToDoActions.saveUserTodos(usermessage, userId)),
-    fetchUserMessages: () => dispatch(ToDoActions.fetchUserTodos()),
+    saveUserMessage: (usermessage, userId, isPriority) =>
+      dispatch(ToDoActions.saveUserTodos(usermessage, userId, isPriority)),
+    fetchUserTodos: () => dispatch(ToDoActions.fetchUserTodos()),
     updateTodoStatus: (todonode, status, index) =>
       dispatch(ToDoActions.updateTodoStatus(todonode, status, index)),
     deleteTodo: (todonode, index) => dispatch(ToDoActions.deleteTodo(todonode, index))

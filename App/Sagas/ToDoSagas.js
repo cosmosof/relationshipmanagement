@@ -9,12 +9,13 @@ export const selectUserId = state => state.login.userId;
 /*
   SAVE USER  TODO  
 */
-export function* saveusertodos({ usermessage, userId }) {
+export function* saveusertodos({ usermessage, userId, isPriority }) {
   yield call(delay, 1000);
   const chatId = yield select(selectchatId);
   if(chatId){
     let createdAt = new Date().getTime()
     let todoObj = {
+        isPriority,
         todo: usermessage,
         createdAt: createdAt,
         userId: userId,
@@ -51,7 +52,6 @@ export function* fetchusertodos() {
   console.log('fetchusertodos')
   const userId = yield select(selectUserId);
   
-  // TODO- after react-navigation upgrade check this code out again
   yield call(delay, 1000);
 
   const chatId = yield select(selectchatId);

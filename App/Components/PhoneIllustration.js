@@ -2,7 +2,7 @@ import React from 'react';
 import { View, Image, Text, TouchableOpacity } from 'react-native';
 import styles from './Styles/PhoneIllustrationStyles';
 import RoundedButton from '../Components/RoundedButton';
-import { Colors, Images } from '../Themes';
+import { Colors } from '../Themes';
 
 export default class PhoneIllustration extends React.Component {
   render() {

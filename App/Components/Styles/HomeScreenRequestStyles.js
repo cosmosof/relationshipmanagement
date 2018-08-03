@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../Themes'
+import { StyleSheet } from 'react-native';
+import { Colors, Metrics, Fonts } from '../../Themes';
 
 export default StyleSheet.create({
   container: {
@@ -10,25 +10,27 @@ export default StyleSheet.create({
   },
   username: {
     alignSelf: 'center',
-    fontSize: 20,
+    fontFamily: Fonts.type.condensed,
+    fontSize: Fonts.size.regular,
     marginBottom: 10,
     color: Colors.charcoal
   },
   subTitle: {
     alignSelf: 'center', 
     marginBottom: 12,
-    fontSize: 16,
+    fontFamily: Fonts.type.base,
+    fontSize: Fonts.size.medium,
     color: Colors.medGray 
   },
   centerRow: {
     flex: 1, 
     flexDirection: 'row', 
     maxHeight: 30,
-    alignSelf: 'center',
     alignSelf: 'flex-start'  
   },
   text: {
-    fontSize: 12,
+    fontFamily: Fonts.type.base,
+    fontSize: Fonts.size.small,
     color: Colors.charcoal,
     marginTop: 6 
   },
@@ -42,9 +44,10 @@ export default StyleSheet.create({
     paddingBottom: Metrics.doubleBaseMargin,
     paddingHorizontal: Metrics.doubleBaseMargin,
     flexDirection: 'row',
-    marginTop: Metrics.doubleBaseMargin
+    marginTop: Metrics.doubleBaseMargin,
+    justifyContent: 'center'
   },
   content: {
     maxWidth: 300
   }
-})
+});

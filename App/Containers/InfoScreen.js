@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 import {
   TouchableWithoutFeedback,
   ScrollView,
@@ -8,20 +8,20 @@ import {
   View,
   Image,
   TouchableHighlight
-} from "react-native";
-import { Colors, Images } from "../Themes";
-import Icon from "react-native-vector-icons/Ionicons";
-import { connect } from "react-redux";
-import styles from "./Styles/InfoScreenStyle";
+} from 'react-native';
+import { Colors, Images } from '../Themes';
+import Icon from 'react-native-vector-icons/Ionicons';
+import { connect } from 'react-redux';
+import styles from './Styles/InfoScreenStyle';
 
 class InfoScreen extends Component {
   static navigationOptions = ({ navigation }) => {
-    const { state, setParams, goBack } = navigation;
+    const { goBack } = navigation;
     return {
       headerLeft: (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
           <Icon
-            name="ios-arrow-back"
+            name='ios-arrow-back'
             size={20}
             padding={20}
             style={{ padding: 20, color: Colors.medMatBlue2 }}
@@ -36,27 +36,26 @@ class InfoScreen extends Component {
       <ScrollView
         contentContainerStyle={{
           flexGrow: 1,
-          justifyContent: "center"
+          justifyContent: 'center'
         }}
       >
         <View style={styles.container}>
-       
+          <Text style={styles.title}>We're glad you are here.</Text>
           <Text style={styles.sectionTitle}>
-            This is a Beta release, we look forward to hearing
-            your suggestions and opinions. Please drops us an email below!
+            Thank you for taking time out to use our app! 
+            We look forward to hearing
+            your suggestions and opinions. Please shoot us an email below!
           </Text>
           <TouchableHighlight
             onPress={() =>
               Linking.openURL(
-                "mailto:support@foodonchart.com?subject=Feedback&body=body"
+                'mailto:support@foodonchart.com?subject=Feedback&body=body'
               )
             }
           >
             <Image source={Images.note} style={[styles.image]} />
           </TouchableHighlight>
-          <Text style={styles.sectionTitle}>
-            Thanks for taking time and trying out 'Relate' app!
-          </Text>
+         
         </View>
       </ScrollView>
     );

@@ -1,5 +1,5 @@
 import { StyleSheet } from 'react-native'
-import { Colors, Metrics, ApplicationStyles } from '../../Themes'
+import { Colors, Metrics, Fonts } from '../../Themes'
 
 export default StyleSheet.create({
   container: {
@@ -10,14 +10,21 @@ export default StyleSheet.create({
     padding: 20
   },
   sectionTitle: {
-    fontSize: 14,
+    fontFamily: Fonts.type.base,
+    fontSize: Fonts.size.medium,    
     lineHeight: 28,
-    fontWeight: 'bold',
     textAlign: 'center',
     color: Colors.charcoal,
-    paddingTop: Metrics.doubleBaseMargin
+    paddingTop: Metrics.baseMargin
   },
   image: {
     marginTop: 20
+  },
+  title: {
+    fontFamily: Fonts.type.condensed,
+    fontWeight: 'bold',
+    fontSize: Fonts.size.medium,    
+    textAlign: 'center',
+    color: Colors.charcoal
   }
-})
+});

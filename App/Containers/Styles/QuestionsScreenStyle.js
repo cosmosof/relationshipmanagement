@@ -1,6 +1,6 @@
-import { StyleSheet } from 'react-native'
-import { ApplicationStyles } from '../../Themes/'
-import { Colors, Metrics } from '../../Themes'
+import { StyleSheet } from 'react-native';
+import { ApplicationStyles } from '../../Themes/';
+import { Colors, Fonts } from '../../Themes';
 
 export default StyleSheet.create({
   ...ApplicationStyles.screen,
@@ -13,20 +13,16 @@ export default StyleSheet.create({
     padding: 20,
     maxWidth: 600,
   },
-  parapraph: {
-    fontSize: 14,
-    color: Colors.charcoal,
-    paddingBottom: 15,
-    lineHeight: 24
-  },
  partnerAnswerText: {
-  fontSize: 14,
+  fontFamily: Fonts.type.base,
+  fontSize: Fonts.size.medium,
   color: Colors.medGray,
   lineHeight: 24,
   flexDirection: 'row'
  },
  partnerAnswerTextWarning:{
-  fontSize: 14,
+  fontFamily: Fonts.type.base,
+  fontSize: Fonts.size.small,
   color: Colors.darkMatBlue,
   lineHeight: 24,
   flexDirection: 'row'
@@ -34,27 +30,32 @@ export default StyleSheet.create({
  partnerAnswerTextTitle: {
   marginTop: 10,
   marginBottom: 10,
+  fontFamily: Fonts.type.semiBold,
+  fontSize: Fonts.size.medium,
   color: Colors.charcoal
  },
- partnerAnswerTextLeft: {
-  fontSize: 14,
-  color: Colors.medGray,
-  lineHeight: 24
- },
   title: {
-    fontSize: 16,
-    color: Colors.coal,
+    fontFamily: Fonts.type.semiBold,
+    fontSize: Fonts.size.medium,
+    color: Colors.charcoal,
     paddingBottom: 5,
     lineHeight: 28,
     marginBottom: 20,
     marginTop: 10
   },
+  parapraph: {
+    fontFamily: Fonts.type.base,
+    fontSize: Fonts.size.medium,
+    color: Colors.bloodOrange,
+    paddingBottom: 15,
+    lineHeight: 24
+  },
   titleBold: {
-    fontSize: 16,
-    color: Colors.coal,
+    fontFamily: Fonts.type.condensed,
+    fontSize: Fonts.size.regular,
+    color: Colors.charcoal,
     paddingBottom: 5,
     lineHeight: 28,
-    fontWeight: 'bold',
     marginTop: 20
   },
   lineBreak: {
@@ -71,14 +72,16 @@ export default StyleSheet.create({
     elevation: 1
   },
   submitAnswersWarningText: {
-    fontSize: 12,
+    fontFamily: Fonts.type.condensed,
+    fontSize: Fonts.size.small,
     color: Colors.fire,
     marginBottom: 4,
     textAlign: 'center',
     alignSelf: 'center'
   },
   topWarning: {
-    fontSize: 12,
+    fontFamily: Fonts.type.condensed,
+    fontSize: Fonts.size.small,
     color: Colors.medMatBlue2
   } 
 })

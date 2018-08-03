@@ -1,10 +1,10 @@
-import { StyleSheet } from 'react-native'
-import { Colors, Metrics } from '../../Themes/'
+import { StyleSheet } from 'react-native';
+import { Colors, Fonts } from '../../Themes/';
 
 export default StyleSheet.create({
   sectionTitle: {
-    fontSize: 16,
-    fontWeight: '600',
+    fontSize: Fonts.size.regular,
+    fontFamily: Fonts.type.condensed,
     textAlign: 'center',
     maxWidth: 280,
     alignSelf: 'center',
@@ -12,8 +12,8 @@ export default StyleSheet.create({
     marginTop: 30
   },
   sectionText: {
-    fontSize: 14,
-    fontWeight: 'normal',
+    fontSize: Fonts.size.medium,
+    fontFamily: Fonts.type.medium,
     textAlign: 'center',
     maxWidth: 360,
     color: Colors.medGray,
@@ -34,4 +34,4 @@ export default StyleSheet.create({
     marginTop: 30,
     marginBottom: 10
   }
-})
+});

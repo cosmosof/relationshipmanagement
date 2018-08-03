@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { Colors } from '../../Themes/'
+import { StyleSheet } from 'react-native';
+import { Colors, Fonts } from '../../Themes/';
 
 export default StyleSheet.create({
   container: {
@@ -31,13 +31,21 @@ export default StyleSheet.create({
   },
   dateText: {
     color: Colors.charcoal,
+    fontFamily: Fonts.type.base,
     fontSize: 6,
     marginBottom: -10,
     textAlign: 'right'
   },
+  priorityText: {
+    color: Colors.charcoal,
+    fontFamily: Fonts.type.base,
+    fontSize: Fonts.size.smaller,
+    marginBottom: -10,
+    textAlign: 'left'
+  },
   text: {
-    fontSize: 12,
-    fontWeight: '500',
+    fontFamily: Fonts.type.base,
+    fontSize: Fonts.size.small,
     textAlign: 'left'
   },
   paperHoles: {
@@ -55,4 +63,4 @@ export default StyleSheet.create({
   button: {
     justifyContent: 'center'
   }
-})
+});

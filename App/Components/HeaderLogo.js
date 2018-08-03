@@ -5,8 +5,8 @@ import { Images } from '../Themes';
 export default class HeaderLogo extends React.Component {
   render() {
     return (
-      <View style={{ width: 79, height: 22 }}>
-        <Image source={Images.logo} style={{ width: 147/2.4, height: 43/2.4}} />
+      <View>
+        <Image source={Images.logo} style={{ width: 147 / 3.4, height: 43 / 3.4, marginBottom: 3 }} />
       </View>
     );
   }

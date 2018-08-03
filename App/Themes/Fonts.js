@@ -1,8 +1,13 @@
 const type = {
-  base: 'Avenir-Book',
+  base: 'AvenirNext-Regular',
   bold: 'Avenir-Black',
-  emphasis: 'HelveticaNeue-Italic'
-}
+  semiBold: 'AvenirNext-DemiBold',
+  condensed: 'AvenirNextCondensed-DemiBold',
+  emphasis: 'HelveticaNeue-Italic',
+  medium: 'AvenirNextCondensed-Regular',
+  cbold: 'AvenirNextCondensed-Bold',
+  light: 'AvenirNextCondensed-UltraLight'
+};
 
 const size = {
   h1: 38,
@@ -15,6 +20,7 @@ const size = {
   regular: 17,
   medium: 14,
   small: 12,
+  smaller: 10,
   tiny: 8.5
 }
 

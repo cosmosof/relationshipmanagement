@@ -1,5 +1,5 @@
-import { StyleSheet } from 'react-native'
-import { Colors } from '../../Themes/'
+import { StyleSheet } from 'react-native';
+import { Colors, Fonts } from '../../Themes/';
 
 export default StyleSheet.create({
   container: {
@@ -10,8 +10,8 @@ export default StyleSheet.create({
     marginRight: 5
   },
   text: {
-    fontSize: 12,
-    fontWeight: '500'
+    fontFamily: Fonts.type.base,
+    fontSize: Fonts.size.small,
   },
   triangle: {
     position: 'absolute',
@@ -26,6 +26,7 @@ export default StyleSheet.create({
   }, 
   dateText: {
     color: Colors.charcoal,
+    fontFamily: Fonts.type.base,
     fontSize: 6
   }
-})
+});

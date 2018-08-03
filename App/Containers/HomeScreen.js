@@ -1,7 +1,5 @@
 import React from 'react';
 import {
-  Alert,
-  Text,
   View,
   ScrollView,
   Alert,
@@ -87,12 +85,7 @@ class HomeScreen extends React.Component {
       isemailverified: false
     };
   }
-  componentDidMount() {
-    console.log('homescreen componentDidMount');
-    AppState.addEventListener('change', this._handleAppStateChange);
-    this.props.getDeviceCurrentToken();
-  }
-
+  
   componentWillMount() {
     firebase.auth().onAuthStateChanged(function(user) {
       console.log('auth state');
@@ -111,12 +104,78 @@ class HomeScreen extends React.Component {
       this.keyboardDidHide
     );
   }
+ 
+  componentDidMount() {
+    console.log('homescreen componentDidMount');
+    AppState.addEventListener('change', this._handleAppStateChange);
+    this.props.getDeviceCurrentToken();
+  }
+  componentWillReceiveProps(newProps) {
+    console.log(newProps);
+    console.log(newProps.token);
+
+    if (newProps.isemailverified !== this.props.isemailverified) {
+      console.log('emailverified changed');
+      console.log(newProps.isemailverified);
+      const { setParams } = this.props.navigation;
+      setParams({ warningIconBackgroundColor: Colors.transparent });
+    } else if (!newProps.isemailverified && !this.state.isemailverified) {
+      console.log('emailverified changed 2');
+      this.setState({ isemailverified: true });
+      const { setParams } = this.props.navigation;
+      setParams({ warningIconBackgroundColor: Colors.charcoal });
+    }
+
+    if (newProps.token) {
+      console.log(newProps.token);
+
+      AsyncStorage.getItem('devicetoken')
+        .then(value => {
+          const savedDeviceToken = value
+            ? JSON.parse(value)['StoredDeviceToken']
+            : null;
+          const savedUserId = value ? JSON.parse(value)['StoredUserId'] : null;
+          console.log(savedDeviceToken);
+          console.log(savedUserId);
+
+          const obj = {
+            StoredDeviceToken: newProps.token,
+            StoredUserId: newProps.userId
+          };
+          console.log(JSON.stringify(obj));
+
+          if (
+            savedUserId === null ||
+            savedUserId !== newProps.userId ||
+            !savedUserId
+          ) {
+            console.log('new user or first sign in');
+            console.log(newProps.token);
+            console.log(newProps.userId);
+            console.log(JSON.stringify(obj));
+
+            AsyncStorage.setItem('devicetoken', JSON.stringify(obj));
+            this.props.saveDeviceToken(newProps.token, newProps.userId);
+          } else {
+            if (savedDeviceToken === newProps.token) {
+              console.log('same token');
+            } else {
+              console.log('token changed');
+              AsyncStorage.setItem('devicetoken', JSON.stringify(obj));
+              this.props.saveDeviceToken(newProps.token, newProps.userId);
+            }
+          }
+        })
+        .catch(error => {
+          console.log(error);
+        });
+    }
+  }
   componentWillUnmount() {
     AppState.removeEventListener('change', this._handleAppStateChange);
     this.keyboardDidShowListener.remove();
     this.keyboardDidHideListener.remove();
   }
-
   handleChangeFriendname = text => {
     console.log(text);
     this.setState({ friendname: text });
@@ -124,7 +183,7 @@ class HomeScreen extends React.Component {
   keyboardDidShow = e => {
     // Animation types easeInEaseOut/linear/spring
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
-    let newSize = Metrics.screenHeight - e.endCoordinates.height;
+    const newSize = Metrics.screenHeight - e.endCoordinates.height;
     console.log(Metrics.screenHeight);
     console.log(e.endCoordinates.height);
 
@@ -135,7 +194,7 @@ class HomeScreen extends React.Component {
     console.log(this.state.visibleHeight);
   };
 
-  keyboardDidHide = e => {
+  keyboardDidHide = () => {
     // Animation types easeInEaseOut/linear/spring
     LayoutAnimation.configureNext(LayoutAnimation.Presets.easeInEaseOut);
     this.setState({
@@ -171,7 +230,6 @@ class HomeScreen extends React.Component {
     this.setState({ appState: nextAppState });
   };
 
- 
   deleteMatchHandler() {
     Alert.alert(
       'Delete Connection',
@@ -187,67 +245,7 @@ class HomeScreen extends React.Component {
       ]
     );
   }
-  componentWillReceiveProps(newProps) {
-    console.log(newProps);
-    console.log(newProps.token);
-
-    if (newProps.isemailverified !== this.props.isemailverified) {
-      console.log('emailverified changed');
-      console.log(newProps.isemailverified);
-      const { setParams } = this.props.navigation;
-      setParams({ warningIconBackgroundColor: Colors.transparent });
-    } else if (!newProps.isemailverified && !this.state.isemailverified) {
-      console.log('emailverified changed 2');
-      this.setState({ isemailverified: true });
-      const { setParams } = this.props.navigation;
-      setParams({ warningIconBackgroundColor: Colors.charcoal });
-    }
-
-    if (newProps.token) {
-      console.log(newProps.token);
-
-      AsyncStorage.getItem('devicetoken')
-        .then(value => {
-          let savedDeviceToken = value
-            ? JSON.parse(value)['StoredDeviceToken']
-            : null;
-          let savedUserId = value ? JSON.parse(value)['StoredUserId'] : null;
-          console.log(savedDeviceToken);
-          console.log(savedUserId);
-
-          let obj = {
-            StoredDeviceToken: newProps.token,
-            StoredUserId: newProps.userId
-          };
-          console.log(JSON.stringify(obj));
-
-          if (
-            savedUserId === null ||
-            savedUserId !== newProps.userId ||
-            !savedUserId
-          ) {
-            console.log('new user or first sign in');
-            console.log(newProps.token);
-            console.log(newProps.userId);
-            console.log(JSON.stringify(obj));
-
-            AsyncStorage.setItem('devicetoken', JSON.stringify(obj));
-            this.props.saveDeviceToken(newProps.token, newProps.userId);
-          } else {
-            if (savedDeviceToken === newProps.token) {
-              console.log('same token');
-            } else {
-              console.log('token changed');
-              AsyncStorage.setItem('devicetoken', JSON.stringify(obj));
-              this.props.saveDeviceToken(newProps.token, newProps.userId);
-            }
-          }
-        })
-        .catch(error => {
-          console.log(error);
-        });
-    }
-  }
+ 
   render() {
     const { friendname } = this.state;
     return (

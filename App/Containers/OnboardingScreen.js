@@ -3,13 +3,11 @@ import {
   Text,
   View
 } from 'react-native';
-import { Colors, Images, Metrics } from '../Themes';
 import { connect } from 'react-redux';
+import { Colors, Images, Metrics } from '../Themes';
 import styles from './Styles/OnboardingScreenStyles';
-import { NavigationActions } from 'react-navigation';
 import OnboardingActions from '../Redux/OnboardingRedux';
 import PhoneIllustration from '../Components/PhoneIllustration';
-import RoundedButton from '../Components/RoundedButton';
 
 class OnboardingScreen extends Component {
   constructor(props) {
@@ -74,8 +72,8 @@ class OnboardingScreen extends Component {
             imageSource={Images.illustration2}
             contentStyle={{ marginBottom: this.state.marginBottom }}
             circle2={this.state.circleColor2}
-            title={'WE GOT BUNCH OF STAFF FOR YOU'}
-            text={'Now it is time to focus yourself and your partner!'}
+            title={"WE'VE GOT A BUNCH OF FUN STUFF FOR YOU"}
+            text={"Now it's time to focus on your relationship"}
           />
         ) : (
           <PhoneIllustration
@@ -85,10 +83,10 @@ class OnboardingScreen extends Component {
             contentStyle={{ marginBottom: this.state.marginBottom }}
             circle3={this.state.circleColor3}
             title={'ENJOY IT!'}
-            text={'Hope this app help you get the better!'}
+            text={'Enjoy and share it with your lovely ones!'}
           >
             <Text style={styles.sectionTextLast}>
-              Congratulation! You are ready to start!
+              Congratulations! You're ready to start!
             </Text>
           </PhoneIllustration>
         )}

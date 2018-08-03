@@ -1,37 +1,29 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet,
   Text,
   View,
   ScrollView,
-  TouchableOpacity,
   TouchableWithoutFeedback,
   KeyboardAvoidingView,
   Image,
-  TextInput,
   Keyboard,
-  LayoutAnimation
 } from 'react-native';
 import { connect } from 'react-redux';
 import QuestionsActions from '../Redux/questionsRedux';
-import { Images, Metrics } from '../Themes';
+import { Images } from '../Themes';
 import Icon from 'react-native-vector-icons/Ionicons';
 import Colors from '../Themes/Colors';
 import Card from '../Themes/Card';
 import QuestionsInput from '../Components/QuestionsInput';
 import RoundedButton from '../Components/RoundedButton';
 import RadioForm, {
-  RadioButton,
-  RadioButtonInput,
-  RadioButtonLabel
+  RadioButton
 } from 'react-native-simple-radio-button';
 
-// Styles
 import styles from './Styles/QuestionsScreenStyle';
 
 class QuestionsScreen extends Component {
   static navigationOptions = ({ navigation }) => {
-    const { state, setParams } = navigation;
     return {
       title: (
         <View style={{ width: 79, height: 22 }}>
@@ -160,20 +152,20 @@ class QuestionsScreen extends Component {
       question5,
       userId
     } = this.props;
-    let question4Text = this.state.question4Text;
-    let question5Text = this.state.question5Text;
-    let question6Text = this.state.question6Text;
-    let question7Text = this.state.question7Text;
-    let question8Text = this.state.question8Text;
-    let question9Text = this.state.question9Text;
-    let question10Text = this.state.question10Text;
+    const question4Text = this.state.question4Text;
+    const question5Text = this.state.question5Text;
+    const question6Text = this.state.question6Text;
+    const question7Text = this.state.question7Text;
+    const question8Text = this.state.question8Text;
+    const question9Text = this.state.question9Text;
+    const question10Text = this.state.question10Text;
 
     if (
-      (this.props.question1 == 0 || this.props.question1) &&
-      (this.props.question2 == 0 || this.props.question2) &&
-      (this.props.question3 == 0 || this.props.question3) &&
-      (this.props.question4 == 0 || this.props.question4) &&
-      (this.props.question5 == 0 || this.props.question5)
+      (this.props.question1 === 0 || this.props.question1) &&
+      (this.props.question2 === 0 || this.props.question2) &&
+      (this.props.question3 === 0 || this.props.question3) &&
+      (this.props.question4 === 0 || this.props.question4) &&
+      (this.props.question5 === 0 || this.props.question5)
     ) {
       console.log(this.state.value5);
       this.setState({ error: '' });
@@ -245,7 +237,6 @@ class QuestionsScreen extends Component {
     }
   }
   textInputValidator(val) {
-    console.log('textInputValidator called');
     switch (val) {
       case 'question4Text':
         return this.state.question4Text
@@ -298,8 +289,7 @@ class QuestionsScreen extends Component {
           : null;
     }
   }
-  textInputonBlurStyleHandle(val) {
-    console.log('textInputFocusStyleHandle called');
+  textInputonBlurStyleHandle() {
     this.setState({
       question4TextStyle: null,
       question5TextStyle: null,
@@ -423,7 +413,7 @@ class QuestionsScreen extends Component {
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(0, 'question1') }
+                      { color: this.checkColor(0, 'question1') || Colors.charcoal }
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>A) {'  '}</Text>
@@ -432,16 +422,16 @@ class QuestionsScreen extends Component {
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(1, 'question1') }
+                      { color: this.checkColor(1, 'question1') || Colors.charcoal }
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>B) {'  '}</Text>
-                    Yes, But it's my preference
+                    Yes, but it's my preference
                   </Text>
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(2, 'question1') }
+                      { color: this.checkColor(2, 'question1') || Colors.charcoal }
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>C) {'  '}</Text>
@@ -450,11 +440,11 @@ class QuestionsScreen extends Component {
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(3, 'question1') }
+                      { color: this.checkColor(3, 'question1') || Colors.charcoal }
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>D) {'  '}</Text>
-                    Yes and No, some subjects makes me feel uncomfortable.
+                    Yes and no, some subjects make me feel uncomfortable.
                   </Text>
                 </View>
 
@@ -462,12 +452,12 @@ class QuestionsScreen extends Component {
                   <RadioForm formHorizontal={true} animation={true}>
                     {this.state.types1.map((obj, i) => {
                       var that = this;
-                      var is_selected = this.state.value1Index == i;
+                      var isSlected = this.state.value1Index == i;
                       return (
                         <View key={i} style={styles.radioButtonWrap}>
                           <RadioButton
                             labelStyle={{ fontSize: 20, marginRight: 20 }}
-                            isSelected={is_selected}
+                            isSelected={isSlected}
                             obj={obj}
                             index={i}
                             borderWidth={1}
@@ -505,16 +495,16 @@ class QuestionsScreen extends Component {
                     <Text
                       style={[
                         styles.parapraph,
-                        { color: this.checkColor(0, 'question2') }
+                        { color: this.checkColor(0, 'question2') || Colors.charcoal }
                       ]}
                     >
                       <Text style={{ color: Colors.medGray }}>A) {'  '}</Text>
-                      No, I did not!
+                      No, I don't!
                     </Text>
                     <Text
                       style={[
                         styles.parapraph,
-                        { color: this.checkColor(1, 'question2') }
+                        { color: this.checkColor(1, 'question2') || Colors.charcoal }
                       ]}
                     >
                       <Text style={{ color: Colors.medGray }}>B) {'  '}</Text>
@@ -523,7 +513,7 @@ class QuestionsScreen extends Component {
                     <Text
                       style={[
                         styles.parapraph,
-                        { color: this.checkColor(2, 'question2') }
+                        { color: this.checkColor(2, 'question2') || Colors.charcoal }
                       ]}
                     >
                       <Text style={{ color: Colors.medGray }}>C) {'  '}</Text>
@@ -532,7 +522,7 @@ class QuestionsScreen extends Component {
                     <Text
                       style={[
                         styles.parapraph,
-                        { color: this.checkColor(3, 'question2') }
+                        { color: this.checkColor(3, 'question2') || Colors.charcoal }
                       ]}
                     >
                       <Text style={{ color: Colors.medGray }}>D) {'  '}</Text>
@@ -544,12 +534,12 @@ class QuestionsScreen extends Component {
                     <RadioForm formHorizontal={true} animation={true}>
                       {this.state.types1.map((obj, i) => {
                         var that = this;
-                        var is_selected = this.state.value2Index == i;
+                        var isSlected = this.state.value2Index == i;
                         return (
                           <View key={i} style={styles.radioButtonWrap}>
                             <RadioButton
                               labelStyle={{ fontSize: 20, marginRight: 20 }}
-                              isSelected={is_selected}
+                              isSelected={isSlected}
                               obj={obj}
                               index={i}
                               borderWidth={1}
@@ -585,16 +575,16 @@ class QuestionsScreen extends Component {
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(0, 'question3') }
+                      { color: this.checkColor(0, 'question3') || Colors.charcoal }
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>A) {'  '}</Text>
-                    Yes, occationally
+                    Yes, occasionally
                   </Text>
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(1, 'question3') }
+                      { color: this.checkColor(1, 'question3') || Colors.charcoal}
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>B) {'  '}</Text>
@@ -603,7 +593,7 @@ class QuestionsScreen extends Component {
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(2, 'question3') }
+                      { color: this.checkColor(2, 'question3') || Colors.charcoal }
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>C) {'  '}</Text>
@@ -612,7 +602,7 @@ class QuestionsScreen extends Component {
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(3, 'question3') }
+                      { color: this.checkColor(3, 'question3') || Colors.charcoal }
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>D) {'  '}</Text>
@@ -624,12 +614,12 @@ class QuestionsScreen extends Component {
                   <RadioForm formHorizontal={true} animation={true}>
                     {this.state.types1.map((obj, i) => {
                       var that = this;
-                      var is_selected = this.state.value3Index == i;
+                      var isSlected = this.state.value3Index == i;
                       return (
                         <View key={i} style={styles.radioButtonWrap}>
                           <RadioButton
                             labelStyle={{ fontSize: 20, marginRight: 20 }}
-                            isSelected={is_selected}
+                            isSelected={isSlected}
                             obj={obj}
                             index={i}
                             borderWidth={1}
@@ -665,7 +655,7 @@ class QuestionsScreen extends Component {
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(0, 'question4') }
+                      { color: this.checkColor(0, 'question4') || Colors.charcoal }
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>A) {'  '}</Text>
@@ -674,7 +664,7 @@ class QuestionsScreen extends Component {
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(1, 'question4') }
+                      { color: this.checkColor(1, 'question4') || Colors.charcoal }
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>B) {'  '}</Text>
@@ -683,7 +673,7 @@ class QuestionsScreen extends Component {
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(2, 'question4') }
+                      { color: this.checkColor(2, 'question4') || Colors.charcoal }
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>C) {'  '}</Text>
@@ -692,7 +682,7 @@ class QuestionsScreen extends Component {
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(3, 'question4') }
+                      { color: this.checkColor(3, 'question4') || Colors.charcoal }
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>D) {'  '}</Text>
@@ -704,12 +694,12 @@ class QuestionsScreen extends Component {
                   <RadioForm formHorizontal={true} animation={true}>
                     {this.state.types1.map((obj, i) => {
                       var that = this;
-                      var is_selected = this.state.value4Index == i;
+                      var isSlected = this.state.value4Index == i;
                       return (
                         <View key={i} style={styles.radioButtonWrap}>
                           <RadioButton
                             labelStyle={{ fontSize: 20, marginRight: 20 }}
-                            isSelected={is_selected}
+                            isSelected={isSlected}
                             obj={obj}
                             index={i}
                             borderWidth={1}
@@ -745,7 +735,7 @@ class QuestionsScreen extends Component {
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(0, 'question5') }
+                      { color: this.checkColor(0, 'question5') || Colors.charcoal }
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>A) {'  '}</Text>
@@ -754,7 +744,7 @@ class QuestionsScreen extends Component {
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(1, 'question5') }
+                      { color: this.checkColor(1, 'question5') || Colors.charcoal }
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>B) {'  '}</Text>
@@ -763,7 +753,7 @@ class QuestionsScreen extends Component {
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(2, 'question5') }
+                      { color: this.checkColor(2, 'question5') || Colors.charcoal }
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>C) {'  '}</Text>
@@ -772,7 +762,7 @@ class QuestionsScreen extends Component {
                   <Text
                     style={[
                       styles.parapraph,
-                      { color: this.checkColor(3, 'question5') }
+                      { color: this.checkColor(3, 'question5') || Colors.charcoal }
                     ]}
                   >
                     <Text style={{ color: Colors.medGray }}>D) {'  '}</Text>
@@ -784,12 +774,12 @@ class QuestionsScreen extends Component {
                   <RadioForm formHorizontal={true} animation={true}>
                     {this.state.types1.map((obj, i) => {
                       var that = this;
-                      var is_selected = this.state.value5Index == i;
+                      var isSlected = this.state.value5Index == i;
                       return (
                         <View key={i} style={styles.radioButtonWrap}>
                           <RadioButton
                             labelStyle={{ fontSize: 20, marginRight: 20 }}
-                            isSelected={is_selected}
+                            isSelected={isSlected}
                             obj={obj}
                             index={i}
                             borderWidth={1}

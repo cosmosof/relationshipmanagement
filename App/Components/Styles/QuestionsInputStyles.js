@@ -11,25 +11,27 @@ export default StyleSheet.create({
     padding: 10,
     borderColor: Colors.steel,
     color: Colors.charcoal,
-    fontSize: 14,
+    fontSize: Fonts.size.medium,
+    fontFamily: Fonts.type.base,
     backgroundColor: Colors.snow,
     marginBottom: 3
   },
-  title: {    
-    fontSize: 16,
-    color: Colors.coal,
+  title: { 
+    fontFamily: Fonts.type.semiBold,
+    fontSize: Fonts.size.medium,
+    color: Colors.charcoal,
     paddingBottom: 5,
     lineHeight: 28,
     marginBottom: 20,
-    marginTop: 10
+    marginTop: 10   
   },
   titleBold: {
-    fontSize: 16,
-    color: Colors.coal,
+    fontFamily: Fonts.type.condensed,
+    fontSize: Fonts.size.regular,
+    color: Colors.charcoal,
     paddingBottom: 5,
     lineHeight: 28,
-    fontWeight: 'bold',
-    marginTop: 15
+    marginTop: 20
   },
   lineBreak: {
     borderWidth: 0.5,
@@ -37,8 +39,8 @@ export default StyleSheet.create({
     marginBottom: 10
   },
   textCounter: {
-    fontSize: 8,
+    fontSize: Fonts.size.tiny,
     color: Colors.lightMatBlue,
     height: 12
   }   
-})
+});

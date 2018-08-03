@@ -4,7 +4,7 @@ import Immutable from 'seamless-immutable'
 /* ------------- Types and Action Creators ------------- */
 
 const { Types, Creators } = createActions({
-  saveUserTodos: ['usermessage', 'userId'],
+  saveUserTodos: ['usermessage', 'userId', 'isPriority'],
   saveTodoSuccess: null,
   saveTodoFailure: null,
   fetchUserTodos: null,
@@ -24,6 +24,7 @@ export default Creators
 /* ------------- Initial State ------------- */
 
 export const INITIAL_STATE = Immutable({
+  isPriority: false,
   usermessage: null, 
   savemessagefetching: false,
   savemessagesuccess: false,
@@ -47,10 +48,10 @@ export const INITIAL_STATE = Immutable({
 /* ------------- Reducers ------------- */
 
 // we're saving the message
-export const saveusermessage = (state, { usermessage, userId }) => {
+export const saveusermessage = (state, { usermessage, userId, isPriority }) => {
   console.log(`${usermessage} / ${userId}`)
   return (
-    state.merge({ savemessagefetching: true, userId })
+    state.merge({ savemessagefetching: true, userId, isPriority })
   )  
 }
 // Save message success

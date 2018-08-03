@@ -1,26 +1,18 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet,
-  Text,
   View,
-  ScrollView,
-  Image,
-  Button,
   TouchableOpacity,
   TextInput,
-  AsyncStorage,
-  AppState,
   Keyboard,
-  Alert,
   KeyboardAvoidingView,
   FlatList,
   TouchableWithoutFeedback
 } from 'react-native';
-import { Images, Metrics, Colors } from '../Themes';
+import { Colors } from '../Themes';
 import ChatBubbleView from '../Components/ChatBubbleView';
+import ChatandToDosFetchingView from '../Components/ChatandToDosFetchingView';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
-import { NavigationActions } from 'react-navigation';
 import ChatActions from '../Redux/ChatRedux';
 import styles from './Styles/ChatScreenStyle';
 
@@ -28,7 +20,7 @@ const ITEM_HEIGHT = 50;
 
 class ChatScreen extends Component {
   static navigationOptions = ({ navigation }) => {
-    const { state, setParams, goBack } = navigation;
+    const { goBack } = navigation;
     return {
       headerLeft: (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -78,15 +70,15 @@ class ChatScreen extends Component {
     });
   }
 
-  componentDidUpdate() {
+   componentDidUpdate() {
     console.log('componentDidUpdate');
 
-    if (this.props.usermesssagedata) {
+    if (this.props.usermesssagedata&&!this.props.fetchingmessages) {
       if (this.props.usermesssagedata.length) {
         this.flatList.scrollToIndex({ animated: true, index: 0 });
       }
     }
-  }
+  } 
   componentDidMount() {
     console.log('profileScreen componentDidMount');
     this.props.fetchUserMessages();
@@ -122,6 +114,9 @@ class ChatScreen extends Component {
           justifyContent: 'flex-end'
         }}
       >
+       {this.props.fetchingmessages ? 
+              <ChatandToDosFetchingView />
+            :
         <FlatList
           ref={c => {
             this.flatList = c;
@@ -134,6 +129,7 @@ class ChatScreen extends Component {
           getItemLayout={this.itemLayout}
           inverted
         />
+        }
         <View style={styles.typeMessage}>
           <TextInput
             ref='username'
@@ -141,7 +137,7 @@ class ChatScreen extends Component {
             value={this.state.text}
             returnKeyType='next'
             autoCapitalize='none'
-            autoCorrect={false}
+            autoCorrect={true}
             onChangeText={text => this.setState({ text })}
             underlineColorAndroid='transparent'
             placeholder={this.state.placeholder}
@@ -155,7 +151,7 @@ class ChatScreen extends Component {
               size={28}
               padding={2}
               style={{ padding: 2, alignSelf: 'center' }}
-              color={Colors.ember}
+              color={Colors.medMatBlue2}
             />
           ) : (
             <TouchableOpacity onPress={this.saveUserMessageHandler}>
@@ -164,11 +160,12 @@ class ChatScreen extends Component {
                 size={28}
                 padding={2}
                 style={{ padding: 2, alignSelf: 'center' }}
-                color={Colors.matBlue}
+                color={Colors.medMatPurple2}
               />
             </TouchableOpacity>
           )}
         </View>
+      
       </KeyboardAvoidingView>
     );
   }
@@ -176,6 +173,7 @@ class ChatScreen extends Component {
 
 const mapStateToProps = state => {
   const {
+    fetchingmessages,
     savemessagefetching,
     savemessagesuccess,
     savemessagefailure,
@@ -183,6 +181,7 @@ const mapStateToProps = state => {
   } = state.chatscreen;
   const { userId } = state.login;
   return {
+    fetchingmessages,
     savemessagefetching,
     savemessagesuccess,
     savemessagefailure,

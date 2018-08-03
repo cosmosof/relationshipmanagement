@@ -38,7 +38,6 @@
 		31DF625250FF4570A8DE16B0 /* FontAwesome.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1DE9C8F0E386483EA67F7167 /* FontAwesome.ttf */; };
 		334D8EC989FAB4795C1D69D6 /* libPods-relationshipTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DD1F0FAAD720C6FDEE5B342B /* libPods-relationshipTests.a */; };
 		392A46A214D14A8CBACF5286 /* SimpleLineIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5CF98DF263E6461E994E9976 /* SimpleLineIcons.ttf */; };
-		458CE5671FFB5165001499A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 458CE5661FFB5165001499A7 /* GoogleService-Info.plist */; };
 		4595C3681FFB32B600873958 /* libRNVectorIcons.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4595C3661FFB31D400873958 /* libRNVectorIcons.a */; };
 		45A0000D206619BA00F74329 /* main.jsbundle in Resources */ = {isa = PBXBuildFile; fileRef = 008F07F21AC5B25A0029DE68 /* main.jsbundle */; };
 		45E073E92068008500197BFA /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 45E073BE2068008400197BFA /* GoogleService-Info.plist */; };
@@ -406,7 +405,6 @@
 		2D02E4901E0B4A5D006451C7 /* relationship-tvOSTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "relationship-tvOSTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		445D833154B0493A8920C3DE /* Feather.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = Feather.ttf; path = "../node_modules/react-native-vector-icons/Fonts/Feather.ttf"; sourceTree = "<group>"; };
 		458CE4F41FFB44BE001499A7 /* relationship.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; name = relationship.entitlements; path = relationship/relationship.entitlements; sourceTree = "<group>"; };
-		458CE5661FFB5165001499A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		45E073BE2068008400197BFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "relationship/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		45E073EA2068009600197BFA /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		4B7DC94953214F158F56489A /* ReactNativeConfig.xcodeproj */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = "wrapper.pb-project"; name = ReactNativeConfig.xcodeproj; path = "../node_modules/react-native-config/ios/ReactNativeConfig.xcodeproj"; sourceTree = "<group>"; };
@@ -759,7 +757,6 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
-				458CE5661FFB5165001499A7 /* GoogleService-Info.plist */,
 				13B07FAE1A68108700A75B9A /* relationship */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* relationshipTests */,
@@ -1331,7 +1328,6 @@
 				392A46A214D14A8CBACF5286 /* SimpleLineIcons.ttf in Resources */,
 				45A0000D206619BA00F74329 /* main.jsbundle in Resources */,
 				930065FE7E2B41B7B30EA4ED /* Zocial.ttf in Resources */,
-				458CE5671FFB5165001499A7 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

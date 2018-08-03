@@ -1,39 +1,29 @@
 import React, { Component } from 'react';
 import {
-  StyleSheet,
   Text,
   View,
   ScrollView,
   Image,
-  Button,
   TouchableOpacity,
-  TextInput,
-  AsyncStorage,
-  AppState,
   LayoutAnimation,
   Keyboard,
   Alert,
   TouchableWithoutFeedback
 } from 'react-native';
-import { Images, Metrics, Colors } from '../Themes';
+import { Images, Metrics, Colors, Fonts } from '../Themes';
 import Icon from 'react-native-vector-icons/Ionicons';
 import { connect } from 'react-redux';
 import { NavigationActions } from 'react-navigation';
 import ProfileActions from '../Redux/ProfileRedux';
 import LoginActions from '../Redux/LoginRedux';
-import firebase from 'react-native-firebase';
 import RoundedButton from '../Components/RoundedButton';
 import InputArea from '../Components/InputArea';
 
-// Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
-
-// Styles
 import styles from './Styles/ProfileScreenStyle';
 
 class ProfileScreen extends Component {
   static navigationOptions = ({ navigation }) => {
-    const { state, setParams, goBack } = navigation;
+    const { goBack } = navigation;
     return {
       headerLeft: (
         <TouchableWithoutFeedback onPress={Keyboard.dismiss} accessible={false}>
@@ -65,18 +55,7 @@ class ProfileScreen extends Component {
       marginTopSectionLine: 35
     };
   }
-  handleChangeUsername = text => {
-    console.log(this.state.newusername);
-    this.setState({
-      newusername: text
-    });
-  };
-  handleChangePassword = text => {
-    console.log(this.state.newpassword);
-    this.setState({
-      newpassword: text
-    });
-  };
+
   onpresshandler() {
     // This will reset back to loginStack
     // https://github.com/react-community/react-navigation/issues/1127
@@ -103,6 +82,18 @@ class ProfileScreen extends Component {
       ]
     );
   }
+  handleChangeUsername = text => {
+    console.log(this.state.newusername);
+    this.setState({
+      newusername: text
+    });
+  };
+  handleChangePassword = text => {
+    console.log(this.state.newpassword);
+    this.setState({
+      newpassword: text
+    });
+  };
   changeUsernameButton = () => {
     console.log('changeUsernameButton');
     console.log(this.state.newusername);
@@ -333,7 +324,7 @@ class ProfileScreen extends Component {
                   <RoundedButton
                     title={'Change Username'}
                     onPress={this.changeUsernameButton}
-                    buttonTextStyles={{ fontWeight: 'normal', fontSize: 12 }}
+                    buttonTextStyles={{ fontSize: Fonts.size.small }}
                   />
                 </View>
               )
@@ -381,7 +372,7 @@ class ProfileScreen extends Component {
                 <RoundedButton
                   title={'Change Password'}
                   onPress={this.changePasswordButton}
-                  buttonTextStyles={{ fontWeight: 'normal', fontSize: 12 }}
+                  buttonTextStyles={{ fontSize: Fonts.size.small }}
                 />
               </View>
             )}

@@ -1,8 +1,10 @@
-import { StyleSheet } from 'react-native'
-import { Colors } from '../../Themes/'
+import { StyleSheet } from 'react-native';
+import { Colors, Fonts } from '../../Themes/';
 
 export default StyleSheet.create({
   textInput: {
+    fontFamily: Fonts.type.base,
+    fontSize: Fonts.size.small, 
     height: 36,
     color: Colors.coal,
     padding: 10,
@@ -21,4 +23,4 @@ export default StyleSheet.create({
 		shadowRadius: 3,
     elevation: 1
   }
-})
+});
